@@ -14,30 +14,22 @@
     <div class="flex flex-wrap gap-3 mb-6">
         <input
             id="search"
-            placeholder="Search..."
-            class="bg-slate-900 border border-slate-700 px-3 py-2 rounded"
+            type="text"
+            placeholder="Search client, application, or version..."
+            class="bg-slate-900 border border-slate-700 px-3 py-2 rounded flex-grow min-w-[200px]"
         >
-        <select
-            id="clientFilter"
-            class="bg-slate-900 border border-slate-700 px-3 py-2 rounded"
-        >
+        <select id="clientFilter" class="bg-slate-900 border border-slate-700 px-3 py-2 rounded">
             <option value="">All Clients</option>
         </select>
-        <select
-            id="applicationFilter"
-            class="bg-slate-900 border border-slate-700 px-3 py-2 rounded"
-        >
+        <select id="applicationFilter" class="bg-slate-900 border border-slate-700 px-3 py-2 rounded">
             <option value="">All Applications</option>
         </select>
-        <select
-            id="versionFilter"
-            class="bg-slate-900 border border-slate-700 px-3 py-2 rounded"
-        >
+        <select id="versionFilter" class="bg-slate-900 border border-slate-700 px-3 py-2 rounded">
             <option value="">All Versions</option>
         </select>
     </div>
     <div id="tableContainer">
-        Loading...
+        <div class="text-center py-8">Loading deployment data...</div>
     </div>
 </div>
 <script src="app.js"></script>

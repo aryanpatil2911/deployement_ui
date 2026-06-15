@@ -1,77 +1,28 @@
-const url = "https://api.github.com/repos/sugaredcookie/linedata-config-store/contents/applications";
+const url ="https://api.github.com/repos/sugaredcookie/linedata-config-store/contents/applications/applications.json";
+
 // change the url to the actual working url
 
 // the url should be changed with the actual url of the location of the json file
 // note - along with the csv file, there must be a json file with the same data (just json format) for the frontend to fetch
 // so the url should look like: https://api.github.com/repos/github_username/github_repo_name/folder_name/file_name/file_name.json
 
-function parseCSV(text){
-
-    const lines =
-        text.trim().split("\n");
-
-    const headers =
-        lines[0]
-        .split(",")
-        .map(x => x.trim());
-
-    return lines
-        .slice(1)
-        .map(line => {
-
-            const values =
-                line.split(",")
-                .map(x => x.trim());
-
-            const row = {};
-
-            headers.forEach((header,index)=>{
-                row[header] =
-                    values[index];
-            });
-
-            return row;
-        });
-}
-
 let rows = [];
 let deployments = [];
 
-async function loadData(){
-
-    try{
-
+async function loadData() {
+    try {
         const response =
             await fetch(url);
 
-        const files =
+        const githubFile =
             await response.json();
 
-        const csvFiles =
-            files.filter(
-                file => file.name.endsWith(".csv")
-            );
-
-        rows = [];
-
-        for(const file of csvFiles){
-
-            const csvResponse =
-                await fetch(file.url);
-
-            const csvFile =
-                await csvResponse.json();
-
-            const csvText =
+        rows =
+            JSON.parse(
                 atob(
-                    csvFile.content.replace(/\n/g,"")
-                );
-
-            const csvRows =
-                parseCSV(csvText);
-
-            rows.push(...csvRows);
-        }
+                    githubFile.content.replace(/\n/g, "")
+                )
+            );
 
         buildDeployments();
         loadFilters();
@@ -126,7 +77,7 @@ function loadFilters(){
         [...new Set(
             deployments.map(x => x.client)
         )];
-    const apps = 
+    const apps =
         [...new Set(
             deployments.map(x => x.application)
         )];
