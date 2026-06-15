@@ -1,12 +1,12 @@
 [
-    "deployment_01.csv",
-    "deployment_02.csv",
-    "deployment_03.csv",
-    "deployment_04.csv",
-    "deployment_05.csv",
-    "deployment_06.csv",
-    "deployment_07.csv",
-    "deployment_08.csv",
-    "deployment_09.csv",
-    "deployment_10.csv"
+    "CLIENT_A_APP_ALPHA_1.0.0.csv",
+    "CLIENT_A_APP_BETA_1.1.0.csv",
+    "CLIENT_B_APP_ALPHA_1.2.0.csv",
+    "CLIENT_B_APP_GAMMA_2.0.0.csv",
+    "CLIENT_C_APP_ALPHA_2.1.1.csv",
+    "CLIENT_C_APP_DELTA_2.1.0.csv",
+    "CLIENT_D_APP_BETA_3.0.0.csv",
+    "CLIENT_D_APP_GAMMA_3.0.1.csv",
+    "CLIENT_E_APP_DELTA_4.0.0.csv",
+    "CLIENT_E_APP_OMEGA_4.1.0.csv"
 ]
