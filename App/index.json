@@ -1,14 +1,14 @@
 [
-    "APP_ALPHA_1.0.0.yml",
-    "APP_ALPHA_1.2.0.yml",
-    "APP_ALPHA_1.5.0.yml",
-    "APP_BETA_2.0.0.yml",
-    "APP_BETA_2.1.0.yml",
-    "APP_BETA_2.3.0.yml",
-    "APP_DELTA_4.0.0.yml",
-    "APP_DELTA_4.1.0.yml",
-    "APP_DELTA_4.2.0.yml",
-    "APP_GAMMA_3.0.0.yml",
-    "APP_GAMMA_3.1.0.yml",
-    "APP_GAMMA_3.2.0.yml"
+  "APP_ALPHA/APP_ALPHA_1.0.0.yml",
+  "APP_ALPHA/APP_ALPHA_1.2.0.yml",
+  "APP_ALPHA/APP_ALPHA_1.5.0.yml",
+  "APP_BETA/APP_BETA_2.0.0.yml",
+  "APP_BETA/APP_BETA_2.1.0.yml",
+  "APP_BETA/APP_BETA_2.3.0.yml",
+  "APP_DELTA/APP_DELTA_4.0.0.yml",
+  "APP_DELTA/APP_DELTA_4.1.0.yml",
+  "APP_DELTA/APP_DELTA_4.2.0.yml",
+  "APP_GAMMA/APP_GAMMA_3.0.0.yml",
+  "APP_GAMMA/APP_GAMMA_3.1.0.yml",
+  "APP_GAMMA/APP_GAMMA_3.2.0.yml"
 ]
