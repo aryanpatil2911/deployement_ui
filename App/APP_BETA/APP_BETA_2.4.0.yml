@@ -1,0 +1,40 @@
+# Linedata Release Manifest - APP_BETA v2.4.0
+release:
+  version: "2.4.0"  
+  date: "2026-06-17"
+  environment: "UAT"
+ 
+application:
+  name: APP_BETA
+  client: CLIENT_B
+  description: Advanced Risk Analytics and Portfolio Optimization Engine
+ 
+changes:
+  - type: feature
+    description: Implemented new Monte Carlo simulation module
+  - type: improvement
+    description: Optimized query performance for large datasets
+  - type: fix
+    description: Fixed edge case in currency conversion logic
+ 
+dependencies:
+  - name: core-lib
+    version: "2.4.1"
+  - name: risk-engine
+    version: "1.8.2"
+  - name: data-connector
+    version: "3.1.0"
+ 
+deployment:
+  required_approvers: ["platform-team", "risk-team"]
+  rollback_version: "2.2.1"
+  validation_steps:
+    - "Run full regression suite in UAT"
+    - "Validate simulation accuracy against benchmarks"
+    - "Perform load testing under peak conditions"
+ 
+metadata:
+  build_id: "build-20260617-1530"
+  commit_sha: "f7a9b2c3d4e5f67890123456789abcdef"
+  triggered_by: "github-actions"
+  notes: "Major performance release"
