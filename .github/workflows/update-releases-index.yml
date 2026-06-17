@@ -4,12 +4,14 @@ on:
   push:
     paths:
       - 'App/**'
-  workflow_dispatch:
+  workflow_dispatch:  # Allows manual trigger for testing
+
+permissions:
+  contents: write
 
 jobs:
   update-index:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -18,28 +20,27 @@ jobs:
 
       - name: Generate index.json with nested paths
         run: |
-          cd App
-          
-          # Find all .yml files and create full paths (Folder/Filename)
-          find . -name "*.yml" | sed 's|^\./||' | sort > temp_files.txt
-          
-          # Convert to JSON array
-          jq -R -s -c 'split("\n")[:-1]' temp_files.txt > index.json
-          
-          rm temp_files.txt
-          
-          echo "Generated index.json with $(wc -l < index.json) files"
+          mkdir -p App
+          echo "[]" > App/index.json  # fallback
+
+          # Find all .yml files recursively and create proper JSON array
+          find App -type f -name "*.yml" | sort | jq -R -s -c 'split("\n")[:-1]' > App/index.json
+
+          echo "Generated App/index.json with $(wc -l < App/index.json) entries"
+          cat App/index.json
 
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          
-          git add App/index.json
-          
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
+
+          if git diff --quiet App/index.json; then
+            echo "No changes to index.json"
           else
-            git commit -m "chore: auto-update App/index.json"
+            git add App/index.json
+            git commit -m "chore: update releases index.json [skip ci]"
             git push
-          fiAlso
+            echo "index.json updated and pushed"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
