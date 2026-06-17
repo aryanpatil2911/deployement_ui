@@ -51,8 +51,7 @@
             </div>
         </div>
 
-        <div id="releasesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            </div>
+        <div id="releasesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </div>
 
     <div id="releaseModal" class="fixed inset-0 bg-black/80 hidden flex items-center justify-center z-50">
@@ -71,6 +70,13 @@
     <script>
         let allReleases = [];
 
+        // Helper function to dynamically extract the app folder safely, whether prefixed with 'App/' or not
+        function getAppFolder(fullPath) {
+            const parts = fullPath.split('/');
+            if (parts[0] === 'App') parts.shift(); // Strip out root wrapper folder name if present
+            return parts[0] || '';
+        }
+
         async function loadReleases() {
             const container = document.getElementById('releasesContainer');
             container.innerHTML = `<div class="col-span-full text-center py-16 text-slate-400">
@@ -80,15 +86,13 @@
             try {
                 const res = await fetch('../App/index.json');
                 if (!res.ok) throw new Error("index.json not found");
-                const files = await res.json();
 
+                const files = await res.json();
                 allReleases = files.filter(f => typeof f === 'string' && f.endsWith('.yml'));
 
-                // Populate App Filter from actual directory levels
-                const apps = [...new Set(allReleases.map(f => f.split('/')[0]))].sort();
+                // FIXED: Now uses getAppFolder to correctly grab APP_ALPHA, APP_BETA, etc. instead of just "App"
+                const apps = [...new Set(allReleases.map(f => getAppFolder(f)))].sort();
                 const appSelect = document.getElementById('appFilter');
-                
-                // Flush stale entries out safely
                 appSelect.innerHTML = '<option value="">All Applications</option>';
                 apps.forEach(app => {
                     appSelect.innerHTML += `<option value="${app}">${app.replace(/_/g, ' ')}</option>`;
@@ -97,7 +101,7 @@
                 renderReleases(allReleases);
             } catch (e) {
                 console.error(e);
-                container.innerHTML = `<div class="col-span-full text-red-500 text-center py-16">Failed to load releases.<br>Check that App/index.json exists.</div>`;
+                container.innerHTML = `<div class="col-span-full text-red-500 text-center py-16">Failed to load releases.<br>Check App/index.json</div>`;
             }
         }
 
@@ -108,7 +112,6 @@
             files.forEach(fullPath => {
                 const parts = fullPath.split('/');
                 const fileName = parts.pop();
-
                 const match = fileName.match(/APP_([A-Z]+)_([\d.]+)\.yml/i);
                 if (!match) return;
 
@@ -119,7 +122,7 @@
                     <div class="bg-slate-900 border border-slate-700 rounded-2xl p-6 hover:border-red-500/30 transition-all group">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-xl font-semibold text-white tracking-wide">${app}</h3>
-                            <span class="px-3 py-1 text-xs font-mono bg-slate-800 rounded-full border border-slate-700/40 text-red-400 font-bold">${version}</span>
+                            <span class="px-3 py-1 text-xs font-mono bg-slate-800 rounded-full text-red-400 font-bold border border-slate-700/60">${version}</span>
                         </div>
                         <div class="text-xs text-slate-500 font-mono mb-6 truncate">${fileName}</div>
                         <button onclick="viewRelease('${fullPath}')" 
@@ -129,7 +132,7 @@
                     </div>`;
             });
 
-            container.innerHTML = html || `<div class="col-span-full text-center py-16 text-slate-500 font-medium">No releases found matching constraints.</div>`;
+            container.innerHTML = html || `<div class="col-span-full text-center py-16 text-slate-500">No releases found matching constraints.</div>`;
         }
 
         function filterReleases() {
@@ -137,13 +140,9 @@
             const selectedApp = document.getElementById('appFilter').value;
 
             const filtered = allReleases.filter(fullPath => {
-                const parts = fullPath.split('/');
-                const appFolder = parts[0] || ''; // Extracts folder path segments like 'APP_ALPHA'
-
-                // FIXED: Compares appFolder (e.g., 'APP_ALPHA') against the selected drop-down option value directly
+                const appFolder = getAppFolder(fullPath);
                 const matchesApp = !selectedApp || appFolder === selectedApp;
                 const matchesSearch = !searchTerm || fullPath.toLowerCase().includes(searchTerm);
-
                 return matchesApp && matchesSearch;
             });
 
@@ -162,16 +161,19 @@
             const title = document.getElementById('modalTitle');
 
             title.textContent = fullPath.split('/').pop();
-            content.innerHTML = `<div class="text-center py-12 text-slate-500"><i class="fa-solid fa-circle-notch fa-spin text-2xl mb-2"></i><p>Streaming layout details...</p></div>`;
+            content.innerHTML = `<div class="text-center py-12 text-slate-500"><i class="fa-solid fa-circle-notch fa-spin text-2xl mb-2"></i><p>Loading release file...</p></div>`;
             modal.classList.remove('hidden');
 
             try {
-                const res = await fetch(`../App/${fullPath}`);
+                // FIXED: Safely normalizes path prefixing to guarantee single directory resolution
+                const cleanPath = fullPath.startsWith('App/') ? fullPath.substring(4) : fullPath;
+                const res = await fetch(`../App/${cleanPath}`);
                 if (!res.ok) throw new Error("File not found");
+                
                 const yamlText = await res.text();
-                content.innerHTML = `<pre class="text-emerald-400 whitespace-pre-wrap text-xs leading-relaxed font-mono select-text bg-slate-950 p-2 rounded border border-slate-800">${yamlText}</pre>`;
+                content.innerHTML = `<pre class="text-emerald-400 whitespace-pre-wrap text-xs leading-relaxed font-mono select-text bg-slate-950 p-4 rounded border border-slate-800">${yamlText}</pre>`;
             } catch (e) {
-                content.innerHTML = `<div class="text-red-500 text-center py-12">Failed to load asset layout payload.<br><small class="text-xs text-slate-600">${fullPath}</small></div>`;
+                content.innerHTML = `<div class="text-red-500 text-center py-12">Failed to load file.<br><small class="text-xs text-slate-600">${fullPath}</small></div>`;
             }
         }
 
