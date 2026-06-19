@@ -1,2 +1,2 @@
 "Client","Application","Version","DeploymentStatus","DeploymentDateTime","TriggeredBy","Environment"
-"CLIENT_D","APP_GAMMA","3.0.1","Failed","2026-06-15 11:25:00 UTC","emma.clark","PROD"
+"CLIENT_B","APP_BETA","2.0.0","Succeeded","2026-06-15 12:00:00 UTC","mike.ross","PROD"

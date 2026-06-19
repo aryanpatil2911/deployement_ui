@@ -1,2 +1,2 @@
 "Client","Application","Version","DeploymentStatus","DeploymentDateTime","TriggeredBy","Environment"
-"CLIENT_D","APP_BETA","3.0.0","Succeeded","2026-06-15 11:10:00 UTC","mark.white","UAT"
+"CLIENT_C","APP_GAMMA","3.0.0","Succeeded","2026-06-17 09:30:00 UTC","david.kim","PROD"
