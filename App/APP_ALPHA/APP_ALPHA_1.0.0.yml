@@ -1,6 +1,6 @@
 name: APP_ALPHA
 version: 1.0.0
-environment: UAT
+environment: PROD
 status: Succeeded
 release_date: 2026-06-15
 description: Initial stable release for APP_ALPHA
