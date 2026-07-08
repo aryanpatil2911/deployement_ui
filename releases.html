@@ -13,18 +13,18 @@
         input:focus, select:focus, textarea:focus { box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.4); border-color: #ef4444; }
     </style>
 </head>
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
 <body class="text-slate-300 bg-[#020617] p-6 md:p-10 min-h-screen relative text-xs">
     <div class="max-w-7xl mx-auto">
         <div class="flex items-center justify-between border-b border-slate-800 pb-5 mb-8">
             <div class="flex items-center gap-2.5">
-                <i class="fa-solid fa-diagram-project text-red-500 text-xl"></i>
-                <h1 class="text-xl font-black text-white tracking-tight uppercase">Linedata Releases</h1>
+                <h1 class="text-xl font-black text-white tracking-tight">LINEDATA RELEASES</h1>
             </div>
             <div class="flex items-center gap-3">
-                <a href="index.html" class="px-5 py-3 bg-slate-900 border border-slate-800 hover:bg-slate-800 rounded-lg text-xs font-semibold flex items-center gap-2 transition-all text-slate-200 shadow-sm">
-                    <i class="fa-solid fa-list-check text-red-400"></i><span>Dashboard</span>
+                <a href="index.html" class="px-5 py-2 bg-orange-500 hover:bg-orange-600 rounded-lg text-xs font-semibold flex items-center gap-2 transition-all text-white shadow-sm">
+                    <span>DASHBOARD</span>
                 </a>
-                <button onclick="showCreateModal()" class="px-5 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-semibold transition-all flex items-center gap-2 shadow-sm">
+                <button onclick="showCreateModal()" class="px-5 py-2 bg-orange-500 border border-orange-600 hover:bg-orange-600 rounded-lg text-xs font-semibold transition-all flex items-center gap-2 text-white shadow-sm">
                     <i class="fa-solid fa-plus"></i><span>New Release</span>
                 </button>
             </div>
@@ -35,8 +35,8 @@
                 <option value="">All Applications</option>
             </select>
             <div class="relative flex-1 min-w-[200px]">
-                <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-500"></i>
-                <input id="search" type="text" placeholder="Search versions or filenames..." onkeyup="filterReleases()" class="w-full bg-slate-950 border border-slate-800 rounded pl-9 pr-3 py-2.5 text-xs focus:outline-none placeholder-slate-600 text-slate-200">
+              <input id="search" type="text" placeholder="Search..." onkeyup="filterReleases()" 
+              class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-200 outline-none">
             </div>
             <button onclick="clearFilters()" class="px-4 py-2.5 bg-slate-800 border border-slate-700 hover:bg-slate-700 rounded transition-all flex items-center gap-1 text-slate-400 font-medium">
                 <i class="fa-solid fa-rotate-right text-[10px]"></i> Reset
@@ -46,11 +46,11 @@
         <div class="bg-slate-900/50 border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
             <table class="w-full text-left table-fixed text-xs border-collapse">
                 <thead>
-                    <tr class="border-b border-slate-800 bg-slate-950 font-bold uppercase tracking-wider text-slate-400 text-[10px]">
-                        <th class="p-4 pl-8 w-[25%] border-r border-slate-800/60">Module App</th>
-                        <th class="p-4 w-[20%] border-r border-slate-800/60 text-center">Version Build</th>
-                        <th class="p-4 w-[35%] border-r border-slate-800/60">Release Filename Track</th>
-                        <th class="p-4 text-center w-[20%] bg-slate-950/40">Workspace Ops</th>
+                    <tr class="border-b border-slate-800 bg-slate-950 font-bold tracking-wider text-slate-400 text-[10px]">
+                        <th class="p-4 pl-8 w-[25%] border-r border-slate-800/60">APP</th>
+                        <th class="p-4 w-[20%] border-r border-slate-800/60 text-center">VERSION</th> 
+                        <th class="p-4 w-[35%] border-r border-slate-800/60">RELEASE FILE NAME</th>
+                        <th class="p-4 text-center w-[20%] bg-slate-950/40"></th>
                     </tr>
                 </thead>
                 <tbody id="releasesContainer" class="divide-y divide-slate-800">
@@ -59,6 +59,12 @@
             </table>
         </div>
     </div>
+
+   <div id="actionStatus"
+     class="hidden fixed top-20 left-[42%] -translate-x-1/2 w-[90%] max-w-4xl
+    bg-red-950/40 border border-red-500/40 text-red-300
+    px-6 py-4 rounded-xl font-semibold text-sm z-50">
+</div>
 
     <div id="releaseModal" class="fixed inset-0 bg-black/75 hidden flex items-center justify-center z-50 p-4">
         <div class="bg-slate-900 border border-slate-800 rounded-xl w-full max-w-2xl flex flex-col max-h-[80vh] shadow-2xl">
@@ -73,6 +79,82 @@
         </div>
     </div>
 
+
+    
+   <!-- PAT input modal -->
+<div id="patModal" class="fixed inset-0 bg-black/80 hidden flex items-center justify-center z-50 p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-xl w-full max-w-sm shadow-2xl">
+
+        <div class="flex items-center justify-between border-b border-slate-800 p-4">
+            <div>
+                <h2 class="text-sm font-bold text-white uppercase tracking-wider">
+                    Deployment Token Required
+                </h2>
+                <p class="text-[11px] text-slate-500 mt-0.5">
+                    Enter your GitHub fine-grained PAT
+                </p>
+            </div>
+
+            <button onclick="closePatModal()" 
+                class="text-slate-400 hover:text-white text-lg leading-none">
+                &times;
+            </button>
+        </div>
+
+
+        <div class="p-5 space-y-3">
+
+            <input 
+                id="patInput"
+                type="password"
+                placeholder="github_pat_..."
+                class="w-full bg-slate-950 border border-slate-700 rounded p-2.5 outline-none text-slate-200 font-mono text-xs"
+            />
+
+
+            <p class="text-[10px] text-slate-500">
+                <i class="fa-solid fa-lock mr-1"></i>
+                Stored in your browser only — never sent to any server or committed to git.
+            </p>
+
+
+            <p class="text-[10px] text-slate-500">
+                Needs:
+                <strong class="text-slate-400">
+                    Actions → Read &amp; Write
+                </strong>
+                on LD-Global-Services/Deployment only.
+            </p>
+
+        </div>
+
+
+        <div class="border-t border-slate-800 p-3 flex gap-2 justify-end">
+
+            <button onclick="closePatModal()"
+                class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded text-xs font-semibold text-slate-300">
+                Cancel
+            </button>
+
+            <button onclick="savePAT()"
+                class="px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded text-xs font-semibold">
+                Save &amp; Continue
+            </button>
+
+        </div>
+
+    </div>
+</div>
+
+   <script>
+    window.GITHUB_REPO_OWNER = "LD-Global-Services";
+    window.GITHUB_REPO_NAME = "Deployment";
+    window.GITHUB_ACTIONS_WORKFLOW_FILE = "release-screen-handler.yml";
+    window.GITHUB_ACTIONS_WORKFLOW_REF = "main";
+   </script>
+
+
+
     <div id="createModal" class="fixed inset-0 bg-black/75 hidden flex items-center justify-center z-50 p-4">
         <div class="bg-slate-900 border border-slate-800 rounded-xl w-full max-w-lg flex flex-col max-h-[85vh] shadow-2xl">
             <div class="flex items-center justify-between border-b border-slate-800 p-4 bg-slate-950/20">
@@ -84,28 +166,30 @@
                     <div>
                         <label class="block text-slate-400 font-mono mb-1 text-[10px] tracking-wide">APPLICATION</label>
                         <select id="newApp" class="w-full bg-slate-950 border border-slate-800 rounded px-3 py-2 outline-none cursor-pointer text-slate-200">
-                            <option value="APP_ALPHA">APP_ALPHA</option><option value="APP_BETA">APP_BETA</option><option value="APP_GAMMA">APP_GAMMA</option><option value="APP_DELTA">APP_DELTA</option>
+                            <option value="" selected hidden>Select Application</option>
                         </select>
                     </div>
                     <div>
                         <label class="block text-slate-400 font-mono mb-1 text-[10px] tracking-wide">VERSION</label>
-                        <input id="newVersion" type="text" placeholder="2.4.0" class="w-full bg-slate-950 border border-slate-800 rounded px-3 py-2 outline-none font-mono text-slate-200">
+                        <input id="newVersion" type="text" placeholder="Enter version" class="w-full bg-slate-950 border border-slate-800 rounded px-3 py-2 outline-none font-mono text-slate-200">
                     </div>
                 </div>
                 <div>
                     <label class="block text-slate-400 font-mono mb-1 text-[10px] tracking-wide">TARGET ENVIRONMENT</label>
                     <select id="newEnv" class="w-full bg-slate-950 border border-slate-800 rounded px-3 py-2 outline-none cursor-pointer text-slate-200">
-                        <option value="UAT">UAT Sandbox</option><option value="PROD">PROD Production</option>
+                        <option value="" selected hidden>Select Environment</option> 
+                        <option value="UAT">UAT </option>
+                        <option value="PROD">PROD </option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-slate-400 font-mono mb-1 text-[10px] tracking-wide">CHANGES LOG ENTRIES (ONE PER LINE)</label>
-                    <textarea id="newChanges" rows="5" placeholder="- Fixed array loop boundary conditions..." class="w-full bg-slate-950 border border-slate-800 rounded px-3 py-2 outline-none resize-none font-mono text-emerald-400 leading-normal"></textarea>
+                    <label class="block text-slate-400 font-mono mb-1 text-[10px] tracking-wide">New Release</label>
+                    <textarea id="newChanges" rows="5" placeholder = "Enter new version YAML content" class="w-full bg-slate-950 border border-slate-800 rounded px-3 py-2 outline-none resize-none font-mono text-emerald-400 leading-normal"></textarea>
                 </div>
             </div>
             <div class="border-t border-slate-800 p-3 flex gap-2 justify-end bg-slate-950/20">
                 <button onclick="closeCreateModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 rounded-lg text-xs font-semibold transition-all">Cancel</button>
-                <button onclick="generateAndShowYAML()" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-semibold transition-all">Generate YAML</button>
+                <button onclick="generateAndShowYAML()" class="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-xs font-semibold transition-all">Generate YAML</button>
             </div>
         </div>
     </div>
@@ -114,18 +198,19 @@
         <div class="bg-slate-900 border border-slate-800 rounded-xl w-full max-w-4xl h-[75vh] flex flex-col shadow-2xl overflow-hidden">
             <div class="flex items-center justify-between border-b border-slate-800 p-4 bg-slate-950/20">
                 <div>
-                    <h2 class="font-bold text-white uppercase tracking-wider text-sm">Source Code Editor Workspace</h2>
+                    <h2 class="font-bold text-white tracking-wider text-sm">Editor</h2>
                     <p id="editModalSubtitle" class="text-[10px] font-mono text-slate-500 mt-0.5 truncate"></p>
                 </div>
                 <button onclick="closeEditModal()" class="text-slate-400 hover:text-white text-lg leading-none">&times;</button>
             </div>
-            <div class="flex-1 p-2 bg-slate-950 flex flex-col relative">
-                <div id="validationWarning" class="hidden absolute top-4 left-4 right-4 p-2 bg-red-500/10 border border-red-500/20 text-red-400 rounded font-mono text-[10px] z-10"><strong>ERROR:</strong> Configuration text values cannot remain empty.</div>
-                <textarea id="editTextarea" class="w-full flex-1 bg-slate-950 font-mono text-xs text-emerald-400 outline-none resize-none p-2 border border-transparent focus:border-slate-900 rounded"></textarea>
+            <div class="flex-1 p-2 bg-slate-950 flex flex-col">
+            <div id="validationWarning" class="hidden mb-2 p-2 bg-red-500/10 border border-red-500/20 text-red-400 rounded font-mono text-[10px]"></div>
+
+            <textarea id="editTextarea" class="w-full flex-1 bg-slate-950 font-mono text-xs text-emerald-400 outline-none resize-none p-2 border border-transparent focus:border-slate-900 rounded"></textarea>
             </div>
             <div class="border-t border-slate-800 p-3 flex gap-2 justify-end bg-slate-950/20">
                 <button onclick="closeEditModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 rounded-lg text-xs font-semibold transition-all">Cancel</button>
-                <button onclick="saveEditedYAML()" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-semibold transition-all">Save Changes</button>
+                <button onclick="saveEditedYAML()" class="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-xs font-semibold transition-all">Save Changes</button>
             </div>
         </div>
     </div>
@@ -133,25 +218,29 @@
     <div id="yamlPreviewModal" class="fixed inset-0 bg-black/75 hidden flex items-center justify-center z-50 p-4">
         <div class="bg-slate-900 border border-slate-800 rounded-xl w-full max-w-2xl flex flex-col max-h-[80vh] shadow-2xl">
             <div class="flex items-center justify-between border-b border-slate-800 p-4 bg-slate-950/20">
-                <h2 class="font-bold text-white uppercase tracking-wider text-sm">Release Manifest Artifact Output</h2>
+                <h2 class="font-bold text-white uppercase tracking-wider text-sm">Release Details</h2>
                 <button onclick="closeYamlPreview()" class="text-slate-400 hover:text-white text-xl leading-none">&times;</button>
             </div>
             <div class="p-4 overflow-auto flex-1 font-mono text-xs bg-slate-950 text-emerald-400 select-text whitespace-pre-wrap leading-normal" id="yamlContent"></div>
             <div class="border-t border-slate-800 p-3 flex gap-2 justify-end bg-slate-950/10">
-                <button onclick="copyYAML()" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded text-xs font-bold transition flex items-center gap-1.5 shadow-sm"><i class="fa-solid fa-copy"></i> Copy Manifest</button>
-                <a id="githubCreateLink" href="#" target="_blank" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded text-xs font-bold transition flex items-center gap-1.5 shadow-sm"><i class="fa-solid fa-github"></i> Sync GitHub</a>
+                <!-- <button onclick="copyYAML()" class="px-3 py-1.5 bg-orange-600 hover:bg-orange-700 text-white rounded text-xs font-bold transition flex items-center gap-1.5 shadow-sm"><i class="fa-solid fa-copy"></i> Copy </button> -->
+                <a id="githubCreateLink" href="#" target="_blank" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded text-xs font-bold transition flex items-center gap-1.5 shadow-sm"><i class="fa-solid fa-github"></i> Commit to GitHub</a>
                 <button onclick="closeYamlPreview()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded text-xs font-semibold transition text-slate-300">Close</button>
             </div>
+
         </div>
     </div>
 
     <div id="toastNotification" class="fixed bottom-4 right-4 bg-slate-900 border border-emerald-500/20 text-slate-200 px-4 py-2.5 rounded-lg shadow-xl flex items-center gap-2 translate-y-20 opacity-0 pointer-events-none transition-all duration-300 z-50">
-        <i class="fa-solid fa-check-circle text-emerald-400 text-sm"></i><span class="font-medium font-mono text-[11px]">Configuration string successfully mirrored onto local system clipboard.</span>
+        <i class="fa-solid fa-check-circle text-emerald-400 text-sm"></i><span class="font-medium font-mono text-[11px]">Content copied to clipboard.</span>
     </div>
 
     <script>
+
+
         let allReleases = [];
         let currentEditPath = null;
+        let pendingAction = null;
 
         const getAppFolder = f => { const p = f.split('/'); if (p[0] === 'App') p.shift(); return p[0] || ''; };
         
@@ -160,23 +249,50 @@
             setTimeout(() => t.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none'), 2500);
         };
 
+       const githubRepoOwner = window.GITHUB_REPO_OWNER || "LD-Global-Services";
+       const githubRepoName = window.GITHUB_REPO_NAME || "Deployment";
+       const githubWorkflowFile = window.GITHUB_ACTIONS_WORKFLOW_FILE || "release-screen-handler.yml";
+       const githubWorkflowRef = window.GITHUB_ACTIONS_WORKFLOW_REF || "main";
+
         async function loadReleases() {
             const container = document.getElementById('releasesContainer');
             try {
-                const res = await fetch('../App/index.json'); if (!res.ok) throw new Error();
-                const files = await res.json(); allReleases = files.filter(f => typeof f === 'string' && f.endsWith('.yml'));
-                const apps = [...new Set(allReleases.map(f => getAppFolder(f)))].sort();
-                const appSelect = document.getElementById('appFilter'); appSelect.innerHTML = '<option value="">All Applications</option>';
-                apps.forEach(app => appSelect.innerHTML += `<option value="${app}">${app}</option>`);
-                renderReleases(allReleases);
-            } catch (e) { container.innerHTML = `<tr><td colspan="4" class="p-12 text-center text-red-400 font-mono">Failed to fetch local catalog indexes.</td></tr>`; }
+                
+                const res = await fetch('../App/index.json');
+                if (!res.ok) throw new Error();
+
+                const data = await res.json();
+
+                allReleases = [];
+
+                Object.keys(data).forEach(app => {
+                  data[app].forEach(file => {
+                      allReleases.push(`${app}/${file}`);
+                 });
+              });
+
+             const appSelect = document.getElementById('appFilter');
+             appSelect.innerHTML = '<option value="">All Applications</option>';
+
+             const newApp = document.getElementById('newApp');
+
+             Object.keys(data).sort().forEach(app => {
+             appSelect.innerHTML += `<option value="${app}">${app}</option>`;
+             newApp.innerHTML += `<option value="${app}">${app}</option>`;
+            });
+
+
+            renderReleases(allReleases);
+            } 
+            catch (e) { container.innerHTML = `<tr><td colspan="4" class="p-12 text-center text-red-400 font-mono">Failed to fetch local catalog indexes.</td></tr>`; }
         }
 
         function renderReleases(files) {
             const container = document.getElementById('releasesContainer'); let html = '';
             files.forEach(fullPath => {
                 const parts = fullPath.split('/'); const fileName = parts.pop();
-                const match = fileName.match(/APP_([A-Z]+)_([\d.]+)\.yml/i); if (!match) return;
+                const match = fileName.match(/^([A-Za-z]+)_(.+)\.yml$/);
+                if (!match) return;
                 html += `
                     <tr class="hover:bg-slate-800/30 bg-slate-900/20 transition group">
                         <td class="p-4 pl-8 font-extrabold text-white tracking-wide truncate border-r border-slate-800/60">${match[1].replace(/_/g, ' ')}</td>
@@ -198,7 +314,21 @@
 
         window.clearFilters = () => { document.getElementById('search').value = ''; document.getElementById('appFilter').value = ''; window.filterReleases(); };
         window.closeReleaseModal = () => document.getElementById('releaseModal').classList.add('hidden');
-        window.showCreateModal = () => { document.getElementById('createModalTitle').textContent = "Create New Release"; document.getElementById('createModal').classList.remove('hidden'); };
+        window.showCreateModal = () => {
+
+        const pat = getPAT();
+
+        if (!pat) {
+        pendingAction = "create";
+        openPatModal();
+        return;
+        }
+
+        document.getElementById('createModalTitle').textContent = "Create New Release";
+        document.getElementById('createModal').classList.remove('hidden');
+        };
+
+
         window.closeCreateModal = () => document.getElementById('createModal').classList.add('hidden');
         window.closeEditModal = () => { document.getElementById('editModal').classList.add('hidden'); currentEditPath = null; };
         window.closeYamlPreview = () => document.getElementById('yamlPreviewModal').classList.add('hidden');
@@ -213,34 +343,248 @@
         };
 
         window.editRelease = async function(fullPath) {
-            currentEditPath = fullPath; document.getElementById('validationWarning').classList.add('hidden');
+
+       const pat = getPAT();
+
+       if (!pat) {
+        pendingAction = "edit";
+        currentEditPath = fullPath;
+        openPatModal();
+        return;
+      }
+  
+       currentEditPath = fullPath;
+
+         const warn = document.getElementById('validationWarning');
+         warn.innerHTML = "ERROR: Invalid YAML syntax";
+         warn.classList.add('hidden');
+
+        try {
+        const clean = fullPath.startsWith('App/') ? fullPath.substring(4) : fullPath;
+        const res = await fetch(`../App/${clean}`);
+        if (!res.ok) throw new Error();
+
+        document.getElementById('editModalSubtitle').textContent =
+            `File Location: App/${clean}`;
+
+        document.getElementById('editModal').classList.remove('hidden');
+        document.getElementById('editTextarea').value = await res.text();
+
+        // REAL-TIME validation
+        document.getElementById('editTextarea').oninput = function () {
             try {
-                const clean = fullPath.startsWith('App/') ? fullPath.substring(4) : fullPath; const res = await fetch(`../App/${clean}`); if (!res.ok) throw new Error();
-                document.getElementById('editModalSubtitle').textContent = `File Location: App/${clean}`;
-                document.getElementById('editModal').classList.remove('hidden'); document.getElementById('editTextarea').value = await res.text();
-            } catch (e) { document.getElementById('validationWarning').classList.remove('hidden'); }
+                jsyaml.load(this.value);
+                warn.classList.add('hidden');   // valid → hide error
+            } catch (e) {
+                warn.classList.remove('hidden'); // invalid → show error
+            }
         };
 
-        window.saveEditedYAML = function() {
-            const val = document.getElementById('editTextarea').value.trim(); if (!val) return document.getElementById('validationWarning').classList.remove('hidden');
-            document.getElementById('yamlContent').textContent = val;
-            document.getElementById('githubCreateLink').href = `https://github.com/sugaredcookie/deployement_ui/edit/main/${currentEditPath}`;
-            document.getElementById('githubCreateLink').innerHTML = `<i class="fa-solid fa-edit"></i> Commit to GitHub`; window.closeEditModal(); document.getElementById('yamlPreviewModal').classList.remove('hidden');
+    } catch (e) {
+        warn.innerHTML = "ERROR: Cannot load file / invalid path";
+        warn.classList.remove('hidden');
+    }
+};
+
+
+       function openPatModal() {
+    document.getElementById("patModal").classList.remove("hidden");
+}
+
+function setActionStatus(message, type) {
+    const box = document.getElementById("actionStatus");
+
+    box.textContent = message;
+    box.classList.remove("hidden");
+
+    setTimeout(() => {
+        box.classList.add("hidden");
+    }, 3000);
+}
+
+
+function closePatModal() {
+    document.getElementById("patModal").classList.add("hidden");
+    document.getElementById("patInput").value = "";
+
+    if (typeof setActionStatus === "function") {
+        setActionStatus("Action cancelled — no token provided.", "error");
+    }
+}
+
+
+function savePAT() {
+
+    const pat = document.getElementById("patInput").value.trim();
+
+    if (!pat) {
+        alert("Please enter GitHub PAT");
+        return;
+    }
+
+    localStorage.setItem("github_pat", pat);
+
+    closePatModal();
+
+    if (pendingAction === "edit") {
+        editRelease(currentEditPath);
+    } else if (pendingAction === "create") {
+        showCreateModal();
+    }
+
+    pendingAction = null;
+}
+
+
+function getPAT() {
+    return localStorage.getItem("github_pat");
+}
+
+
+
+    window.saveEditedYAML = async function() {
+    const val = document.getElementById('editTextarea').value.trim();
+
+    try {
+        jsyaml.load(val);   
+    } catch (e) {
+        const warn = document.getElementById('validationWarning');
+        warn.innerHTML = "ERROR: Invalid YAML syntax";
+        warn.classList.remove('hidden');
+        return;
+    }
+
+    const pat = getPAT();
+
+    if (!pat) {
+        openPatModal();
+        return;
+    }
+
+    document.getElementById('yamlContent').textContent = val;
+
+    await triggerReleaseWorkflow(
+        `App/${currentEditPath}`,
+        val,
+        "Update release YAML from Release Screen"
+    );
+
+    const link = document.getElementById('githubCreateLink');
+
+    link.href = `https://github.com/LD-Global-Services/Deployment/blob/main/App/${currentEditPath}`;
+
+    link.onclick = function (e) {
+        e.preventDefault();
+
+        /*
+        window.open(
+        this.href,
+        "githubCommit",
+        "width=600,height=500,left=200,top=100,resizable=yes,scrollbars=yes"
+        );
+        */
+    };
+
+    window.closeEditModal();
+    document.getElementById('yamlPreviewModal').classList.remove('hidden');
+};
+    
+   async function triggerReleaseWorkflow(filePath, content, message) {
+
+    const pat = getPAT();
+
+    const res = await fetch(
+      `https://api.github.com/repos/${githubRepoOwner}/${githubRepoName}/actions/workflows/${githubWorkflowFile}/dispatches`,
+      {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${pat}`,
+          "Accept": "application/vnd.github+json"
+        },
+        body: JSON.stringify({
+          ref: githubWorkflowRef,
+          inputs: {
+            filePath: filePath,
+            content: content,
+            commitMessage: message
+          }
+        })
+      }
+    );
+
+    if (!res.ok) {
+        setActionStatus("Invalid GitHub PAT or permission denied.", "error");
+        throw new Error("GitHub workflow trigger failed");
+    }
+}
+
+
+        window.generateAndShowYAML = async function() {
+         const app = document.getElementById('newApp').value;
+         const version = document.getElementById('newVersion').value.trim() || '1.0.0';
+         const env = document.getElementById('newEnv').value;
+         const text = document.getElementById('newChanges').value.trim();
+
+        const changes = text
+            ? text.split('\n').map(l => `  - ${l.trim()}`).join('\n')
+            : '  - Initial release';
+
+        const yaml = `# Linedata  - ${app} v${version}
+          release:
+          version: "${version}"
+          date: "${new Date().toISOString().split('T')[0]}"
+          environment: "${env}"
+
+          application:
+          name: ${app}
+          client: CLIENT_${app.slice(-1)}
+
+         changes:
+         ${changes}`;
+
+
+        document.getElementById('yamlContent').textContent = yaml;
+
+        window.pendingRelease = {
+        filePath: `App/${app}/${app}_${version}.yml`,
+        content: yaml,
+        message: "Create new release YAML"
         };
 
-        window.generateAndShowYAML = function() {
-            const app = document.getElementById('newApp').value; const version = document.getElementById('newVersion').value.trim() || '1.0.0';
-            const env = document.getElementById('newEnv').value; const text = document.getElementById('newChanges').value.trim();
-            const changes = text ? text.split('\n').map(l => `  - ${l.trim()}`).join('\n') : '  - Initial release';
-            const yaml = `# Linedata Manifest - ${app} v${version}\nrelease:\n  version: "${version}"\n  date: "${new Date().toISOString().split('T')[0]}"\n  environment: "${env}"\n\napplication:\n  name: ${app}\n  client: CLIENT_${app.slice(-1)}\n\nchanges:\n${changes}`;
-            document.getElementById('yamlContent').textContent = yaml;
-            document.getElementById('githubCreateLink').href = `https://github.com/sugaredcookie/deployement_ui/new/main/App/${app}?filename=${app}_${version}.yml`;
-            document.getElementById('githubCreateLink').innerHTML = `<i class="fa-solid fa-github"></i> Create on GitHub`; window.closeCreateModal(); document.getElementById('yamlPreviewModal').classList.remove('hidden');
-        };
 
-        window.copyYAML = () => navigator.clipboard.writeText(document.getElementById('yamlContent').textContent).then(triggerSystemToast);
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') { window.closeReleaseModal(); window.closeCreateModal(); window.closeEditModal(); window.closeYamlPreview(); } });
-        window.onload = loadReleases;
+       const link = document.getElementById('githubCreateLink');
+
+       link.href = `https://github.com/LD-Global-Services/Deployment/new/main/App/${app}?filename=${app}_${version}.yml`;
+
+       link.onclick = async function (e) {
+       e.preventDefault();
+
+       await triggerReleaseWorkflow(
+         window.pendingRelease.filePath,
+         window.pendingRelease.content,
+         window.pendingRelease.message
+
+        );
+
+       /*
+       window.open(
+        this.href,
+        "githubCreate",
+        "width=600,height=500,left=200,top=100,resizable=yes,scrollbars=yes"
+      );
+      */
+    };
+
+    link.innerHTML = `<i class="fa-solid fa-github"></i>  Submit Release`;
+
+    window.closeCreateModal();
+    document.getElementById('yamlPreviewModal').classList.remove('hidden');
+   };
+
+
+    /*window.copyYAML = () => navigator.clipboard.writeText(document.getElementById('yamlContent').textContent).then(triggerSystemToast);*/
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { window.closeReleaseModal(); window.closeCreateModal(); window.closeEditModal(); window.closeYamlPreview(); } });
+    window.onload = loadReleases;
     </script>
 </body>
 </html>
