@@ -63,7 +63,7 @@ jobs:
       - name: Generate releases CSV
         shell: pwsh
         run: |
-        
+
           $files = git show --name-only --format="" HEAD |
                    Where-Object { $_ -match "^App/.+\.yml$" } |
                    Sort-Object
@@ -116,7 +116,7 @@ jobs:
 
 
               if ($existing -notcontains $row) {
-                Add-Content -Path $csvPath -Value $row
+                Add-Content -Path $csvPath -Value $row.Trim()
                 $existing += $row
               }
             }
