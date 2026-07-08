@@ -1,0 +1,53 @@
+ service:
+  main: Tools
+  name: Tools
+  components:
+    - type: api
+      component: PermissionStore_API
+      name: Base.PermissionStore.API
+      version: 2.26.0424.69
+      package: Base.PermissionStoreWebApi.2.26.0424.69.nupkg
+      path: G:\publish\SFTPDownload\Tools
+      storage_type: sftp-cache
+      technology: C#
+    - type: api
+      component: PermissionStore_RUI
+      name: Base.PermissionStore.RUI
+      version: 2.26.0424.69
+      package: Base.PermissionStoreRUI.2.26.0424.69.nupkg
+      path: G:\publish\SFTPDownload\Tools
+      storage_type: sftp-cache
+      technology: C#
+    - type: database
+      component: PermissionStore_database
+      name: Base.PermissionStore.Database.Scripts
+      version: 2.26.0424.69
+      package: Base.PermissionStore.Database.Scripts.2.26.0424.69.nupkg
+      storage_type: sftp-cache
+      path: G:\publish\SFTPDownload\Tools
+      technology: SQL
+    - type: api
+      component: SSO_API
+      name: Base.SSO.API
+      version: 2.26.0402.42
+      package: Base.SSO.Api.2.26.0402.42.nupkg
+      path: G:\publish\SFTPDownload\Tools
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: api
+      component: Clientmaster_API
+      name: Base.Clientmaster.API
+      version: 2.26.0429.33
+      package: Base.Clientmaster.Api.2.26.0429.33.nupkg
+      path: G:\publish\SFTPDownload\Tools
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: database
+      component: Clientmaster_Database
+      name: Base.Clientmaster.Database.Scripts
+      version: 2.25.0818.10
+      package: Base.ClientmasterApi.Database.Scripts.2.25.0818.10.nupkg
+      path: G:\publish\SFTPDownload\Tools
+      storage_type: sftp-cache
+      technology: SQL
+
