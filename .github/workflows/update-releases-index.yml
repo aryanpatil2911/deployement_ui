@@ -25,6 +25,14 @@ jobs:
 
           $index = @{}
 
+          if (Test-Path "App/index.json") {
+             $oldIndex = Get-Content "App/index.json" | ConvertFrom-Json
+
+             foreach ($property in $oldIndex.PSObject.Properties) {
+             $index[$property.Name] = @($property.Value)
+            }
+          }
+
           $files = git diff --name-only HEAD~1 HEAD |
                    Where-Object { $_ -match "^App/.+\.yml$" } |
                    Sort-Object 
@@ -56,10 +64,10 @@ jobs:
         shell: pwsh
         run: |
 
-          $files = Get-ChildItem "App" -Recurse -Filter "*.yml" |
-                   Sort-Object FullName |
-                   ForEach-Object { $_.FullName.Replace((Get-Location).Path + [System.IO.Path]::DirectorySeparatorChar, "").Replace('\','/') }
-
+          $files = git diff --name-only HEAD~1 HEAD |
+                   Where-Object { $_ -match "^App/.+\.yml$" } |
+                   Sort-Object
+  
 
           $csvPath = "DeploymentLogs/DeploymentLogs.csv"
 
