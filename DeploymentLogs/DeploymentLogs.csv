@@ -1,1 +1,11 @@
 Client,Application,Version,Environment,DeploymentStatus,DeploymentDateTime,TriggeredBy,ActionRunUrl
+QA,CIDM,2.26.0420.92,QA,Succeeded,2026-07-08 11:13:51 UTC,,github-actions[bot],
+QA,CIDM,2.26.0420.921,QA,Succeeded,2026-07-08 11:13:51 UTC,,github-actions[bot],
+QA,Recon,2.26.0428.92,QA,Succeeded,2026-07-08 11:13:51 UTC,,github-actions[bot],
+QA,Recon,2.26.0428.93,QA,Succeeded,2026-07-08 11:13:51 UTC,,github-actions[bot],
+QA,Recon,2.26.0428.94,QA,Succeeded,2026-07-08 11:13:51 UTC,,github-actions[bot],
+QA,Recon,2.26.0428.95,QA,Succeeded,2026-07-08 11:13:51 UTC,,github-actions[bot],
+QA,Recon,2.26.0428.97,QA,Succeeded,2026-07-08 11:13:51 UTC,,github-actions[bot],
+QA,Recon,2.26.0428.98,QA,Succeeded,2026-07-08 11:13:51 UTC,,github-actions[bot],
+QA,Tools,2.26.048.92,QA,Succeeded,2026-07-08 11:13:51 UTC,,github-actions[bot],
+QA,Tools,2.26.050.520,QA,Succeeded,2026-07-08 11:13:51 UTC,,github-actions[bot],
