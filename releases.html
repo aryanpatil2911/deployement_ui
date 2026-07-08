@@ -147,8 +147,8 @@
 </div>
 
    <script>
-    window.GITHUB_REPO_OWNER = "LD-Global-Services";
-    window.GITHUB_REPO_NAME = "Deployment";
+    window.GITHUB_REPO_OWNER = "aryanpatil2911";
+    window.GITHUB_REPO_NAME = "deployment_ui";
     window.GITHUB_ACTIONS_WORKFLOW_FILE = "release-screen-handler.yml";
     window.GITHUB_ACTIONS_WORKFLOW_REF = "main";
    </script>
@@ -224,7 +224,7 @@
             <div class="p-4 overflow-auto flex-1 font-mono text-xs bg-slate-950 text-emerald-400 select-text whitespace-pre-wrap leading-normal" id="yamlContent"></div>
             <div class="border-t border-slate-800 p-3 flex gap-2 justify-end bg-slate-950/10">
                 <!-- <button onclick="copyYAML()" class="px-3 py-1.5 bg-orange-600 hover:bg-orange-700 text-white rounded text-xs font-bold transition flex items-center gap-1.5 shadow-sm"><i class="fa-solid fa-copy"></i> Copy </button> -->
-                <a id="githubCreateLink" href="#" target="_blank" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded text-xs font-bold transition flex items-center gap-1.5 shadow-sm"><i class="fa-solid fa-github"></i> Commit to GitHub</a>
+                <a id="githubCreateLink" href="#" target="_blank" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded text-xs font-bold transition flex items-center gap-1.5 shadow-sm"><i class="fa-solid fa-github"></i> Submit</a>
                 <button onclick="closeYamlPreview()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded text-xs font-semibold transition text-slate-300">Close</button>
             </div>
 
@@ -463,15 +463,17 @@ function getPAT() {
 
     document.getElementById('yamlContent').textContent = val;
 
+    /*
     await triggerReleaseWorkflow(
         `App/${currentEditPath}`,
         val,
         "Update release YAML from Release Screen"
     );
+    */
 
     const link = document.getElementById('githubCreateLink');
 
-    link.href = `https://github.com/LD-Global-Services/Deployment/blob/main/App/${currentEditPath}`;
+    link.href = `https://github.com/${githubRepoOwner}/${githubRepoName}/blob/main/App/${currentEditPath}`;
 
     link.onclick = function (e) {
         e.preventDefault();
@@ -554,7 +556,7 @@ function getPAT() {
 
        const link = document.getElementById('githubCreateLink');
 
-       link.href = `https://github.com/LD-Global-Services/Deployment/new/main/App/${app}?filename=${app}_${version}.yml`;
+       link.href = `https://github.com/${githubRepoOwner}/${githubRepoName}/new/main/App/${app}?filename=${app}_${version}.yml`;
 
        link.onclick = async function (e) {
        e.preventDefault();
