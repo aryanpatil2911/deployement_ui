@@ -1,0 +1,26 @@
+# Linedata  - Recon v2.26.0428.99
+          release:
+          version: "2.26.0428.99"
+          date: "2026-07-08"
+          environment: "UAT"
+
+          application:
+          name: Recon
+          client: CLIENT_n
+
+         changes:
+           - # This is a comment
+  - 
+  - name: Dummy Workflow  # Workflow name
+  - 
+  - on:
+  - workflow_dispatch:  # Manual trigger
+  - 
+  - jobs:
+  - demo:
+  - runs-on: ubuntu-latest  # Machine where job runs
+  - 
+  - steps:
+  - # Step 1: Print message
+  - - name: Hello
+  - run: echo "Hello World"
