@@ -1,0 +1,100 @@
+name: "Release Screen YAML Handler"
+
+on:
+  workflow_dispatch:
+    inputs:
+      filePath:
+        description: "YAML file path inside repository"
+        required: true
+        type: string
+
+      content:
+        description: "Updated YAML content"
+        required: true
+        type: string
+
+      commitMessage:
+        description: "Commit message"
+        required: true
+        type: string
+
+
+permissions:
+  contents: write
+
+
+jobs:
+  update-release-yaml:
+    name: "Update Release YAML"
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: "Create GitHub App token"
+        id: app-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
+
+      - name: "Commit YAML Changes"
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ steps.app-token.outputs.token }}
+
+          script: |
+
+            const path = '${{ inputs.filePath }}';
+
+            const content = Buffer
+              .from(`${{ inputs.content }}`)
+              .toString('base64');
+
+
+            let sha = undefined;
+
+
+            // Check if file already exists
+            try {
+
+              const existingFile =
+                await github.rest.repos.getContent({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  path: path,
+                  ref: 'main'
+                });
+
+              sha = existingFile.data.sha;
+
+            } catch (error) {
+
+              console.log("New YAML file will be created");
+
+            }
+
+
+            // Commit YAML file
+            await github.rest.repos.createOrUpdateFileContents({
+
+              owner: context.repo.owner,
+
+              repo: context.repo.repo,
+
+              path: path,
+
+              message: '${{ inputs.commitMessage }}',
+
+              content: content,
+
+              sha: sha,
+
+              branch: 'main'
+
+            });
+
+
+            console.log(
+              `Release YAML updated: ${path}`
+            );
