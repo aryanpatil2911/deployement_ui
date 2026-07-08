@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - 'App/**'
-  workflow_dispatch:  # Allows manual trigger for testing
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -12,35 +12,136 @@ permissions:
 jobs:
   update-index:
     runs-on: ubuntu-latest
+
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+
       - name: Generate index.json with nested paths
+        shell: pwsh
         run: |
-          mkdir -p App
-          echo "[]" > App/index.json  # fallback
+          New-Item -ItemType Directory -Force -Path "App" | Out-Null
 
-          # Find all .yml files recursively and create proper JSON array
-          find App -type f -name "*.yml" | sort | jq -R -s -c 'split("\n")[:-1]' > App/index.json
+          $index = @{}
 
-          echo "Generated App/index.json with $(wc -l < App/index.json) entries"
-          cat App/index.json
+          $files = Get-ChildItem "App" -Recurse -Filter "*.yml" |
+                   Sort-Object FullName
+
+          foreach ($file in $files) {
+
+              $relativePath = $file.FullName.Replace((Get-Location).Path + [System.IO.Path]::DirectorySeparatorChar, "").Replace('\','/')
+
+              if ($relativePath -match "App/([^/]+)/(.+)$") {
+
+                  $app = $matches[1]
+                  $fileName = $matches[2]
+
+                  if (!$index.ContainsKey($app)) {
+                      $index[$app] = @()
+                  }
+
+                  $index[$app] += $fileName
+              }
+          }
+
+          $index | ConvertTo-Json -Depth 10 -Compress | Set-Content "App/index.json"
+
+          Write-Host "Generated App/index.json"
+          Get-Content "App/index.json"
+
+
+      - name: Generate releases CSV
+        shell: pwsh
+        run: |
+
+          $files = Get-ChildItem "App" -Recurse -Filter "*.yml" |
+                   Sort-Object FullName |
+                   ForEach-Object { $_.FullName.Replace((Get-Location).Path + [System.IO.Path]::DirectorySeparatorChar, "").Replace('\','/') }
+
+
+          $csvPath = "DeploymentLogs/DeploymentLogs.csv"
+
+          New-Item -ItemType Directory -Force -Path "DeploymentLogs" | Out-Null
+
+
+          $header = "Client,Application,Version,Environment,DeploymentStatus,DeploymentDateTime,TriggeredBy,ActionRunUrl"
+
+
+          if (!(Test-Path $csvPath)) {
+            $header | Set-Content $csvPath
+          }
+
+
+          $existing = @()
+
+          if (Test-Path $csvPath) {
+            $existing = Get-Content $csvPath | Select-Object -Skip 1
+          }
+
+
+          foreach ($f in $files) {
+
+            if ($f -match "App\/(.+?)\/(.+)\.yml$") {
+
+              $app = $matches[1]
+              $file = $matches[2]
+
+
+              if ($file -match "^[A-Za-z]+_(.+)$") {
+                $version = $matches[1]
+              }
+              else {
+                $version = $file
+              }
+
+
+              $env = "QA"
+              $client = "QA"
+              $status = "Succeeded"
+              $time = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss UTC")
+              $triggeredBy = $env:GITHUB_ACTOR
+              $url = ""
+
+
+              $row = "$client,$app,$version,$env,$status,$time,$triggeredBy,$url"
+
+
+              if ($existing -notcontains $row) {
+                Add-Content -Path $csvPath -Value $row
+                $existing += $row
+              }
+            }
+          }
+
 
       - name: Commit and push changes
+        shell: pwsh
         run: |
+
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          if git diff --quiet App/index.json; then
-            echo "No changes to index.json"
-          else
-            git add App/index.json
-            git commit -m "chore: update releases index.json [skip ci]"
-            git push
-            echo "index.json updated and pushed"
-          fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          git add App/index.json DeploymentLogs/DeploymentLogs.csv
+
+
+          git diff --cached --quiet
+
+          if ($LASTEXITCODE -eq 0) {
+
+              Write-Host "No changes to commit"
+
+          }
+          else {
+
+              git commit -m "chore: update index.json and DeploymentLogs.csv [skip ci]"
+
+              git push
+
+              Write-Host "Updated index.json and CSV pushed"
+
+          }
