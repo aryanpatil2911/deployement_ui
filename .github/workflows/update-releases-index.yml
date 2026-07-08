@@ -26,12 +26,12 @@ jobs:
           $index = @{}
 
           $files = git diff --name-only HEAD~1 HEAD |
-                   Where-Object { $_ -match "^App/.+\.yml$" }
-                   Sort-Object FullName
+                   Where-Object { $_ -match "^App/.+\.yml$" } |
+                   Sort-Object 
 
           foreach ($file in $files) {
 
-              $relativePath = $file.FullName.Replace((Get-Location).Path + [System.IO.Path]::DirectorySeparatorChar, "").Replace('\','/')
+              $relativePath = $file.Replace('\','/')
 
               if ($relativePath -match "App/([^/]+)/(.+)$") {
 
