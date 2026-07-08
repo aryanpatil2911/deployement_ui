@@ -25,23 +25,20 @@ permissions:
 
 jobs:
   update-release-yaml:
+
     name: "Update Release YAML"
+
     runs-on: ubuntu-latest
+
 
     steps:
 
-      - name: "Create GitHub App token"
-        id: app-token
-        uses: actions/create-github-app-token@v2
-        with:
-          app-id: ${{ secrets.APP_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
-
-
       - name: "Commit YAML Changes"
         uses: actions/github-script@v6
+
         with:
-          github-token: ${{ steps.app-token.outputs.token }}
+
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
           script: |
 
@@ -55,27 +52,29 @@ jobs:
             let sha = undefined;
 
 
-            // Check if file already exists
             try {
 
               const existingFile =
                 await github.rest.repos.getContent({
+
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   path: path,
                   ref: 'main'
+
                 });
+
 
               sha = existingFile.data.sha;
 
-            } catch (error) {
 
-              console.log("New YAML file will be created");
+            } catch(error) {
+
+              console.log("Creating new YAML file");
 
             }
 
 
-            // Commit YAML file
             await github.rest.repos.createOrUpdateFileContents({
 
               owner: context.repo.owner,
@@ -95,6 +94,4 @@ jobs:
             });
 
 
-            console.log(
-              `Release YAML updated: ${path}`
-            );
+            console.log(`Updated: ${path}`);
