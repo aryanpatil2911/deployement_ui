@@ -63,8 +63,8 @@ jobs:
       - name: Generate releases CSV
         shell: pwsh
         run: |
-
-          $files = git diff --name-only HEAD~1 HEAD |
+        
+          $files = git show --name-only --format="" HEAD |
                    Where-Object { $_ -match "^App/.+\.yml$" } |
                    Sort-Object
   
