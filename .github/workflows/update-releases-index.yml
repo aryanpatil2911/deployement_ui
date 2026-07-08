@@ -68,7 +68,7 @@ jobs:
           New-Item -ItemType Directory -Force -Path "DeploymentLogs" | Out-Null
 
 
-          $header = "Client,Application,Version,Environment,DeploymentStatus,DeploymentDateTime,TriggeredBy,ActionRunUrl"
+          $header = "Client,Application,Version,Environment,DeploymentStatus,DeploymentStartDateTime,DeploymentEndDateTime,TriggeredBy,ActionRunUrl"
 
 
           if (!(Test-Path $csvPath)) {
@@ -98,16 +98,15 @@ jobs:
                 $version = $file
               }
 
-
               $env = "QA"
               $client = "QA"
               $status = "Succeeded"
-              $time = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss UTC")
+              $startTime = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss UTC")
+              $endTime = ""
               $triggeredBy = $env:GITHUB_ACTOR
               $url = ""
 
-
-              $row = "$client,$app,$version,$env,$status,$time,$triggeredBy,$url"
+              $row = "$client,$app,$version,$env,$status,$startTime,$endTime,$triggeredBy,$url"
 
 
               if ($existing -notcontains $row) {
