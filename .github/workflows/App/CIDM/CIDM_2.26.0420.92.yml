@@ -1,0 +1,113 @@
+service:
+  main: CIDM
+  name: CIDM
+  components:
+    - type: api
+      component: CIDM_API
+      name: Base.CIDM.API
+      version: 2.26.0515.196
+      client_code: Base
+      package: Base.CIDM.API.2.26.0515.196.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: node.js
+    - type: api
+      component: Assistant_API
+      name: Base.Assistant.API
+      version: 2.26.0505.52
+      client_code: Base
+      package: Base.Assistant.API.2.26.0505.52.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: node.js
+    - type: api
+      component: DataProcessor_API
+      name: Base.DataProcessor.API
+      version: 2.26.0505.52
+      client_code: Base
+      package: Base.DataProcessorDataProcessor.API.2.26.0506.12.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: Python
+    - type: api
+      component: Lgh_API
+      name: Base.LGH.API
+      version: 2.26.0506.42
+      client_code: Base
+      package: Base.LGH.API.2.26.0506.42.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: node.js
+    - type: api
+      component: DocumentManagement_API
+      name: DocumentManagement.API
+      version: 2.26.0506.16
+      client_code: Base
+      package: Base.DocumentManagement.API.2.26.0506.16.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: node.js
+    - type: web
+      component: AuthAPi_Web
+      name: Base.Auth.API
+      version: 2.26.0506.73
+      client_code: Base
+      package: Base.Auth.API.2.26.0402.72.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: api
+      component: FileTransfer_API
+      name: Base.FileTransfer.API
+      version: 2.26.0509.30
+      client_code: Base
+      package: Base.FileTransfer.API.2.26.0509.30.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: api
+      component: Dashboard_API
+      name: Base.Dashboard.API
+      version: 2.26.0511.335
+      client_code: Base
+      package: Base.Dashboard.API.2.26.0512.336.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: api
+      component: RDM_API
+      name: Base.RDM.API
+      version: 2.26.0506.97
+      client_code: Base
+      package: Base.ReferenceDataMaster.API.2.26.0506.97.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: api
+      component: ServicesPortal_API
+      name: Base.ServicesPortal.API
+      version: 2.26.0512.219
+      client_code: Base
+      package: Base.Portal.API.2.26.0512.219.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: api
+      component: ServiceRequest_API
+      name: Base.ServiceRequest.API
+      version: 2.26.0512.219
+      client_code: Base
+      package: Base.Portal.API.2.26.0512.219.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: web
+      component: ServicesPortal_UI
+      name: Base.Portal.UI
+      version: 2.26.0512.219
+      client_code: Base
+      package: Base.Portal.UI.2.26.0512.219.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: Node.js
+    
