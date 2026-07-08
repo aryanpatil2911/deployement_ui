@@ -1,0 +1,7 @@
+Client,Application,Version,Environment,DeploymentStatus,DeploymentDateTime,TriggeredBy,ActionRunUrl
+QA,CIDM,2.26.0420.92,QA,Succeeded,2026-07-08 09:52:39 UTC,aryanpatil2911,
+QA,CIDM,2.26.0420.921,QA,Succeeded,2026-07-08 09:52:39 UTC,aryanpatil2911,
+QA,Recon,2.26.0428.92,QA,Succeeded,2026-07-08 09:52:39 UTC,aryanpatil2911,
+QA,Recon,2.26.0428.93,QA,Succeeded,2026-07-08 09:52:39 UTC,aryanpatil2911,
+QA,Tools,2.26.048.92,QA,Succeeded,2026-07-08 09:52:39 UTC,aryanpatil2911,
+QA,Tools,2.26.050.520,QA,Succeeded,2026-07-08 09:52:39 UTC,aryanpatil2911,
