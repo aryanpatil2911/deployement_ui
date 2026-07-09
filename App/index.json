@@ -1,1 +1,15 @@
-{"Recon":["Recon_2.26.0428.99.yml","Recon_2.26.0428.93.yml","Recon_2.26.0428.92.yml","Recon_2.26.0428.93.yml","Recon_1.0626.000.yml"]}
+{
+  "CIDM": [
+    "CIDM_2.26.0420.92.yml",
+    "CIDM_2.26.0420.921.yml"
+  ],
+  "Tools": [
+    "Tools_2.26.048.92.yml",
+    "Tools_2.26.050.520.yml"
+  ],
+  "Recon": [
+    "Recon_2.26.0428.92.yml",
+    "Recon_2.26.0428.93.yml",
+    "Recon_1.0626.000.yml"
+  ]
+}
