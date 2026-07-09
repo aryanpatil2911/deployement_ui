@@ -7,7 +7,7 @@ on:
       client:
         description: "Client name"
         required: true
-        type: string
+        type: string 
       module:
         description: "Module name (app)"
         required: true
