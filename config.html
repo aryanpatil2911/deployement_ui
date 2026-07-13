@@ -305,9 +305,10 @@ async function editJson(fileName) {
                 JSON.parse(document.getElementById("editContent").value);
                 document.getElementById("jsonError").classList.add("hidden");
             }
-            catch {
-                document.getElementById("jsonError").classList.remove("hidden");
-            }
+            catch (e) {
+                 console.log(e.message);
+                 document.getElementById("jsonError").classList.remove("hidden");
+}
 
         };
 
