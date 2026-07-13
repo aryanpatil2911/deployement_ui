@@ -284,6 +284,20 @@ function closeJsonModal(){
 }
 
 
+function validateJsonText(text) {
+    const errorBox = document.getElementById("jsonError");
+
+    try {
+        JSON.parse(text);
+        errorBox.classList.add("hidden");
+        return true;
+    }
+    catch {
+        errorBox.classList.remove("hidden");
+        return false;
+    }
+}
+
 /* function 2 */
 async function editJson(fileName) {
 
@@ -295,23 +309,15 @@ async function editJson(fileName) {
         const res = await fetch(path);
         if (!res.ok) throw new Error();
 
-        document.getElementById("editContent").value = await res.text();
-        
-        /* syntax validation */
-        document.getElementById("editContent").oninput = 
-        
-        function () {
+        const text = await res.text();
+        const editBox = document.getElementById("editContent");
 
-        try{
-            JSON.parse(this.value);
-            document.getElementById("jsonError").classList.add("hidden");
-        }
-        catch{
-            document.getElementById("jsonError").classList.remove("hidden");
-        }
+        editBox.value = text;
+        editBox.oninput = function () {
+            validateJsonText(this.value);
+        };
 
-       };
-
+        validateJsonText(text);
         document.getElementById("editModal").classList.remove("hidden");
     }
     catch {
@@ -321,6 +327,7 @@ async function editJson(fileName) {
 
 function closeEditModal() {
     document.getElementById("editModal").classList.add("hidden");
+    document.getElementById("jsonError").classList.add("hidden");
 }
 
 
