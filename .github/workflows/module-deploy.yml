@@ -1,4 +1,4 @@
-﻿name: Module Deploy
+﻿﻿name: Module Deploy
 
 on:
   workflow_dispatch:
@@ -55,7 +55,7 @@ permissions:
 
 jobs:
   read-components:
-    runs-on: [self-hosted, QA02-Deployment]
+    runs-on: ${{ fromJSON((inputs.stage == 'QA' && '["self-hosted","QA02-Deployment"]') || (inputs.stage == 'UAT' && '["self-hosted","UAT-Deployment"]') || '["self-hosted","PROD-Deployment"]') }}
     outputs:
       api_components: ${{ steps.parse.outputs.api_components }}
       db_components: ${{ steps.parse.outputs.db_components }}
@@ -263,7 +263,7 @@ jobs:
     concurrency:
       group: csv-log-write
       cancel-in-progress: false
-    runs-on: [self-hosted, QA02-Deployment]
+    runs-on: ${{ fromJSON((inputs.stage == 'QA' && '["self-hosted","QA02-Deployment"]') || (inputs.stage == 'UAT' && '["self-hosted","UAT-Deployment"]') || '["self-hosted","PROD-Deployment"]') }}
     steps:
       - name: Create GitHub App token
         id: app-token
@@ -412,7 +412,7 @@ jobs:
     concurrency:
       group: csv-log-write
       cancel-in-progress: false
-    runs-on: [self-hosted, QA02-Deployment]
+    runs-on: ${{ fromJSON((inputs.stage == 'QA' && '["self-hosted","QA02-Deployment"]') || (inputs.stage == 'UAT' && '["self-hosted","UAT-Deployment"]') || '["self-hosted","PROD-Deployment"]') }}
     steps:
       - name: Create GitHub App token
         id: app-token
@@ -591,6 +591,7 @@ jobs:
               '|---|---|',
               `| **Client** | ${{ inputs.client }} |`,
               `| **Module** | ${{ inputs.module }} |`,
+              `| **Selected Version** | \`${{ inputs.version }}\` |`,
               `| **Version** | \`${{ inputs.version }}\` |`,
               `| **Stage** | ${{ inputs.stage }} |`,
               `| **Status** | **${status}** |`,

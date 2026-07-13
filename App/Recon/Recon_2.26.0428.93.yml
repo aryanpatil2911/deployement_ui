@@ -8,7 +8,7 @@ service:
       version: 2.26.0428.494
       client_code: Base
       package: Base.Recon.Web.Api.2.26.0428.494.nupkg
-      path: G:\publish\SFTPDownload\Recon
+      path: G:publishSFTPDownloadRecon
       storage_type: sftp-cache
       technology: C#
     - type: api
@@ -17,7 +17,7 @@ service:
       version: 2.26.0423.30
       client_code: Base
       package: Base.Reconciliation.API.2.26.0423.30.nupkg
-      path: G:\publish\SFTPDownload\Recon
+      path: G:publishSFTPDownloadRecon
       storage_type: sftp-cache
       technology: Python
     - type: database
@@ -27,8 +27,8 @@ service:
       client_code: Base
       package: Base.Recon.Database.Scripts.2.26.0428.494.nupkg
       report_package: Base.Recon.Reports.2.26.0514.506.nupkg
-      path: G:\publish\SFTPDownload\Recon
-      report_path: G:\publish\SFTPDownload\Recon
+      path: G:publishSFTPDownloadRecon
+      report_path: G:publishSFTPDownloadRecon
       storage_type: sftp-cache
       technology: SQL
     - type: database
@@ -38,8 +38,8 @@ service:
       client_code: MASH
       package: MKSL.Recon.Database.Scripts.2.26.0428.494.nupkg
       report_package: MKSL.Recon.Reports.2.26.0514.506.nupkg
-      path: G:\publish\SFTPDownload\Recon
-      report_path: G:\publish\SFTPDownload\Recon
+      path: G:publishSFTPDownloadRecon
+      report_path: G:publishSFTPDownloadRecon
       storage_type: sftp-cache
       technology: SQL
     - type: database
@@ -49,8 +49,8 @@ service:
       client_code: BAIN
       package: MT-US.Recon.Database.Scripts.2.26.0428.494.nupkg
       report_package: MT-US.Recon.Reports.2.26.0514.506.nupkg
-      path: G:\publish\SFTPDownload\Recon
-      report_path: G:\publish\SFTPDownload\Recon
+      path: G:publishSFTPDownloadRecon
+      report_path: G:publishSFTPDownloadRecon
       storage_type: sftp-cache
       technology: SQL
     - type: web
@@ -59,7 +59,7 @@ service:
       version: 2.26.0428.494
       client_code: Base
       package: Base.ServicePlatform.2.26.0428.494.nupkg
-      path: G:\publish\SFTPDownload\Recon
+      path: G:publishSFTPDownloadRecon
       storage_type: sftp-cache
       technology: C#
     - type: api
@@ -68,7 +68,7 @@ service:
       version: 2.26.0428.494
       client_code: Base
       package: Base.FeedApi.2.26.0428.494.nupkg
-      path: G:\publish\SFTPDownload\Recon
+      path: G:publishSFTPDownloadRecon
       storage_type: sftp-cache
       technology: Node.js
     - type: api
@@ -77,7 +77,7 @@ service:
       version: 2.26.0428.92
       client_code: Base
       package: Base.GRM.Api.2.26.0428.92.nupkg
-      path: G:\publish\SFTPDownload\Recon
+      path: G:publishSFTPDownloadRecon
       storage_type: sftp-cache
       technology: C#
     - type: database
@@ -86,7 +86,7 @@ service:
       version: 2.26.0428.92
       client_code: Base
       package: Base.GRM.Database.Scripts.2.26.0428.92.nupkg
-      path: G:\publish\SFTPDownload\Recon
+      path: G:publishSFTPDownloadRecon
       storage_type: sftp-cache
       technology: SQL
     - type: database
@@ -95,7 +95,7 @@ service:
       version: 2.26.0428.92
       client_code: BAIN
       package: MT-US.GRM.Database.Scripts.2.26.0428.92.nupkg
-      path: G:\publish\SFTPDownload\Recon
+      path: G:publishSFTPDownloadRecon
       storage_type: sftp-cache
       technology: SQL
     - type: database
@@ -104,7 +104,7 @@ service:
       version: 2.26.0428.92
       client_code: MASH
       package: MKSL.GRM.Database.Scripts.2.26.0428.92.nupkg
-      path: G:\publish\SFTPDownload\Recon
+      path: G:publishSFTPDownloadRecon
       storage_type: sftp-cache
       technology: SQL
     - type: web
@@ -113,7 +113,7 @@ service:
       version: 2.26.0428.92
       client_code: Base
       package: Base.GRM.Web.Core.2.26.0428.92.nupkg
-      path: G:\publish\SFTPDownload\Recon
+      path: G:publishSFTPDownloadRecon
       storage_type: sftp-cache
       technology: C#
     - type: Web
@@ -122,7 +122,7 @@ service:
       version: 2.26.0321.67
       client_code: Base
       package: Base.FeedConfiguration.Web.2.26.0321.67.nupkg
-      path: G:\publish\SFTPDownload\Recon
+      path: G:publishSFTPDownloadRecon
       storage_type: sftp-cache
       technology: Node.js
     - type: Api
@@ -131,7 +131,7 @@ service:
       version: 2.26.0321.67
       client_code: Base
       package: Base.FeedConfigurationService.WasHost.2.26.0321.67.nupkg
-      path: G:\publish\SFTPDownload\Recon
+      path: G:publishSFTPDownloadRecon
       storage_type: sftp-cache
       technology: C#
     - type: database
@@ -140,7 +140,6 @@ service:
       version: 2.26.0321.67
       client_code: Base
       package: Base.FeedConfiguration.Database.Scripts.2.26.0321.67.nupkg
-      path: G:\publish\SFTPDownload\Recon
+      path: G:publishSFTPDownloadRecon
       storage_type: sftp-cache
       technology: C#
-  

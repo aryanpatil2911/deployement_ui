@@ -1,20 +1,20 @@
 service:
-  main: RECON
-  name: RECON
-  components:
+    main: RECON
+    name: RECON
+    components:
     - type: api
       component: Recon_API
       name: Base.Recon.API
-      version: 2.26.0428.492
+      version: 1.0726.000
       client_code: Base
       package: Base.Recon.Web.Api.2.26.0428.494.nupkg
       path: G:publishSFTPDownloadRecon
       storage_type: sftp-cache
       technology: C#
-    - type: api 
+    - type: api
       component: Reconciliation_API
       name: Base.Reconciliation.API
-      version: 2.26.0423.30
+      version: 1.0726.000
       client_code: Base
       package: Base.Reconciliation.API.2.26.0423.30.nupkg
       path: G:publishSFTPDownloadRecon
@@ -23,7 +23,7 @@ service:
     - type: database
       component: Recon_database
       name: Base.Recon.Database.Scripts
-      version: 2.26.0428.494
+      version: 1.0726.000
       client_code: Base
       package: Base.Recon.Database.Scripts.2.26.0428.494.nupkg
       storage_type: sftp-cache
@@ -34,7 +34,7 @@ service:
     - type: database
       component: Recon_database
       name: Base.Recon.Database.Scripts
-      version: 2.26.0428.494
+      version: 1.0726.000
       client_code: MASH
       package: MKSL.Recon.Database.Scripts.2.26.0428.494.nupkg
       storage_type: sftp-cache
@@ -45,7 +45,7 @@ service:
     - type: database
       component: Recon_database
       name: Base.Recon.Database.Scripts
-      version: 2.26.0428.494
+      version: 1.0726.000
       client_code: BAIN
       package: BAIN.Recon.Database.Scripts.2.26.0428.494.nupkg
       storage_type: sftp-cache
@@ -56,7 +56,7 @@ service:
     - type: database
       component: Recon_database
       name: Base.Recon.Database.Scripts
-      version: 2.26.0428.494
+      version: 1.0726.000
       client_code: Base
       package: Base.Recon.Database.Scripts.2.26.0428.494.nupkg
       storage_type: sftp-cache
@@ -67,7 +67,7 @@ service:
     - type: web
       component: Recon_WEB
       name: Base.ServicePlatform
-      version: 2.26.0428.494
+      version: 1.0726.000
       client_code: Base
       package: Base.ServicePlatform.2.26.0428.494.nupkg
       path: G:publishSFTPDownloadRecon
@@ -76,7 +76,7 @@ service:
     - type: api
       component: Feed_API
       name: Base.Feed.API
-      version: 2.26.0428.494
+      version: 1.0726.000
       client_code: Base
       package: Base.FeedApi.2.26.0428.494.nupkg
       path: G:publishSFTPDownloadRecon
@@ -85,7 +85,7 @@ service:
     - type: api
       component: GRM_API
       name: Base.GRM.API
-      version: 2.26.0428.92
+      version: 1.0726.000
       client_code: Base
       package: Base.GRM.Api.2.26.0428.92.nupkg
       path: G:publishSFTPDownloadRecon
@@ -94,7 +94,7 @@ service:
     - type: database
       component: GRM_DATABASE
       name: Base.GRM.Database.Scripts
-      version: 2.26.0428.92
+      version: 1.0726.000
       client_code: Base
       package: Base.GRM.Database.Scripts.2.26.0428.92.nupkg
       storage_type: sftp-cache
@@ -103,7 +103,7 @@ service:
     - type: database
       component: GRM_DATABASE
       name: Base.GRM.Database.Scripts
-      version: 2.26.0428.92
+      version: 1.0726.000
       client_code: BAIN
       package: MT-US.GRM.Database.Scripts.2.26.0428.92.nupkg
       storage_type: sftp-cache
@@ -112,7 +112,7 @@ service:
     - type: database
       component: GRM_DATABASE
       name: Base.GRM.Database.Scripts
-      version: 2.26.0428.92
+      version: 1.0726.000
       client_code: MASH
       package: MKSL.GRM.Database.Scripts.2.26.0428.92.nupkg
       storage_type: sftp-cache
@@ -121,7 +121,7 @@ service:
     - type: web
       component: GRM_WEB
       name: Base.GRM.Web.Core
-      version: 2.26.0428.92
+      version: 1.0726.000
       client_code: Base
       package: Base.GRM.Web.Core.2.26.0428.92.nupkg
       path: G:publishSFTPDownloadRecon
@@ -130,7 +130,7 @@ service:
     - type: Web
       component: FeedConfig_Web
       name: Base.FeedConfiguration.Web
-      version: 2.26.0321.67
+      version: 1.0726.000
       client_code: Base
       package: Base.FeedConfiguration.Web.2.26.0321.67.nupkg
       path: G:publishSFTPDownloadRecon
@@ -139,7 +139,7 @@ service:
     - type: Api
       component: FeedConfig_Api
       name: Base.FeedConfigurationService.WasHost
-      version: 2.26.0321.67
+      version: 1.0726.000
       client_code: Base
       package: Base.FeedConfigurationService.WasHost.2.26.0321.67.nupkg
       path: G:publishSFTPDownloadRecon
@@ -148,7 +148,7 @@ service:
     - type: database
       component: FeedConfig_Database
       name: Base.FeedConfiguration.Database.Scripts
-      version: 2.26.0321.67
+      version: 1.0726.000
       client_code: Base
       package: Base.FeedConfiguration.Database.Scripts.2.26.0321.67.nupkg
       path: G:publishSFTPDownloadRecon
@@ -157,7 +157,7 @@ service:
     - type: Web
       component: AuthAPi_Web
       name: Base.Auth.API
-      version: 2.26.0506.73
+      version: 1.0726.000
       client_code: Base
       package: Base.Auth.API.2.26.0506.73.nupkg
       path: G:publishSFTPDownloadRecon
@@ -166,7 +166,7 @@ service:
     - type: api
       component: FileTransfer_API
       name: Base.FileTransfer.API
-      version: 2.26.0509.30
+      version: 1.0726.000
       client_code: Base
       package: Base.FileTransfer.API.2.26.0509.30.nupkg
       path: G:publishSFTPDownloadRecon
@@ -175,7 +175,7 @@ service:
     - type: api
       component: Dashboard_API
       name: Base.Dashboard.API
-      version: 2.26.0511.335
+      version: 1.0726.000
       client_code: Base
       package: Base.Dashboard.API.2.26.0511.335.nupkg
       path: G:publishSFTPDownloadRecon
@@ -184,7 +184,7 @@ service:
     - type: api
       component: RDM_API
       name: Base.RDM.API
-      version: 2.26.0506.97
+      version: 1.0726.000
       client_code: Base
       package: Base.ReferenceDataMaster.API.2.26.0506.97.nupkg
       path: G:publishSFTPDownloadRecon
@@ -193,7 +193,7 @@ service:
     - type: api
       component: ServicesPortal_API
       name: Base.ServicesPortal.API
-      version: 2.26.0512.219
+      version: 1.0726.000
       client_code: Base
       package: Base.Portal.API.2.26.0512.219.nupkg
       path: G:publishSFTPDownloadRecon
@@ -202,7 +202,7 @@ service:
     - type: web
       component: ServicesPortal_UI
       name: Base.Portal.UI
-      version: 2.26.0512.219
+      version: 1.0726.000
       client_code: Base
       package: Base.Portal.UI.2.26.0512.219.nupkg
       path: G:publishSFTPDownloadRecon
@@ -211,7 +211,7 @@ service:
     - type: api
       component: ReportViewerApi_API
       name: Base.ReportViewerApi
-      version: 2.26.0515.116
+      version: 1.0726.000
       client_code: Base
       package: Base.ReportViewerApi.2.26.0515.116.nupkg
       path: G:publishSFTPDownloadRecon
@@ -220,7 +220,7 @@ service:
     - type: api
       component: ReportConfiguration_API
       name: Base.ReportConfiguration
-      version: 2.26.0515.116
+      version: 1.0726.000
       client_code: Base
       package: Base.ReportConfiguration.2.26.0515.116.nupkg
       path: G:publishSFTPDownloadRecon
@@ -229,7 +229,7 @@ service:
     - type: web
       component: ReportViewer
       name: Base.ReportViewer
-      version: 2.26.0515.116
+      version: 1.0726.000
       client_code: Base
       package: Base.ReportViewer.2.26.0515.116.nupkg
       path: G:publishSFTPDownloadRecon

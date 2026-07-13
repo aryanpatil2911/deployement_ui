@@ -1,4 +1,4 @@
-﻿name: "Create Deployment Issue"
+﻿﻿﻿name: "Create Deployment Issue"
 run-name: "[${{ inputs.action }}] ${{ inputs.client }} / ${{ inputs.module }} v${{ inputs.version }} to ${{ inputs.stage }}"
 
 on:
@@ -37,28 +37,49 @@ permissions:
 jobs:
   create-issue:
     name: "Create Deployment Issue"
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON((inputs.stage == 'QA' && '["self-hosted","QA02-Deployment"]') || (inputs.stage == 'UAT' && '["self-hosted","UAT-Deployment"]') || '["self-hosted","PROD-Deployment"]') }}
     outputs:
       issue_number: ${{ steps.create-issue.outputs.issue_number }}
       issue_url: ${{ steps.create-issue.outputs.issue_url }}
 
     steps:
+      - uses: actions/checkout@v5
+
       - name: "Create Deployment Issue"
         id: create-issue
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            const fs = require('fs');
+            const path = require('path');
             const fromenv = '${{ inputs.fromenv }}' || 'N/A';
+            const moduleName = '${{ inputs.module }}';
+            const version = '${{ inputs.version }}';
+            const manifestPath = path.resolve('App', moduleName, `${moduleName}_${version}.yml`);
+
+            if (!fs.existsSync(manifestPath)) {
+              throw new Error(`Version manifest not found: ${manifestPath}`);
+            }
+
+            const manifestContent = fs.readFileSync(manifestPath, 'utf8').trimEnd();
             const title = '[${{ inputs.action }}] ${{ inputs.client }} - ${{ inputs.module }} v${{ inputs.version }}';
             const body = [
               '### Run Parameters',
               '- **client**: ${{ inputs.client }}',
               '- **module**: ${{ inputs.module }}',
+              '- **selected version**: ' + version,
               '- **version**: ${{ inputs.version }}',
               '- **stage**: ${{ inputs.stage }}',
               '- **action**: ${{ inputs.action }}',
               '- **fromenv**: ' + fromenv,
+              '',
+              '### Version Manifest',
+              `- **File**: ${manifestPath}`,
+              '',
+              '```yaml',
+              manifestContent,
+              '```',
               '',
               '**Triggered by**: PAT-based deployment dashboard',
               '**Time**: ' + new Date().toISOString()
@@ -121,7 +142,7 @@ jobs:
   review-and-deploy:
     name: "[${{ inputs.action }}] ${{ inputs.client }} / ${{ inputs.module }} to ${{ inputs.stage }}"
     needs: create-issue
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON((inputs.stage == 'QA' && '["self-hosted","QA02-Deployment"]') || (inputs.stage == 'UAT' && '["self-hosted","UAT-Deployment"]') || '["self-hosted","PROD-Deployment"]') }}
     environment: deployment-approval
 
     steps:
@@ -175,7 +196,7 @@ jobs:
   handle-rejection:
     name: "Handle Approval Rejection"
     needs: [create-issue, review-and-deploy]
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON((inputs.stage == 'QA' && '["self-hosted","QA02-Deployment"]') || (inputs.stage == 'UAT' && '["self-hosted","UAT-Deployment"]') || '["self-hosted","PROD-Deployment"]') }}
     if: always() && needs.create-issue.result == 'success' && (needs.review-and-deploy.result == 'failure' || needs.review-and-deploy.result == 'cancelled')
 
     steps:
