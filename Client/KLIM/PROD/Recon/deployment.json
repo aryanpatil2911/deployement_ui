@@ -1,0 +1,395 @@
+{
+    "RECON":  {
+                  "Recon_WEB":  {
+                                    "package_source_root":  "E:\\publish\\RECON",
+                                    "deploy_root":  "E:\\Services",
+                                    "backup_root":  "E:\\ServicesBackup",
+                                    "application_root_name":  "RECON",
+                                    "component_name":  "Recon.Web.Core",
+                                    "iis_site_name":  "Recon.Web.Core",
+                                    "iis_app_pool":  "Recon.Web.Core",
+                                    "iis_app_pool_clr_version":  "v4.0",
+                                    "iis_service_user":  "KLIM_PROD_WEB",
+                                    "target_server_role":  "web",
+                                    "target_server":  "LDSGS-KLIM-WEB1",
+                                    "winrm_username":  "KLIM_PROD_WEB",
+                                    "github_runner":  [
+                                                          "PROD-Deployment",
+                                                          "self-hosted"
+                                                      ]
+                                },
+                  "Recon_API":  {
+                                    "package_source_root":  "G:\\publish\\RECON",
+                                    "deploy_root":  "E:\\Services",
+                                    "backup_root":  "E:\\ServicesBackup",
+                                    "application_root_name":  "RECON",
+                                    "component_name":  "Recon.Web.Api",
+                                    "iis_site_name":  "Recon.Web.Api",
+                                    "iis_app_pool":  "Recon.Web.Api",
+                                    "iis_app_pool_clr_version":  "No Managed Code",
+                                    "iis_service_user":  "ldssupport\\KLIM_Prod_Platfor",
+                                    "target_server_role":  "api",
+                                    "target_server":  "LDSGS-KLIM-APP1",
+                                    "winrm_username":  "ldssupport\\KLIM_Prod_Platfor",
+                                    "github_runner":  [
+                                                          "PROD-Deployment",
+                                                          "self-hosted"
+                                                      ]
+                                },
+                  "Reconciliation_API":  {
+                                             "package_source_root":  "G:\\publish\\RECON",
+                                             "deploy_root":  "G:\\Services",
+                                             "backup_root":  "G:\\ServicesBackup",
+                                             "application_root_name":  "RECON",
+                                             "component_name":  "Reconciliation.API",
+                                             "iis_site_name":  "Reconciliation.API",
+                                             "iis_app_pool":  "Reconciliation.API",
+                                             "iis_app_pool_clr_version":  "No Managed Code",
+                                             "iis_service_user":  "ldssupport\\KLIM_Prod_Platfor",
+                                             "target_server_role":  "api",
+                                             "target_server":  "LDSGS-KLIM-APP1",
+                                             "winrm_username":  "ldssupport\\KLIM_Prod_Platfor",
+                                             "github_runner":  [
+                                                                   "PROD-Deployment",
+                                                                   "self-hosted"
+                                                               ]
+                                         },
+                  "Recon_DATABASE":  {
+                                         "package_source_root":  "G:\\publish\\RECON",
+                                         "extracted_package_root":  "G:\\publish\\DBScriptsTemp",
+                                         "deployment_script_path":  "#{DatabaseScriptsRoot}\\DatabaseScriptsDeploymentScript.ps1",
+                                         "db_server":  "klimusql1.ldsgssupport.com",
+                                         "db_name":  "Recon_MT",
+                                         "db_authentication":  "SqlAuthentication",
+                                         "sql_scripts_pattern":  [
+                                                                     "01.%20Database%20Schema\\*.sql",
+                                                                     "02.%20Tables\\*.sql",
+                                                                     "03.%20Views\\*.sql",
+                                                                     "04.%20Types\\*.sql",
+                                                                     "05.%20Functions\\*.sql",
+                                                                     "06.%20Stored%20Procedures\\*.sql",
+                                                                     "07.%20Report%20Stored%20Procedures\\*.sql",
+                                                                     "08.%20ReconSet%20Stored%20Procedures\\*.sql",
+                                                                     "09.%20DML\\*.sql",
+                                                                     "10.%20CustomSQLFunctions\\*.sql"
+                                                                 ],
+                                         "display_sql_output":  "True",
+                                         "trust_server_certificate":  "False",
+                                         "ssrs_enabled":  "True",
+                                         "ssrs_extract_root":  "G:\\publish\\SSRSTemp",
+                                         "ssrs_report_service_url":  "https://klimpsql01.ldssupport.com/ReportServer",
+                                         "ssrs_report_execution_url":  "https://klimpsql01.ldssupport.com/Reports",
+                                         "ssrs_report_folder":  "/WebReconDashboard",
+                                         "ssrs_datasource_folder":  "/DataSource/AutoDeployment",
+                                         "ssrs_dataset_folder":  "/DataSource/AutoDeployment",
+                                         "ssrs_parts_folder":  "",
+                                         "ssrs_root_folder":  "",
+                                         "ssrs_backup_location":  "G:\\ServicesBackup",
+                                         "ssrs_overwrite_data_sources":  "False",
+                                         "ssrs_clear_report_folder":  "false",
+                                         "ssrs_use_archive_structure":  "false",
+                                         "ssrs_fail_on_unresolved_references":  "true",
+                                         "ssrs_service_user_name":  "ldssupport\\KLIM_Prod_Platfor",
+                                         "target_server":  "LDSGS-KLIM-APP1",
+                                         "winrm_username":  "ldssupport\\KLIM_Prod_Platfor",
+                                         "target_server_role":  "db",
+                                         "github_runner":  [
+                                                               "PROD-Deployment",
+                                                               "self-hosted"
+                                                           ]
+                                     },
+                  "Feed_API":  {
+                                   "package_source_root":  "G:\\publish\\Recon",
+                                   "deploy_root":  "G:\\Services",
+                                   "backup_root":  "G:\\ServicesBackup",
+                                   "application_root_name":  "Recon",
+                                   "component_name":  "Feed.Api",
+                                   "iis_site_name":  "Feed.Api",
+                                   "iis_app_pool":  "Feed.Api",
+                                   "iis_service_user":  "ldssupport\\KLIM_Prod_Platfor",
+                                   "target_server_role":  "api",
+                                   "target_server":  "LDSGS-KLIM-APP1",
+                                   "winrm_username":  "ldssupport\\KLIM_Prod_Platfor",
+                                   "github_runner":  [
+                                                         "PROD-Deployment",
+                                                         "self-hosted"
+                                                     ]
+                               },
+                  "GRM_WEB":  {
+                                  "package_source_root":  "E:\\publish\\GRM",
+                                  "deploy_root":  "E:\\Services",
+                                  "backup_root":  "E:\\ServicesBackup",
+                                  "application_root_name":  "GRM",
+                                  "component_name":  "GRM.Web.Core",
+                                  "iis_site_name":  "GRM.Web.Core",
+                                  "iis_app_pool":  "GRM.Web.Core",
+                                  "iis_app_pool_clr_version":  "v4.0",
+                                  "iis_service_user":  "KLIM_PROD_WEB",
+                                  "target_server_role":  "web",
+                                  "target_server":  "LDSGS-KLIM-WEB11",
+                                  "winrm_username":  "KLIM_PROD_WEB",
+                                  "github_runner":  [
+                                                        "PROD-Deployment",
+                                                        "self-hosted"
+                                                    ]
+                              },
+                  "GRM_API":  {
+                                  "package_source_root":  "G:\\publish\\GRM",
+                                  "deploy_root":  "G:\\Services",
+                                  "backup_root":  "G:\\ServicesBackup",
+                                  "application_root_name":  "GRM",
+                                  "component_name":  "GRM.Api",
+                                  "iis_site_name":  "GRM.Api",
+                                  "iis_app_pool":  "GRM.Api",
+                                  "iis_service_user":  "ldssupport\\KLIM_Prod_Platfor",
+                                  "target_server_role":  "api",
+                                  "target_server":  "LDSGS-KLIM-APP1",
+                                  "winrm_username":  "ldssupport\\KLIM_Prod_Platfor",
+                                  "github_runner":  [
+                                                        "PROD-Deployment",
+                                                        "self-hosted"
+                                                    ]
+                              },
+                  "GRM_DATABASE":  {
+                                       "package_source_root":  "G:\\publish\\GRM",
+                                       "extracted_package_root":  "G:\\publish\\DBScriptsTemp",
+                                       "deployment_script_path":  "#{DatabaseScriptsRoot}\\DatabaseScriptsDeploymentScript.ps1",
+                                       "db_server":  "klimusql1.ldsgssupport.com",
+                                       "db_name":  "GRM_MT",
+                                       "db_authentication":  "SqlAuthentication",
+                                       "sql_scripts_pattern":  [
+                                                                   "01.%20Database%20Schema\\*.sql",
+                                                                   "02.%20Tables\\*.sql",
+                                                                   "03.%20Functions\\*.sql",
+                                                                   "04.%20Types\\*.sql",
+                                                                   "05.%20Views\\*.sql",
+                                                                   "06.%20Stored%20Procedures\\*.sql",
+                                                                   "09.%20DML\\*.sql"
+                                                               ],
+                                       "display_sql_output":  "True",
+                                       "trust_server_certificate":  "False",
+                                       "target_server":  "LDSGS-KLIM-APP1",
+                                       "winrm_username":  "ldssupport\\KLIM_Prod_Platfor",
+                                       "target_server_role":  "db",
+                                       "github_runner":  [
+                                                             "PROD-Deployment",
+                                                             "self-hosted"
+                                                         ]
+                                   },
+                  "FeedConfig_Web":  {
+                                         "package_source_root":  "E:\\publish\\Feedconfiguration",
+                                         "deploy_root":  "E:\\Services",
+                                         "backup_root":  "E:\\ServicesBackup",
+                                         "application_root_name":  "Feedconfiguration",
+                                         "component_name":  "Feedconfiguration.Web",
+                                         "iis_site_name":  "Feedconfiguration.Web",
+                                         "iis_app_pool":  "Feedconfiguration.Web",
+                                         "iis_app_pool_clr_version":  "v4.0",
+                                         "iis_service_user":  "KLIM_PROD_WEB",
+                                         "target_server_role":  "web",
+                                         "target_server":  "LDSGS-KLIM-WEB1",
+                                         "winrm_username": "KLIM_PROD_WEB",
+                                         "github_runner":  [
+                                                               "PROD-Deployment",
+                                                               "self-hosted"
+                                                           ]
+                                     },
+                  "FeedConfig_API":  {
+                                         "package_source_root":  "G:\\publish\\Feedconfiguration",
+                                         "deploy_root":  "G:\\Services",
+                                         "backup_root":  "G:\\ServicesBackup",
+                                         "application_root_name":  "FeedConfigurationService",
+                                         "component_name":  "Feedconfiguration.Api",
+                                         "iis_site_name":  "FeedconfigurationService.Washost",
+                                         "iis_app_pool":  "FeedconfigurationService",
+                                         "iis_app_pool_clr_version":  "v4.0",
+                                         "iis_service_user":  "ldssupport\\KLIM_Prod_Platfor",
+                                         "target_server_role":  "api",
+                                         "target_server":  "LDSGS-KLIM-APP1",
+                                         "winrm_username":  "ldssupport\\KLIM_Prod_Platfor",
+                                         "github_runner":  [
+                                                               "PROD-Deployment",
+                                                               "self-hosted"
+                                                           ]
+                                     },
+                  "FeedConfig_DATABASE":  {
+                                              "package_source_root":  "G:\\publish\\Feedconfiguration",
+                                              "extracted_package_root":  "G:\\publish\\DBScriptsTemp",
+                                              "deployment_script_path":  "#{DatabaseScriptsRoot}\\DatabaseScriptsDeploymentScript.ps1",
+                                              "db_server":  "klimusql1.ldsgssupport.com",
+                                              "db_name":  "Feedconfig_MT",
+                                              "db_authentication":  "SqlAuthentication",
+                                              "sql_scripts_pattern":  [
+                                                                          "01.%20Database%20Schema\\*.sql",
+                                                                          "02.%20Tables\\*.sql",
+                                                                          "03.%20Views\\*.sql",
+                                                                          "05.%20Functions\\*.sql",
+                                                                          "06.%20Stored%20Procedures\\*.sql",
+                                                                          "09.%20DML\\*.sql"
+                                                                      ],
+                                              "display_sql_output":  "True",
+                                              "trust_server_certificate":  "False",
+                                              "target_server":  "LDSGS-KLIM-APP1",
+                                              "winrm_username":  "ldssupport\\KLIM_Prod_Platfor",
+                                              "target_server_role":  "db",
+                                              "github_runner":  [
+                                                                    "PROD-Deployment",
+                                                                    "self-hosted"
+                                                                ]
+                                          },
+                  "AuthAPI_Web":  {
+                                      "package_source_root":  "E:\\publish\\Potaltools",
+                                      "deploy_root":  "E:\\Services",
+                                      "backup_root":  "E:\\ServicesBackup",
+                                      "application_root_name":  "AuthAPI",
+                                      "component_name":  "AuthAPI_Web",
+                                      "iis_site_name":  "Auth.API",
+                                      "iis_app_pool":  "Auth.API",
+                                      "iis_service_user":  "KLIM_PROD_WEB",
+                                      "target_server_role":  "web",
+                                      "target_server":  "LDSGS-KLIM-WEB11",
+                                      "winrm_username":  "KLIM_PROD_WEB",
+                                      "github_runner":  [
+                                                            "PROD-Deployment",
+                                                            "self-hosted"
+                                                        ]
+                                  },
+                  "Dashboard_API":  {
+                                        "package_source_root":  "G:\\publish\\Potaltools",
+                                        "deploy_root":  "G:\\Services",
+                                        "backup_root":  "G:\\ServicesBackup",
+                                        "application_root_name":  "DashboardAPI",
+                                        "component_name":  "Dashboard_API",
+                                        "iis_site_name":  "Dashboard.API",
+                                        "iis_app_pool":  "Dashboard.API",
+                                        "iis_service_user":  "ldssupport\\KLIM_Prod_Platfor",
+                                        "target_server_role":  "api",
+                                        "target_server":  "KLIM-US-USQL1.ldsgssupport.com",
+                                        "winrm_username":  "ldssupport\\KLIM_Prod_Platfor",
+                                        "github_runner":  [
+                                                              "PROD-Deployment",
+                                                              "self-hosted"
+                                                          ]
+                                    },
+                  "RDM_API":  {
+                                  "package_source_root":  "G:\\publish\\Potaltools",
+                                  "deploy_root":  "G:\\Services",
+                                  "backup_root":  "G:\\ServicesBackup",
+                                  "application_root_name":  "RDMAPI",
+                                  "component_name":  "RDM_API",
+                                  "iis_site_name":  "RDM.API",
+                                  "iis_app_pool":  "RDM.API",
+                                  "iis_service_user":  "ldssupport\\KLIM_Prod_Platfor",
+                                  "target_server_role":  "api",
+                                  "target_server":  "KLIM-US-USQL1.ldsgssupport.com",
+                                  "winrm_username":  "ldssupport\\KLIM_Prod_Platfor",
+                                  "github_runner":  [
+                                                        "PROD-Deployment",
+                                                        "self-hosted"
+                                                    ]
+                              },
+                  "FileTransfer_API":  {
+                                           "package_source_root":  "G:\\publish\\Potaltools",
+                                           "deploy_root":  "G:\\Services",
+                                           "backup_root":  "G:\\ServicesBackup",
+                                           "application_root_name":  "FileTransferAPI",
+                                           "component_name":  "FileTransfer_API",
+                                           "iis_site_name":  "FileTransfer.API",
+                                           "iis_app_pool":  "FileTransfer.API",
+                                           "iis_service_user":  "ldssupport\\KLIM_Prod_Platfor",
+                                           "target_server_role":  "api",
+                                           "target_server":  "KLIM-US-USQL1.ldsgssupport.com",
+                                           "winrm_username":  "ldssupport\\KLIM_Prod_Platfor",
+                                           "github_runner":  [
+                                                                 "PROD-Deployment",
+                                                                 "self-hosted"
+                                                             ]
+                                       },
+                  "ServicesPortal_API":  {
+                                             "package_source_root":  "G:\\publish\\Potaltools",
+                                             "deploy_root":  "G:\\Services",
+                                             "backup_root":  "G:\\ServicesBackup",
+                                             "application_root_name":  "ServicesPortalAPI",
+                                             "component_name":  "ServicesPortal_API",
+                                             "iis_site_name":  "ServicesPortal.Api",
+                                             "iis_app_pool":  "ServicesPortal.Api",
+                                             "iis_service_user":  "ldssupport\\KLIM_Prod_Platfor",
+                                             "target_server_role":  "api",
+                                             "target_server":  "KLIM-US-USQL1.ldsgssupport.com",
+                                             "winrm_username":  "ldssupport\\KLIM_Prod_Platfor",
+                                             "github_runner":  [
+                                                                   "PROD-Deployment",
+                                                                   "self-hosted"
+                                                               ]
+                                         },
+                  "ServicesPortal_UI":  {
+                                            "package_source_root":  "E:\\publish\\Potaltools",
+                                            "deploy_root":  "E:\\Services",
+                                            "backup_root":  "E:\\ServicesBackup",
+                                            "application_root_name":  "ServicesPortalUI",
+                                            "component_name":  "ServicesPortal_UI",
+                                            "iis_site_name":  "ServicesPortal.UI",
+                                            "iis_app_pool":  "ServicesPortal.UI",
+                                            "iis_service_user":  "KLIM_PROD_WEB",
+                                            "target_server_role":  "web",
+                                            "target_server":  "LDSGS-KLIM-WEB1",
+                                            "winrm_username":  "KLIM_PROD_WEB",
+                                            "github_runner":  [
+                                                                  "PROD-Deployment",
+                                                                  "self-hosted"
+                                                              ]
+                                        },
+                  "ReportConfiguration_API":  {
+                                                  "package_source_root":  "G:\\publish\\Potaltools",
+                                                  "deploy_root":  "G:\\Services",
+                                                  "backup_root":  "G:\\ServicesBackup",
+                                                  "application_root_name":  "ReportConfigurationAPI",
+                                                  "component_name":  "ReportConfiguration_API",
+                                                  "iis_site_name":  "ReportConfiguration.API",
+                                                  "iis_app_pool":  "ReportConfiguration.API",
+                                                  "iis_service_user":  "ldssupport\\KLIM_Prod_Platfor",
+                                                  "target_server_role":  "api",
+                                                  "target_server":  "klimpsql01.ldssupport.com",
+                                                  "winrm_username":  "ldssupport\\KLIM_Prod_Platfor",
+                                                  "github_runner":  [
+                                                                        "PROD-Deployment",
+                                                                        "self-hosted"
+                                                                    ]
+                                              },
+                  "ReportViewer":  {
+                                       "package_source_root":  "E:\\publish\\Potaltools",
+                                       "deploy_root":  "E:\\Services",
+                                       "backup_root":  "E:\\ServicesBackup",
+                                       "application_root_name":  "ReportViewer",
+                                       "component_name":  "ReportViewer",
+                                       "iis_site_name":  "ReportViewer",
+                                       "iis_app_pool":  "ReportViewer",
+                                       "iis_service_user":  "KLIM_PROD_WEB",
+                                       "target_server_role":  "web",
+                                       "target_server":  "LDSGS-KLIM-WEB1",
+                                       "winrm_username":  "KLIM_PROD_WEB",
+                                       "github_runner":  [
+                                                             "PROD-Deployment",
+                                                             "self-hosted"
+                                                         ]
+                                   },
+                  "ReportViewerApi_API":  {
+                                              "package_source_root":  "G:\\publish\\Potaltools",
+                                              "deploy_root":  "G:\\Services",
+                                              "backup_root":  "G:\\ServicesBackup",
+                                              "application_root_name":  "ReportViewerApiAPI",
+                                              "component_name":  "ReportViewerApi_API",
+                                              "iis_site_name":  "ReportViewerApi.API",
+                                              "iis_app_pool":  "ReportViewerApi.API",
+                                              "iis_service_user":  "ldssupport\\KLIM_Prod_Platfor",
+                                              "target_server_role":  "api",
+                                              "target_server":  "klimpsql01.ldssupport.com",
+                                              "winrm_username":  "ldssupport\\KLIM_Prod_Platfor",
+                                              "github_runner":  [
+                                                                    "PROD-Deployment",
+                                                                    "self-hosted"
+                                                                ]
+                                          }
+              }
+}
+

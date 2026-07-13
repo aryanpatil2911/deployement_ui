@@ -1,0 +1,117 @@
+﻿{
+  "Tools": {
+    "shared_tokens": {
+      "AppServerTransportModeName": "Transport",
+      "AppServerTransportProtocol": "https",
+      "ApplicationServer": "mteupapp01.ldssupport.com",
+      "ClientConfigWebApiApplicationName": "ClientConfigurations.Api",
+      "ClientDomain": "MTEU_USER_DOMAIN",
+      "ClientMasterWebApiApplicationName": "ClientMaster.Api",
+      "DBServer": "mteupsql01.ldssupport.com",
+      "EnableNodeSSO": "true",
+      "EntitlementServiceApplicationName": "",
+      "GRMApiApplicationName": "GRM.Api",
+      "GRM_DBName": "GRM_MT",
+      "GRMServiceApplicationName": "GRM.Api",
+      "GSMServiceApplicationName": "GSMUpgrade.Service.WasHost",
+      "IsPermissionStore": "true",
+      "LogsPath": "E:\\Logs",
+      "PermissionCacheExpirationInMinutes": "1",
+      "PermissionStorePassword": "mteu_APPLICATION_USERPASSWORD",
+      "PermissionStoreUrl": "",
+      "PermissionStoreWebApiApplicationName": "PermissionStoreWebApi",
+      "PermissionStoreUserName": "mteu_APPLICATION_USERNAME",
+      "PortalEnvironment": "PROD",
+      "ReconWebCoreApplicationName": "Recon.Web.Core",
+      "ReconWebApiApplicationName" : "Recon.Web.Api",
+      "RequiredHttps": "true",
+      "SSOConnectEndpointName": "/oidc/connect",
+      "SSOEndpointName": "/oidc",
+      "SSOWebCoreApplicationName": "SSO.Api",
+      "UsePermissionCache": "false",
+      "UsePermissionStoreAuthentication": "true",
+      "UsePermissionStoreAuthorization": "true",
+      "WebAppProtocol": "https",
+      "WebServer": "mteu.gravitasplatform.com",
+      "ClientMaster_DBName": "ClientMaster_MT",
+      "ClientConfigUrl":"https://mteupapp01.ldssupport.com/ClientConfigurations.Api",
+      "EnableStatusChangeBySameUserValidation":"true",
+      "EnableRuleRiskLevel":"false",
+      "CalBreaksAsPositions":"false",
+      "DisableStatusChangeBySameUserValidationForUsers":"true",
+      "ReportServerURL":"http://ldsgs-mteu-sql1/ReportServer/",
+      "ReconServiceApplicationName":"Recon.Web.Core",
+      "ReportGenerationServerUrl":"ReportViewer/Report/",
+      "UpdateSummaryRowOnMatchTab":"false",
+      "AppServerTransportProtocolName":"http",
+      "DomainServer":"10.125.130.69",
+      "ApplicationServerWpfClient":"mteupapp01.ldssupport.com",
+      "ClientConfigurationsApplicationName":"ClientConfigurations.Api",
+      "SSOLDAP_URL":"ldaps://10.125.130.69:636",
+      "SSOBIND_DN":"MTEU_LDAP_BIND_DN",
+      "SSOBIND_CREDENTIALS":"MTEU_SSO_USERPASSWORD",
+      "SSOSEARCH_BASE":"MTEU_LDAP_SEARCH_BASE",
+      "SSOApiMaxLogSize": "10",
+      "SSOApiLogDir": "E:\\Logs\\SSO.Api",
+      "SSOApiArchiveDir": "E:\\Logs\\SSO.Api\\Archive",
+      "DashboardApiLogDir": "E:\\Logs\\Dashboard.Api",
+      "DashboardApiArchiveDir": "E:\\Logs\\Dashboard.Api\\Archive",
+      "DB_USERNAME" :"MTEU_APPLICATION_USERNAME",
+      "DALDbName" : "DAL",
+      "PortfolioDbName" : "PORTFOLIO",
+      "ServicesPlatformApplicationName":"Recon.Web.Core",
+      "FeedConfigurationWebApplicationName": "FeedConfiguration.Web",
+      "GRMWebCoreApplicationName": "GRM.Web.Core",
+      "AuthApiApplicationName": "Auth.Api",
+      "ClientMasterApiLogDir": "E:\\Logs\\ClientMaster.Api",
+      "ClientMasterApiArchiveDir": "E:\\Logs\\ClientMaster.Api\\Archive",
+      "ClientMasterApiMaxLogSize": "10",
+      "DBDomain": "MTEU_SYSTEM_DOMAIN"
+    },
+    "SSO_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+     },
+    "PermissionStore_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+    },
+    "PermissionStore_DATABASE": {
+      "enabled": true,
+      "file_patterns": [
+        "*.sql"
+      ]
+    },
+    "PermissionStore_RUI": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+    },
+    "Clientmaster_DATABASE": {
+      "enabled": true,
+      "file_patterns": [
+        "*.sql"
+      ]
+    },
+     "Clientmaster_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+    }
+    
+  }
+}

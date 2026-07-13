@@ -1,0 +1,347 @@
+{
+    "CIDM":  {
+                  "shared_tokens":  {
+                                        "ApplicationServer":  "mpcmuapp.ldsgssupport.com",
+                                        "appCode":  "MPCMCIDMPortal",
+                                        "allowedHostNamesList": ["mpcmuat.gravitasplatform.com", "mpcm.gravitasplatform.com"],
+                                        "ApplicationParentSite": "mpcmuapp",
+                                        "ApplicationServerUserPassword": "",
+                                        "ApplicationServerWpfClient" :  "mpcmuapp.ldsgssupport.com",
+                                        "AppServerApplicationPoolPassword": "",
+                                        "AppServerApplicationPoolUserName": "ldsgssupport\\MPCM_UAT_platform",
+                                        "AppServerUserName": "ldsgssupport\\MPCM_UAT_platform",
+                                        "AssistantAIEngineURL": "https://platformuatai.ldsgssupport.com/UAT.AIEngine/v1",
+                                        "AssistantApiArchiveDir": "G:/Logs/MPCMAssistant.Api/Archive",
+                                        "AssistantApiBackupFolderPath": "G:\\Backups\\MPCMAssistant.Api",
+                                        "AssistantApiLogDir": "G:\\Logs\\MPCMAssistant.Api",
+                                        "AssistantApiPhysicalPath": "G:\\Services\\MPCMAssistant.Api",
+                                        "AuthApiArchiveDir": "E:/Logs/MPCMAuth.Api/Archive",
+                                        "AuthApiBackupFolderPath": "E:\\Backups\\MPCMAuth.Api",
+                                        "AuthApiLogDir": "E:/Logs/MPCMAuth.Api",
+                                        "AuthApiPhysicalPath": "E:\\Services\\MPCMAuth.Api",
+                                        "AppServerTransportProtocol":  "https",
+                                        "AppServerTransportProtocolName":  "http",
+                                        "AssistantApiApplicationName": "Assistant.Api",
+                                        "CIDMApiArchiveDir": "G:\\Logs\\MPCMCIDM.Api\\Archive",
+                                        "CIDMApiBackupFolderPath": "G:/Backups/MPCMCIDM.Api",   
+                                        "CIDMApiFolderPath": "G:\\Services\\MPCMCIDM.Api",
+                                        "CIDMApiLogDir": "G:\\Logs\\MPCMCIDM.Api",
+                                        "CIDMApiPhysicalPath": "G:\\Services\\MPCMCIDM.Api",
+                                        "CIDMDbName": "CIDM_MPCM",
+                                        "CIDMETLApiBackupFolderPath": "G:\\Backups\\MPCMCIDMETL.Api",
+                                        "CIDMETLApiPhysicalPath": "G:\\Services\\MPCMCIDMETL.Api",
+                                        "ClientMasterApiArchiveDir": "G:/Logs/MPCMClientMaster.Api/Archive",
+                                        "ClientMasterApiBackupFolderPath": "G:\\Backups\\MPCMClientMaster.Api", 
+                                        "ClientMasterApiLogDir": "G:\\Logs\\MPCMClientMaster.Api",
+                                        "ClientMasterApiPhysicalPath": "G:\\Services\\MPCMClientMaster.Api",
+                                        "ClientPostFix": "MPC",
+                                        "CalBreaksAsPositions":  "false",
+                                        "CIDMApiApplicationName": "CIDM.Api",
+                                        "ClientConfigWebApiApplicationName":  "ClientConfigurations.Api",
+                                        "ClientConfigurationsApplicationName": "ClientConfigurations.Api",
+                                        "ClientCode":"MPCM",
+                                        "ClientDomain":  "MPCM_USER_DOMAIN",
+                                        "ClientMasterWebApiApplicationName":  "ClientMaster.Api",
+                                        "commonAppCode": {"MPCM": "MPCMCIDMPortal"},
+                                        "DALDbName":  "DAL_MPCM",  
+                                        "DashboardApiApplicationName":  "Dashboard.Api",
+                                        "DashboardApiArchiveDir": "G:\\Logs\\MPCMDashboard.Api\\Archive",
+                                        "DashboardApiBackupFolderPath": "G:\\Backups\\MPCMDashboard.Api",
+                                        "DashboardApiLogDir":"G:\\Logs\\MPCMDashboard.Api",
+                                        "DashboardApiMaxLogSize":  "5",
+                                        "DashboardApiPhysicalPath": "G:\\Services\\MPCMDashboard.Api",
+                                        "DashboardConfigsRootPath":  "./Config",
+                                        "DataProcessorApiBackupFolderPath": "G:\\Backups\\MPCMDataProcessor.Api", 
+                                        "DataProcessorApiPhysicalPath": "G:\\Services\\MPCMDataProcessor.Api",
+                                        "DB_DATABASE": "CIDM_MPCM",
+                                        "DBServer":  "MPCM-US-USQL1.LDSGSSUPPORT.com",
+                                        "DB_USERNAME":"MPCM_APPLICATION_USERNAME",
+                                        "DB_PASSWORD":"",
+                                        "DocumentManagementApiArchiveDir": "G:\\Logs\\MPCMDocumentManagement.Api\\Archive",
+                                        "DocumentManagementApiBackupFolderPath": "G:\\Backups\\MPCMDocumentManagement.Api",
+                                        "DocumentManagementApiLogDir": "G:\\Logs\\MPCMDocumentManagement.Api",
+                                        "DocumentManagementApiPhysicalPath": "G:\\Services\\MPCMDocumentManagement.Api",
+                                        "DocumentManagementRepo": "G:\\Services\\MPCMDocumentManagementRepository",
+                                        "DocumentManagementApiApplicationName": "DocumentManagement.Api",
+                                        "EntitlementServiceApplicationName":  "",                                  
+                                        "FileTransferApiApplicationName":  "FileTransfer.Api",
+                                        "FileTransferApiArchiveDir":  "G:\\Logs\\MPCMFileTransfer.Api\\Archive",
+                                        "FileTransferApiBackupFolderPath": "G:\\Backups\\MPCMFileTransfer.Api",
+                                        "FileTransferApiLogDir":  "G:\\Logs\\MPCMFileTransfer.Api",
+                                        "FileTransferApiMaxLogSize": "5",
+                                        "FileTransferApiPhysicalPath": "G:\\Services\\MPCMFileTransfer.Api",
+                                        "FileTransferDataFolderPath": "G:/Services/MPCMDashboard.Api",
+                                        "FileUploadRootDIRPath": "./uploads",
+                                        "HeaderTitle" : "MPCM Services Portal",
+                                        "IsPermissionStore":  "true",
+                                        "IsTwoFactorEnable": "false",
+                                        "JsonDropZoneRootPath": "",                                                
+                                        "LGHApiApplicationName": "LGH.Api",
+                                        "LGHApiBackupFolderPath": "g:\\Backups\\MPCMLGH.Api",
+                                        "LGHApiPhysicalPath": "g:\\Services\\MPCMLGH.Api",
+                                        "LGHApiPoolName": "LGH.Api",
+                                        "Module": "MPCMCIDMPortal",
+                                        "NroadAPI": "mtus-uatapi.cidm.na.ldsasp.com",
+                                        "NRoadAuthToken": "MPCM_CLIENT_TOKEN",
+                                        "NroadBaseAPI": "mtus-uat-uploadapi.cidm.na.ldsasp.com",
+                                        "NroadPassword": "MPCM_NROAD_PASSWORD",
+                                        "NroadUsername": "MPCM_NROAD_USERNAME",
+                                        "PasswordExpirationDays": "90",
+                                        "PasswordExpiryMessage": "", 
+                                        "PasswordExpiryMessageThresholdDays": "90",
+                                        "PermissionStoreApiBackupFolderPath": "G:\\ServicesBackups\\PermissionStoreWebApi",
+                                        "PermissionStoreApiPhysicalPath": "G:\\Services\\PermissionStoreWebApi",
+                                        "PermissionStoreApiPoolName": "PermissionStoreWebAPI",
+                                        "PermissionStoreConnectionString": "Server=#{DBServer};Database=#{PermissionStoreDBName};Integrated Security=True;",
+                                        "PermissionStoreDBName": "PermissionStore",
+                                        "PermissionStorePassword":  "MPCM_APPLICATION_USERPASSWORD",
+                                        "PermissionStoreSQLReleasePath": "C:\\Octopus\\Applications\\MPCM New UAT\\Base.PermissionStore.Database.Scripts\\",
+                                        "PermissionStoreUserName":  "MPCM_APPLICATION_USERNAME",
+                                        "PermissionStoreWebApiApplicationName":  "PermissionStoreWebApi",
+                                        "PermissionStoreWebRUIApplicationName": "PermissionStoreRUI",
+                                        "PermissionStoreWebUIName": "PermissionStoreWebUI",
+                                        "PermissionStoreWebUIPhysicalPath": "G:\\Services\\PermissionStoreWebUI",
+                                        "PermissionStoreWebUIPoolName": "PermissionStoreWebUI",
+                                        "PortalEnvironment":  "UAT",
+                                        "PortfolioDbName": "Portfolio_MPCM",
+                                        "PrivateTenantId": "2",
+                                        "PublicTenantId": "1",                             
+                                        "RDMApiApplicationName":  "RDM.Api",
+                                        "RDMApiArchiveDir":  "G:\\Logs\\MPCMRDM.Api\\Archive",
+                                        "RDMApiBackupFolderPath": "G:\\Backups\\MPCMRDM.Api",
+                                        "RDMApiLogDir":  "G:\\Logs\\MPCMRDM.API",
+                                        "RDMApiMaxLogSize":  "50",
+                                        "RDMApiPhysicalPath": "G:\\Services\\MPCMRDM.Api",
+                                        "RDMApiPoolName": "RDM.Api",
+                                        "ReferenceDataMasterApiApplicationName": "RDM.Api",
+                                        "SASSPASSApiPassword": "",
+                                        "SASSPASSApiUrl": "",
+                                        "ServicePortalApiApplicationName": "ServicesPortal.Api",
+                                        "ServicePortalUIApplicationName": "MPCMCIDMPortal",
+                                        "ServiceRequestApiApplicationName": "ServiceRequest.Api",
+                                        "ServiceRequestApiArchiveDir": "G:/Logs/MPCMServiceRequest/Archive",
+                                        "ServiceRequestApiBackupFolderPath": "G:\\Backups\\MPCMServiceRequest.Api",
+                                        "ServiceRequestApiLogDir": "G:/Logs/MPCMServiceRequest.Api",
+                                        "ServiceRequestApiMaxLogSize": "5",
+                                        "ServiceRequestApiPhysicalPath": "G:\\Services\\MPCMServiceRequest.Api",    
+                                        "ServiceRequestApiPoolName": "ServiceRequest.Api",
+                                        "ServiceRequestFileStorePath": "G:\\Services\\MPCMRequestApi",
+                                        "ServiceRequestResponseFileStorePath": "G:\\Services\\MPCMRequestApi",
+                                        "ServicesPortalApiApplicationName": "ServicesPortal.Api",
+                                        "ServicesPortalApiArchiveDir": "G:\\Logs\\MPCMServicesPortal.Api\\Archive",
+                                        "ServicesPortalApiBackupFolderPath": "G:\\Backups\\MPCMServicesPortal.Api",
+                                        "ServicesPortalApiLogDir": "G:\\Logs\\MPCMServicesPortal.Api",
+                                        "ServicesPortalApiMaxLogSize": "5", 
+                                        "ServicesPortalApiPhysicalPath": "G:\\Services\\MPCMServicesPortal.Api",
+                                        "ServicesPortalApiPoolName": "ServicesPortal.Api",
+                                        "ServicesPortalBackupFolderPath": "E:\\Backups\\MPCMServicesPortal",
+                                        "ServicesPortalPhysicalPath": "E:\\Services\\MPCMServicesPortal",
+                                        "ServicesPortalPoolName": "MPCMCIDMPortal",
+                                        "ServicesRequestApiApplicationName": "ServiceRequest.Api",
+                                        "SFTPDirectoryPath": "",
+                                        "SFTPPassword": "",
+                                        "SFTPPort": "",
+                                        "SFTPServer": "",
+                                        "SFTPUsername": "",
+                                        "ServicesPlatformApplicationName":  "Recon.Web.Core",
+                                        "SSOApiArchiveDir":  "G:\\Logs\\MPCMSSO.Api\\Archive",
+                                        "SSOApiLogDir":  "G:\\Logs\\MPCMSSO.Api",
+                                        "SSOApiMaxLogSize":  "5",
+                                        "SSOApplicationPhysicalPath": "G:\\Services\\MPCMSSO.Api",
+                                        "SSOApplicationPoolName": "SSO.Api",
+                                        "SSOBIND_CREDENTIALS":  "MPCM_SSO_USERPASSWORD",
+                                        "SSOBIND_DN":  "MPCM_LDAP_BIND_DN",
+                                        "SSOLDAP_URL": "MPCM_LDAP_URL",
+                                        "SSOSEARCH_BASE": "MPCM_LDAP_SEARCH_BASE",
+                                        "SSOServicesBackupFolderPath": "G:\\Backups\\MPCMSSO.Api",
+                                        "SSOServicesFolderPath": "G:\\Services\\EPCMSSO.Api", 
+                                        "SSOWebCoreApplicationName":  "SSO.Api",
+                                        "TlsCaCertificatePath": "",
+                                        "UsePermissionStoreAuthentication": "true",
+                                        "UsePermissionStoreAuthorization": "true",
+                                        "userId": "",
+                                        "WebApplicationPoolPassword": "",
+                                        "WebApplicationPoolUserName": "MPCM_UAT_Web",
+                                        "WebAppProtocol": "https",
+                                        "WebHostName": "mpcmuat.gravitasplatform.com",
+                                        "WebLogsPath": "E:/Logs/SSO.Web.Core",
+                                        "WebServer": "mpcmuat.gravitasplatform.com"
+                                    },
+
+
+
+                  "CIDM_WEB":  {
+                                    "enabled":  true,
+                                    "file_patterns":  [
+                                                          "*.json",
+                                                          "*.html",
+                                                          "*.js",
+                                                          "appsettings.json",
+                                                          "web.config"
+                                                      ]
+                                },
+
+
+
+                  "CIDM_API":  {
+                                    "enabled":  true,
+                                    "file_patterns":  [
+                                                          "*.json",
+                                                          "appsettings.json",
+                                                          "web.config"
+                                                      ]
+                                },
+
+
+
+                  "Reconciliation_API":  {
+                                             "enabled":  true,
+                                             "file_patterns":  [
+                                                                   "*.json",
+                                                                   "appsettings.json",
+                                                                   "web.config"
+                                                               ]
+                                         },
+
+
+
+                  "CIDM_Database":  {
+                                         "enabled":  true,
+                                         "file_patterns":  [
+                                                               "*.sql"
+                                                           ]
+                                     },
+                  "Feed_API":  {
+                                   "enabled":  true,
+                                   "file_patterns":  [
+                                                         "*.json",
+                                                         "appsettings.json",
+                                                         "web.config"
+                                                     ]
+                               },
+                  "GRM_WEB":  {
+                                  "enabled":  true,
+                                  "file_patterns":  [
+                                                        "*.json",
+                                                        "appsettings.json",
+                                                        "web.config"
+                                                    ]
+                              },
+                  "GRM_API":  {
+                                  "enabled":  true,
+                                  "file_patterns":  [
+                                                        "*.json",
+                                                        "appsettings.json",
+                                                        "web.config"
+                                                    ]
+                              },
+                  "GRM_Database":  {
+                                       "enabled":  true,
+                                       "file_patterns":  [
+                                                             "*.sql"
+                                                         ]
+                                   },
+                  "FeedConfig_Web":  {
+                                         "enabled":  true,
+                                         "file_patterns":  [
+                                                               "*.json",
+                                                               "appsettings.json",
+                                                               "web.config"
+                                                           ]
+                                     },
+                  "FeedConfig_Api":  {
+                                         "enabled":  true,
+                                         "file_patterns":  [
+                                                               "*.json",
+                                                               "appsettings.json",
+                                                               "web.config"
+                                                           ]
+                                     },
+                  "FeedConfig_Database":  {
+                                              "enabled":  true,
+                                              "file_patterns":  [
+                                                                    "*.sql"
+                                                                ]
+                                          },
+                  "AuthAPI_Web":  {
+                                      "enabled":  true,
+                                      "file_patterns":  [
+                                                            "*.json",
+                                                            "appsettings.json",
+                                                            "web.config"
+                                                        ]
+                                  },
+                  "Dashboard_API":  {
+                                        "enabled":  true,
+                                        "file_patterns":  [
+                                                              "*.json",
+                                                              "appsettings.json",
+                                                              "web.config"
+                                                          ]
+                                    },
+                  "FileTransfer_API":  {
+                                           "enabled":  true,
+                                           "file_patterns":  [
+                                                                 "*.json",
+                                                                 "appsettings.json",
+                                                                 "web.config"
+                                                             ]
+                                       },
+                  "RDM_API":  {
+                                  "enabled":  true,
+                                  "file_patterns":  [
+                                                        "*.json",
+                                                        "appsettings.json",
+                                                        "web.config"
+                                                    ]
+                              },
+                  "ServicesPortal_API":  {
+                                             "enabled":  true,
+                                             "file_patterns":  [
+                                                                   "*.json",
+                                                                   "appsettings.json",
+                                                                   "web.config"
+                                                               ]
+                                         },
+                  "ServicesPortal_UI":  {
+                                            "enabled":  true,
+                                            "file_patterns":  [
+                                                                  "*.json",
+                                                                  "appsettings.json",
+                                                                  "web.config"
+                                                              ]
+                                        },
+                  "ReportViewer_API":  {
+                                           "enabled":  true,
+                                           "file_patterns":  [
+                                                                 "*.json",
+                                                                 "appsettings.json",
+                                                                 "web.config"
+                                                             ]
+                                       },
+                  "ReportViewer":  {
+                                       "enabled":  true,
+                                       "file_patterns":  [
+                                                             "*.json",
+                                                             "appsettings.json",
+                                                             "web.config"
+                                                         ]
+                                   },
+                   "Dashboard_configuration":  {
+                                                  "enabled":  true,
+                                                  "file_patterns":  [
+                                                                        "*.json",
+                                                                        "appsettings.json",
+                                                                        "web.config"
+                                                                    ]
+                                              },
+                  "ReportConfiguration_API":  {
+                                                  "enabled":  true,
+                                                  "file_patterns":  [
+                                                                        "*.json",
+                                                                        "appsettings.json",
+                                                                        "web.config"
+                                                                    ]
+                                              }
+              }
+}

@@ -1,0 +1,209 @@
+﻿{
+    "CIDM":  {
+                 "AuthAPI_Web":  {
+                                     "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                     "deploy_root":  "G:\\Services",
+                                     "backup_root":  "G:\\ServicesBackup",
+                                     "application_root_name":  "AuthAPI",
+                                     "component_name":  "AuthAPI_Web",
+                                     "iis_site_name":  "Auth.API",
+                                     "iis_app_pool":  "Auth.API",
+                                     "iis_service_user":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                     "target_server_role":  "web",
+                                     "target_server":  "PSDev-QA02",
+                                     "winrm_username":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                     "github_runner":  [
+                                                           "self-hosted",
+                                                           "QA02-Deployment"
+                                                       ]
+                                 },
+                 "CIDM_API":  {
+                                  "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                  "deploy_root":  "G:\\Services",
+                                  "backup_root":  "G:\\ServicesBackup",
+                                  "application_root_name":  "CIDMAPI",
+                                  "component_name":  "CIDM_API",
+                                  "iis_site_name":  "CIDM.API",
+                                  "iis_app_pool":  "CIDM.API",
+                                  "iis_service_user":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                  "target_server_role":  "api",
+                                  "target_server":  "PSDev-QA02",
+                                  "winrm_username":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                  "github_runner":  [
+                                                        "self-hosted",
+                                                        "QA02-Deployment"
+                                                    ]
+                              },
+                 "Assistant_API":  {
+                                       "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                       "deploy_root":  "G:\\Services",
+                                       "backup_root":  "G:\\ServicesBackup",
+                                       "application_root_name":  "AssistantAPI",
+                                       "component_name":  "Assistant_API",
+                                       "iis_site_name":  "Assistant.API",
+                                       "iis_app_pool":  "Assistant.API",
+                                       "iis_service_user":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                       "target_server_role":  "api",
+                                       "target_server":  "PSDev-QA02",
+                                       "winrm_username":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                       "github_runner":  [
+                                                             "self-hosted",
+                                                             "QA02-Deployment"
+                                                         ]
+                                   },
+                 "DataProcessor_API":  {
+                                           "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                           "deploy_root":  "G:\\Services",
+                                           "backup_root":  "G:\\ServicesBackup",
+                                           "application_root_name":  "DataProcessorAPI",
+                                           "component_name":  "DataProcessor_API",
+                                           "iis_site_name":  "DataProcessor.API",
+                                           "iis_app_pool":  "DataProcessor.API",
+                                           "iis_service_user":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                           "target_server_role":  "api",
+                                           "target_server":  "PSDev-QA02",
+                                           "winrm_username":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                           "github_runner":  [
+                                                                 "self-hosted",
+                                                                 "QA02-Deployment"
+                                                             ]
+                                       },
+                 "DocumentManagement_API":  {
+                                                "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                                "deploy_root":  "G:\\Services",
+                                                "backup_root":  "G:\\ServicesBackup",
+                                                "application_root_name":  "DocumentManagementAPI",
+                                                "component_name":  "DocumentManagement_API",
+                                                "iis_site_name":  "DocumentManagement.API",
+                                                "iis_app_pool":  "DocumentManagement.API",
+                                                "iis_service_user":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                                "target_server_role":  "api",
+                                                "target_server":  "PSDev-QA02",
+                                                "winrm_username":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                                "github_runner":  [
+                                                                      "self-hosted",
+                                                                      "QA02-Deployment"
+                                                                  ]
+                                            },
+                 "Dashboard_API":  {
+                                       "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                       "deploy_root":  "G:\\Services",
+                                       "backup_root":  "G:\\ServicesBackup",
+                                       "application_root_name":  "DashboardAPI",
+                                       "component_name":  "Dashboard_API",
+                                       "iis_site_name":  "Dashboard.API",
+                                       "iis_app_pool":  "Dashboard.API",
+                                       "iis_service_user":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                       "target_server_role":  "api",
+                                       "target_server":  "PSDev-QA02",
+                                       "winrm_username":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                       "github_runner":  [
+                                                             "self-hosted",
+                                                             "QA02-Deployment"
+                                                         ]
+                                   },
+                 "Lgh_API":  {
+                                 "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                 "deploy_root":  "G:\\Services",
+                                 "backup_root":  "G:\\ServicesBackup",
+                                 "application_root_name":  "LghAPI",
+                                 "component_name":  "Lgh_API",
+                                 "iis_site_name":  "Lgh.API",
+                                 "iis_app_pool":  "Lgh.API",
+                                 "iis_service_user":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                 "target_server_role":  "api",
+                                 "target_server":  "PSDev-QA02",
+                                 "winrm_username":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                 "github_runner":  [
+                                                       "self-hosted",
+                                                       "QA02-Deployment"
+                                                   ]
+                             },
+                 "ServiceRequest_API":  {
+                                            "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                            "deploy_root":  "G:\\Services",
+                                            "backup_root":  "G:\\ServicesBackup",
+                                            "application_root_name":  "ServiceRequestAPI",
+                                            "component_name":  "ServiceRequest_API",
+                                            "iis_site_name":  "ServiceRequest.API",
+                                            "iis_app_pool":  "ServiceRequest.API",
+                                            "iis_service_user":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                            "target_server_role":  "api",
+                                            "target_server":  "PSDev-QA02",
+                                            "winrm_username":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                            "github_runner":  [
+                                                                  "self-hosted",
+                                                                  "QA02-Deployment"
+                                                              ]
+                                        },
+                 "RDM_API":  {
+                                 "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                 "deploy_root":  "G:\\Services",
+                                 "backup_root":  "G:\\ServicesBackup",
+                                 "application_root_name":  "RDMAPI",
+                                 "component_name":  "RDM_API",
+                                 "iis_site_name":  "RDM.API",
+                                 "iis_app_pool":  "RDM.API",
+                                 "iis_service_user":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                 "target_server_role":  "api",
+                                 "target_server":  "PSDev-QA02",
+                                 "winrm_username":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                 "github_runner":  [
+                                                       "self-hosted",
+                                                       "QA02-Deployment"
+                                                   ]
+                             },
+                 "FileTransfer_API":  {
+                                          "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                          "deploy_root":  "G:\\Services",
+                                          "backup_root":  "G:\\ServicesBackup",
+                                          "application_root_name":  "FileTransferAPI",
+                                          "component_name":  "FileTransfer_API",
+                                          "iis_site_name":  "FileTransfer.API",
+                                          "iis_app_pool":  "FileTransfer.API",
+                                          "iis_service_user":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                          "target_server_role":  "api",
+                                          "target_server":  "PSDev-QA02",
+                                          "winrm_username":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                          "github_runner":  [
+                                                                "self-hosted",
+                                                                "QA02-Deployment"
+                                                            ]
+                                      },
+                 "ServicesPortal_API":  {
+                                            "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                            "deploy_root":  "G:\\Services",
+                                            "backup_root":  "G:\\ServicesBackup",
+                                            "application_root_name":  "ServicesPortalAPI",
+                                            "component_name":  "ServicesPortal_API",
+                                            "iis_site_name":  "ServicesPortal.Api",
+                                            "iis_app_pool":  "ServicesPortal.Api",
+                                            "iis_service_user":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                            "target_server_role":  "api",
+                                            "target_server":  "PSDev-QA02",
+                                            "winrm_username":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                            "github_runner":  [
+                                                                  "self-hosted",
+                                                                  "QA02-Deployment"
+                                                              ]
+                                        },
+                 "ServicesPortal_UI":  {
+                                           "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                           "deploy_root":  "G:\\Services",
+                                           "backup_root":  "G:\\ServicesBackup",
+                                           "application_root_name":  "ServicesPortalUI",
+                                           "component_name":  "ServicesPortal_UI",
+                                           "iis_site_name":  "ServicesPortal.UI",
+                                           "iis_app_pool":  "ServicesPortal.UI",
+                                           "iis_service_user":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                           "target_server_role":  "web",
+                                           "target_server":  "PSDev-QA02",
+                                           "winrm_username":  "SERVICESDEV\\SDEV_SVC_QAPLATFORM",
+                                           "github_runner":  [
+                                                                 "self-hosted",
+                                                                 "QA02-Deployment"
+                                                             ]
+                                       }
+             }
+}
+

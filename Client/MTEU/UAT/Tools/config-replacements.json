@@ -1,0 +1,117 @@
+﻿{
+  "Tools": {
+    "shared_tokens": {
+      "AppServerTransportModeName": "Transport",
+      "AppServerTransportProtocol": "https",
+      "ApplicationServer": "psdev-qa02.servicesdev.com",
+      "ClientConfigWebApiApplicationName": "ClientConfigurations.Api",
+      "ClientDomain": "MKSL_USER_DOMAIN",
+      "ClientMasterWebApiApplicationName": "ClientMaster.Api",
+      "DBServer": "MASH-US-USQL1.ldsgssupport.com",
+      "EnableNodeSSO": "true",
+      "EntitlementServiceApplicationName": "",
+      "GRMApiApplicationName": "GRM.Api",
+      "GRM_DBName": "GRM_MT",
+      "GRMServiceApplicationName": "GRM.Api",
+      "GSMServiceApplicationName": "GSMUpgrade.Service.WasHost",
+      "IsPermissionStore": "true",
+      "LogsPath": "G:\\Logs",
+      "PermissionCacheExpirationInMinutes": "1",
+      "PermissionStorePassword": "MKSL_APPLICATION_USERPASSWORD",
+      "PermissionStoreUrl": "",
+      "PermissionStoreWebApiApplicationName": "PermissionStoreWebApi",
+      "PermissionStoreUserName": "MKSL_APPLICATION_USERNAME",
+      "PortalEnvironment": "UAT",
+      "ReconWebCoreApplicationName": "Recon.Web.Core",
+      "ReconWebApiApplicationName" : "Recon.Web.Api",
+      "RequiredHttps": "true",
+      "SSOConnectEndpointName": "/oidc/connect",
+      "SSOEndpointName": "/oidc",
+      "SSOWebCoreApplicationName": "SSO.Api",
+      "UsePermissionCache": "false",
+      "UsePermissionStoreAuthentication": "true",
+      "UsePermissionStoreAuthorization": "true",
+      "WebAppProtocol": "https",
+      "WebServer": "psdev-qa02.servicesdev.com",
+      "ClientMaster_DBName": "ClientMaster_MT",
+      "ClientConfigUrl":"https://platformuatai.ldsgssupport.com/ClientConfigurations.Api",
+      "EnableStatusChangeBySameUserValidation":"true",
+      "EnableRuleRiskLevel":"false",
+      "CalBreaksAsPositions":"false",
+      "DisableStatusChangeBySameUserValidationForUsers":"true",
+      "ReportServerURL":"https://mash-us-usql1.ldsgssupport.com/ReportServer/",
+      "ReconServiceApplicationName":"Recon.Web.Core",
+      "ReportGenerationServerUrl":"ReportViewer/Report/",
+      "UpdateSummaryRowOnMatchTab":"false",
+      "AppServerTransportProtocolName":"http",
+      "DomainServer":"10.25.130.69",
+      "ApplicationServerWpfClient":"MASH-US-USQL1.ldsgssupport.com",
+      "ClientConfigurationsApplicationName":"ClientConfigurations.Api",
+      "SSOLDAP_URL":"ldaps://10.25.130.69:636",
+      "SSOBIND_DN":"MKSL_LDAP_BIND_DN",
+      "SSOBIND_CREDENTIALS":"MKSL_SSO_USERPASSWORD",
+      "SSOSEARCH_BASE":"MKSL_LDAP_SEARCH_BASE",
+      "SSOApiMaxLogSize": "10",
+      "SSOApiLogDir": "G:\\Logs\\SSO.Api",
+      "SSOApiArchiveDir": "G:\\Logs\\SSO.Api\\Archive",
+      "DashboardApiLogDir": "G:\\Logs\\Dashboard.Api",
+      "DashboardApiArchiveDir": "G:\\Logs\\Dashboard.Api\\Archive",
+      "DB_USERNAME" :"MKSL_APPLICATION_USERNAME",
+      "DALDbName" : "DAL",
+      "PortfolioDbName" : "PORTFOLIO",
+      "ServicesPlatformApplicationName":"Recon.Web.Core",
+      "FeedConfigurationWebApplicationName": "FeedConfiguration.Web",
+      "GRMWebCoreApplicationName": "GRM.Web.Core",
+      "AuthApiApplicationName": "Auth.Api",
+      "ClientMasterApiLogDir": "G:\\Logs\\ClientMaster.Api",
+      "ClientMasterApiArchiveDir": "G:\\Logs\\ClientMaster.Api\\Archive",
+      "ClientMasterApiMaxLogSize": "10",
+      "DBDomain": "MKSL_SYSTEM_DOMAIN"
+    },
+    "SSO_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+     },
+    "PermissionStore_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+    },
+    "PermissionStore_DATABASE": {
+      "enabled": true,
+      "file_patterns": [
+        "*.sql"
+      ]
+    },
+    "PermissionStore_RUI": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+    },
+    "Clientmaster_DATABASE": {
+      "enabled": true,
+      "file_patterns": [
+        "*.sql"
+      ]
+    },
+     "Clientmaster_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+    }
+    
+  }
+}

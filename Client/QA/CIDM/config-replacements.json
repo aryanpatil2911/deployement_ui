@@ -1,0 +1,147 @@
+﻿{
+  "RECON": {
+   "shared_tokens": {
+      "AppServerTransportModeName": "Transport",
+      "AppServerTransportProtocol": "https",
+      "ApplicationServer": "psdev-qa02.servicesdev.com",
+      "ClientConfigWebApiApplicationName": "ClientConfigurations.Api",
+      "ClientDomain": "BASE_USER_DOMAIN",
+      "ClientMasterWebApiApplicationName": "ClientMaster.Api",
+      "DBServer": "psdev-qa02.servicesdev.com",
+      "EnableNodeSSO": "true",
+      "IsPermissionStore": "true",
+      "LogsPath": "G:\\Logs",
+      "PermissionCacheExpirationInMinutes": "1",
+      "PermissionStorePassword": "BASE_APPLICATION_USERPASSWORD",
+      "PermissionStoreUrl": "",
+      "PermissionStoreWebApiApplicationName": "PermissionStoreWebApi",
+      "PermissionStoreUserName": "BASE_APPLICATION_USERNAME",
+      "PortalEnvironment": "UAT",
+      "RequiredHttps": "true",
+      "UsePermissionCache": "false",
+      "UsePermissionStoreAuthentication": "true",
+      "UsePermissionStoreAuthorization": "true",
+      "WebAppProtocol": "https",
+      "WebServer": "psdev-qa02.servicesdev.com",
+      "ClientMaster_DBName": "ClientMaster_MT",
+      "ClientConfigUrl":"https://psdev-qa02.servicesdev.com/ClientConfigurations.Api",
+      "EnableStatusChangeBySameUserValidation":"true",
+      "EnableRuleRiskLevel":"false",
+      "CalBreaksAsPositions":"false",
+      "AppServerTransportProtocolName":"http",
+      "DomainServer":" 172.19.142.132",
+      "ExpireTimeSpan" :"60",
+      "DashboardApiApplicationName": "Dashboard.Api",
+      "FileTransferApiSiteName": "FileTransfer.Api",
+      "FileUploaderApiSiteName":"FileUploader.Api",
+      "ServicesPlatformApiApplicationName":"ServicesPlatform.Api",
+      "SSOApiArchiveDir": "G:\\Logs\\SSO.Api\\Archive",
+      "SSOApiLogDir": "G:\\Logs\\SSO.Api",
+      "SSOApiMaxLogSize": "10",
+      "SSOConnectEndpointName": "/oidc/connect",
+      "SSOEndpointName": "/oidc",
+      "SSOWebCoreApplicationName": "SSO.Api",
+      "SSOSEARCH_BASE":"BASE_LDAP_SEARCH_BASE",
+      "SSOLDAP_URL":"BASE_LDAP_URL",
+      "SSOBIND_DN" : "BASE_LDAP_BIND_DN",
+      "SSOBIND_CREDENTIALS" : "BASE_SSO_USERPASSWORD",
+      "WijmolicenseKey" : ""     
+    },
+  
+    "AuthAPI_Web": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+  },
+    "Dashboard_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+  },
+      "CIDM_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+  },
+  "Assistant_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+  },
+  "DataProcessor_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+  },
+   "DocumentManagement_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+   },
+   "Lgh_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+   },
+   "ServiceRequest_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+  },
+    "FileTransfer_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+  },
+    "RDM_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+}, "ServicesPortal_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+}, "ServicesPortal_UI": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+}
+}
+}
+

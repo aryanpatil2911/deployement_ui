@@ -1,0 +1,118 @@
+﻿{
+  "Tools": {
+    "shared_tokens": {
+      "AppServerTransportModeName": "Transport",
+      "AppServerTransportProtocol": "https",
+      "ApplicationServer": "psdev-qa02.servicesdev.com",
+      "ClientConfigWebApiApplicationName": "ClientConfigurations.Api",
+      "ClientDomain": "BASE_USER_DOMAIN",
+      "ClientMasterWebApiApplicationName": "ClientMaster.Api",
+      "DBServer": "psdev-qa02.servicesdev.com",
+      "EnableNodeSSO": "true",
+      "EntitlementServiceApplicationName": "",
+      "GRMApiApplicationName": "GRM.Api",
+      "GRM_DBName": "GRM_MT",
+      "GRMServiceApplicationName": "GRM.Api",
+      "GSMServiceApplicationName": "GSMUpgrade.Service.WasHost",
+      "IsPermissionStore": "true",
+      "LogsPath": "G:\\Logs",
+      "PermissionCacheExpirationInMinutes": "1",
+      "PermissionStorePassword": "BASE_APPLICATION_USERPASSWORD",
+      "PermissionStoreUrl": "",
+      "PermissionStoreWebApiApplicationName": "PermissionStoreWebApi",
+      "PermissionStoreUserName": "BASE_APPLICATION_USERNAME",
+      "PortalEnvironment": "UAT",
+      "ReconWebCoreApplicationName": "Recon.Web.Core",
+      "ReconWebApiApplicationName" : "Recon.Web.Api",
+      "RequiredHttps": "true",
+      "SSOConnectEndpointName": "/oidc/connect",
+      "SSOEndpointName": "/oidc",
+      "SSOWebCoreApplicationName": "SSO.Api",
+      "UsePermissionCache": "false",
+      "UsePermissionStoreAuthentication": "true",
+      "UsePermissionStoreAuthorization": "true",
+      "WebAppProtocol": "https",
+      "WebServer": "psdev-qa02.servicesdev.com",
+      "ClientMaster_DBName": "ClientMaster_MT",
+      "ClientConfigUrl":"https://psdev-qa02.servicesdev.com/ClientConfigurations.Api",
+      "EnableStatusChangeBySameUserValidation":"true",
+      "EnableRuleRiskLevel":"false",
+      "CalBreaksAsPositions":"false",
+      "DisableStatusChangeBySameUserValidationForUsers":"true",
+      "ReportServerURL":"https://psdev-qa02.servicesdev.com/ReportServer/",
+      "ReconServiceApplicationName":"Recon.Web.Core",
+      "ReportGenerationServerUrl":"ReportViewer/Report/",
+      "UpdateSummaryRowOnMatchTab":"false",
+      "AppServerTransportProtocolName":"http",
+      "DomainServer":" 172.19.142.132",
+      "ApplicationServerWpfClient":"psdev-qa02.servicesdev.com",
+      "ClientConfigurationsApplicationName":"ClientConfigurations.Api",
+      "SSOLDAP_URL":"BASE_LDAP_URL",
+      "SSOBIND_DN":"BASE_LDAP_BIND_DN",
+      "SSOBIND_CREDENTIALS":"BASE_SSO_USERPASSWORD",
+      "SSOSEARCH_BASE":"BASE_LDAP_SEARCH_BASE",
+      "SSOApiMaxLogSize": "10",
+      "SSOApiLogDir": "G:\\Logs\\SSO.Api",
+      "SSOApiArchiveDir": "G:\\Logs\\SSO.Api\\Archive",
+      "DashboardApiLogDir": "G:\\Logs\\Dashboard.Api",
+      "DashboardApiArchiveDir": "G:\\Logs\\Dashboard.Api\\Archive",
+      "DB_USERNAME" :"BASE_APPLICATION_USERNAME",
+      "DALDbName" : "DAL",
+      "PortfolioDbName" : "PORTFOLIO",
+      "ServicesPlatformApplicationName":"Recon.Web.Core",
+      "FeedConfigurationWebApplicationName": "FeedConfiguration.Web",
+      "GRMWebCoreApplicationName": "GRM.Web.Core",
+      "AuthApiApplicationName": "Auth.Api",
+      "ClientMasterApiLogDir": "G:\\Logs\\ClientMaster.Api",
+      "ClientMasterApiArchiveDir": "G:\\Logs\\ClientMaster.Api\\Archive",
+      "ClientMasterApiMaxLogSize": "10",
+      "DBDomain": "BASE_SYSTEM_DOMAIN"
+    },
+    "SSO_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+     },
+    "PermissionStore_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+    },
+    "PermissionStore_DATABASE": {
+      "enabled": true,
+      "file_patterns": [
+        "*.sql"
+      ]
+    },
+    "PermissionStore_RUI": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+    },
+    "Clientmaster_DATABASE": {
+      "enabled": true,
+      "file_patterns": [
+        "*.sql"
+      ]
+    },
+     "Clientmaster_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+    }
+    
+  }
+}
+

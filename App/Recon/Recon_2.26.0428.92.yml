@@ -11,7 +11,7 @@ service:
       path: G:\publish\SFTPDownload\Recon
       storage_type: sftp-cache
       technology: C#
-    - type: api
+    - type: api 
       component: Reconciliation_API
       name: Base.Reconciliation.API
       version: 2.26.0423.30

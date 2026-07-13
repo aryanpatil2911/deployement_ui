@@ -1,0 +1,283 @@
+{
+    "RECON":  {
+                  "shared_tokens":  {
+                                        "ApplicationServer":  "MASH-US-USQL1.ldsgssupport.com",
+                                        "ApplicationServerWpfClient" :  "MASH-US-USQL1.ldsgssupport.com",
+                                        "appCode":  "Recon.Web.Core",
+                                        "AppServerTransportModeName":  "Transport",
+                                        "AppServerTransportProtocol":  "https",
+                                        "AppServerTransportProtocolName":  "http",
+                                        "AutoRefreshInterval":  "600000",
+                                        "AssistantApiApplicationName": "Assistant.Api",
+                                        "AuthApiApplicationName": "Auth.Api",
+                                        "CalBreaksAsPositions":  "false",
+                                        "CIDMApiApplicationName": "CIDM.Api",
+                                        "ClientConfigUrl":  "https://platformuatai.ldsgssupport.com/ClientConfigurations.Api",
+                                        "ClientConfigWebApiApplicationName":  "ClientConfigurations.Api",
+                                        "ClientConfigurationsApplicationName": "ClientConfigurations.Api",
+                                        "ClientCode":"MKSL",
+                                        "ClientDomain":  "MKSL_USER_DOMAIN",
+                                        "ClientMaster_DBName":  "ClientMaster_MT",
+                                        "ClientMasterWebApiApplicationName":  "ClientMaster.Api",
+                                        "commonAppCode": {"MKSL" : "ServicesPortal"},
+                                        "DashboardApiApplicationName":  "Dashboard.Api",
+                                        "DashboardConfigsRootPath":  "./Config",
+                                        "DashboardSpecificpages":  "[\"Feed Load\",\"View FeedFiles\",\"Today\u0027s FeedFiles\"]",
+                                        "DatabaseScriptsRoot":  "G:\\\\PowershellScripts",
+                                        "DBServer":  "MASH-US-USQL1.ldsgssupport.com",
+                                        "DB_USERNAME":"MKSL_APPLICATION_USERNAME",
+                                        "DateFormat": "MM/dd/yyyy",
+                                        "DisableStatusChangeBySameUserValidationForUsers":  "true",
+                                        "DomainServer":  "10.25.130.69",
+                                        "DocumentManagementApiApplicationName": "DocumentManagement.Api",
+                                        "EnableNewApi":  "true",
+                                        "EnableNewApiCalling":  "true",
+                                        "EnableNewFeedExport":  "true",
+                                        "EnableNodeSSO":  "true",
+                                        "EnableReconEnginNewApiCalling":  "true",
+                                        "EnableRestrictedView":  "false",
+                                        "EnableRuleRiskLevel":  "false",
+                                        "EnableSourceDestFeedConfigUpdate":  "true",
+                                        "EnableStatusChangeBySameUserValidation":  "true",
+                                        "EnableWorkflowRules":  "false",
+                                        "EntitlementServiceApplicationName":  "",
+                                        "EXEPathForPackage":  "\\\\MASH-US-USQL1\\BatchFiles\\Binn\\DTEXEC.exe",
+                                        "ExpireTimeSpan":  "60",
+                                        "ExportToExcelFolderPath":  "",
+                                        "ExportPath":  "G:\\Reports",
+                                        "ExportReportFilePath": "G:\\Reports",
+                                        "FeedApiApplicationName":  "Feed.Api",
+                                        "FeedConfigurationDBName":  "FeedConfig_MT",
+                                        "FeedConfigurationWebApplicationName":  "FeedConfiguration.Web",
+                                        "FeedConfigurationServiceApplicationName":  "FeedConfigurationService.WasHost",
+                                        "FileTransferApiSiteName":  "FileTransfer.Api",
+                                        "FileTransferApiApplicationName":  "FileTransfer.Api",
+                                        "FileUploaderApiSiteName":  "FileUploader.Api",
+                                        "FromEmailAddress":  "donotreply@gravitasplatform.com",
+                                        "FullViewOperation":  "",
+                                        "GridProfilePath":  "",
+                                        "GRM_DBName":  "GRM_MT",
+                                        "GRMApiApplicationName":  "GRM.Api",
+                                        "GRMServiceApplicationName":  "GRM.Api",
+                                        "GRMWebCoreApplicationName":  "GRM.Web.Core",
+                                        "GSMServiceApplicationName":  "GSMUpgrade.Service.WasHost",
+                                        "HeaderTitle" : "Services Portal",
+                                        "IsPermissionStore":  "true",
+                                        "LogsPath":  "G:\\\\Logs",
+                                        "LGHApiApplicationName": "LGH.Api",
+                                        "LLMApiPositionReconDataSortFields": "ismatched, SourceShortName, AccountName, CustodianCode, CurrencyCode",
+                                        "LLMApiReconDataSortFields":"ismatched, SourceShortName, AccountName, TransactionEventType, CustodianCode, CurrencyCode",
+                                        "LLMApiRequestBatchSize": "10",
+                                        "PermissionCacheExpirationInMinutes":  "1",
+                                        "PermissionStorePassword":  "MKSL_APPLICATION_USERPASSWORD",
+                                        "PermissionStoreUrl":  "",
+                                        "PermissionStoreUserName":  "MKSL_APPLICATION_USERNAME",
+                                        "PermissionStoreWebApiApplicationName":  "PermissionStoreWebApi",
+                                        "PortalEnvironment":  "UAT",
+                                        "RDMApiApplicationName":  "RDM.Api",
+                                        "RDMApiArchiveDir":  "G:\\Logs\\RDM.Api\\Archive",
+                                        "RDMApiLogDir":  "G:\\Logs\\RDM.Api",
+                                        "RDMApiMaxLogSize":  "10",
+                                        "RECON_DBName":  "RECON_MT",
+                                        "RECONApiApplicationName":  "RECON.Api",
+                                        "ReconLLMApiApplicationName":"platformuatai.ldssupport.com/UAT.AIEngine", 
+                                        "ReconReverseProxyApplicationName":  "Recon.Web.Api",
+                                        "ReconServiceApplicationName":  "RECON.Api",
+                                        "ReportViewerApplicationName":  "ReportViewer",
+                                        "ReconWebApiApplicationName":  "Recon.Web.Api",
+                                        "ReconWebCoreApplicationName":  "Recon.Web.Core",
+                                        "ReconWebReportApplicationName":  "ServicesPlatform.Web.Report",
+                                        "ReportBuilderApplicationName":  "ReportconfigurationBuilder",
+                                        "ReportGenerationServerUrl":  "ReportViewer/Report/",
+                                        "ReportServerURL":  "https://mash-us-usql1.ldsgssupport.com/ReportServer/",
+                                        "ReportServiceURL":  "https://mash-us-usql1.ldsgssupport.com/ReportServer/ReportService2010.asmx",
+                                        "RequiredHttps":  "true",
+                                        "ServicePortalApiApplicationName" :"ServicesPortal.Api",
+                                        "ServicesPortalApiArchiveDir":  "G:\\Logs\\ServicesPortal.Api\\Archive",
+                                        "ServicesPortalApiLogDir":  "G:\\Logs\\ServicesPortal.Api",
+                                        "ServicesPortalApiMaxLogSize":  "10",
+                                        "ServicePortalUIApplicationName":  "ServicesPortal",
+                                        "ServicesPlatformApiApplicationName":  "ServicesPlatform.Api",
+                                        "ServicesPlatformApplicationName":  "Recon.Web.Core",
+                                        "SSOApiArchiveDir":  "G:\\Logs\\SSO.Api\\Archive",
+                                        "SSOApiLogDir":  "G:\\Logs\\SSO.Api",
+                                        "SSOApiMaxLogSize":  "10",
+                                        "SSOBIND_CREDENTIALS":  "BASE_SSO_USERPASSWORD",
+                                        "SSOBIND_DN":  "BASE_LDAP_BIND_DN",
+                                        "SSOConnectEndpointName":  "/oidc/connect",
+                                        "SSOEndpointName":  "/oidc",
+                                        "SSOLDAP_URL":  "BASE_LDAP_URL",
+                                        "SSOSEARCH_BASE":  "BASE_LDAP_SEARCH_BASE",
+                                        "SSOWebCoreApplicationName":  "SSO.Api",
+                                        "SYSTEM_DEAULTS_FROMEMAIL_PROFILE":"",
+                                        "ToasterAutoCloseTimeOut":  "{\"success\":3000,\"warning\":0,\"default\":5000}",
+                                        "ToShowHistoricalCashBalanceDiff":  "false",
+                                        "ToShowHistoricalTrialBalanceDiff":  "false",
+                                        "ToShowKnowledgeDate":  "false",
+                                        "UpdateSummaryRowOnMatchTab":  "false",
+                                        "UsePermissionCache":  "false",
+                                        "UsePermissionStoreAuthentication":  "true",
+                                        "UsePermissionStoreAuthorization":  "true",
+                                        "WebAppProtocol":  "https",
+                                        "WebServer":  "mackayuat.gravitasplatform.com",
+                                        "WebHostName":  "mackayuat.gravitasplatform.com",
+                                        "WijmolicenseKey":  ""
+                                    },
+                  "Recon_WEB":  {
+                                    "enabled":  true,
+                                    "file_patterns":  [
+                                                          "*.json",
+                                                          "*.html",
+                                                          "*.js",
+                                                          "appsettings.json",
+                                                          "web.config"
+                                                      ]
+                                },
+                  "Recon_API":  {
+                                    "enabled":  true,
+                                    "file_patterns":  [
+                                                          "*.json",
+                                                          "appsettings.json",
+                                                          "web.config"
+                                                      ]
+                                },
+                  "Reconciliation_API":  {
+                                             "enabled":  true,
+                                             "file_patterns":  [
+                                                                   "*.json",
+                                                                   "appsettings.json",
+                                                                   "web.config"
+                                                               ]
+                                         },
+                  "Recon_Database":  {
+                                         "enabled":  true,
+                                         "file_patterns":  [
+                                                               "*.sql"
+                                                           ]
+                                     },
+                  "Feed_API":  {
+                                   "enabled":  true,
+                                   "file_patterns":  [
+                                                         "*.json",
+                                                         "appsettings.json",
+                                                         "web.config"
+                                                     ]
+                               },
+                  "GRM_WEB":  {
+                                  "enabled":  true,
+                                  "file_patterns":  [
+                                                        "*.json",
+                                                        "appsettings.json",
+                                                        "web.config"
+                                                    ]
+                              },
+                  "GRM_API":  {
+                                  "enabled":  true,
+                                  "file_patterns":  [
+                                                        "*.json",
+                                                        "appsettings.json",
+                                                        "web.config"
+                                                    ]
+                              },
+                  "GRM_Database":  {
+                                       "enabled":  true,
+                                       "file_patterns":  [
+                                                             "*.sql"
+                                                         ]
+                                   },
+                  "FeedConfig_Web":  {
+                                         "enabled":  true,
+                                         "file_patterns":  [
+                                                               "*.json",
+                                                               "appsettings.json",
+                                                               "web.config"
+                                                           ]
+                                     },
+                  "FeedConfig_Api":  {
+                                         "enabled":  true,
+                                         "file_patterns":  [
+                                                               "*.json",
+                                                               "appsettings.json",
+                                                               "web.config"
+                                                           ]
+                                     },
+                  "FeedConfig_Database":  {
+                                              "enabled":  true,
+                                              "file_patterns":  [
+                                                                    "*.sql"
+                                                                ]
+                                          },
+                  "AuthAPI_Web":  {
+                                      "enabled":  true,
+                                      "file_patterns":  [
+                                                            "*.json",
+                                                            "appsettings.json",
+                                                            "web.config"
+                                                        ]
+                                  },
+                  "Dashboard_API":  {
+                                        "enabled":  true,
+                                        "file_patterns":  [
+                                                              "*.json",
+                                                              "appsettings.json",
+                                                              "web.config"
+                                                          ]
+                                    },
+                  "FileTransfer_API":  {
+                                           "enabled":  true,
+                                           "file_patterns":  [
+                                                                 "*.json",
+                                                                 "appsettings.json",
+                                                                 "web.config"
+                                                             ]
+                                       },
+                  "RDM_API":  {
+                                  "enabled":  true,
+                                  "file_patterns":  [
+                                                        "*.json",
+                                                        "appsettings.json",
+                                                        "web.config"
+                                                    ]
+                              },
+                  "ServicesPortal_API":  {
+                                             "enabled":  true,
+                                             "file_patterns":  [
+                                                                   "*.json",
+                                                                   "appsettings.json",
+                                                                   "web.config"
+                                                               ]
+                                         },
+                  "ServicesPortal_UI":  {
+                                            "enabled":  true,
+                                            "file_patterns":  [
+                                                                  "*.json",
+                                                                  "appsettings.json",
+                                                                  "web.config"
+                                                              ]
+                                        },
+                  "ReportViewer_API":  {
+                                           "enabled":  true,
+                                           "file_patterns":  [
+                                                                 "*.json",
+                                                                 "appsettings.json",
+                                                                 "web.config"
+                                                             ]
+                                       },
+                  "ReportViewer":  {
+                                       "enabled":  true,
+                                       "file_patterns":  [
+                                                             "*.json",
+                                                             "appsettings.json",
+                                                             "web.config"
+                                                         ]
+                                   },
+                  "ReportConfiguration_API":  {
+                                                  "enabled":  true,
+                                                  "file_patterns":  [
+                                                                        "*.json",
+                                                                        "appsettings.json",
+                                                                        "web.config"
+                                                                    ]
+                                              }
+              }
+}

@@ -1,0 +1,247 @@
+{
+    "CIDM":  {
+                 "AuthAPI_Web":  {
+                                     "package_source_root":  "E:\\publish\\SFTPDownload\\CIDM",
+                                     "deploy_root":  "E:\\Services",
+                                     "backup_root":  "E:\\ServicesBackup",
+                                     "application_root_name":  "MPCMAuthAPI",
+                                     "component_name":  "AuthAPI_Web",
+                                     "iis_site_name":  "Auth.API",
+                                     "iis_app_pool":  "Auth.API",
+                                     "iis_website_name": "mtusuat.gravitasplatform.com",
+                                     "iis_service_user":  "MPCM_UAT_Web",
+                                     "target_server_role":  "web",
+                                     "target_server":  "MPCM-US-UWEB1",
+                                     "winrm_username":  "MPCM_UAT_Web",
+                                     "github_runner":  [
+                                                           "self-hosted",
+                                                           "UAT-Deployment"
+                                                       ]
+                                 },
+                 "CIDM_API":  {
+                                  "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                  "deploy_root":  "G:\\Services",
+                                  "backup_root":  "G:\\ServicesBackup",
+                                  "application_root_name":  "MPCMCIDMAPI",
+                                  "component_name":  "CIDM_API",
+                                  "iis_site_name":  "CIDM.API",
+                                  "iis_website_name": "mpcmuapp",
+                                  "iis_app_pool":  "CIDM.API",
+                                  "iis_service_user":  "ldsgssupport\\MPCM_UAT_platform",
+                                  "target_server_role":  "api",
+                                  "target_server":  "mpcm-us-usql1.ldsgssupport.com",
+                                  "winrm_username":  "ldsgssupport\\MPCM_UAT_platform",
+                                  "github_runner":  [
+                                                        "self-hosted",
+                                                        "UAT-Deployment"
+                                                    ]
+                              },
+                 "Assistant_API":  {
+                                       "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                       "deploy_root":  "G:\\Services",
+                                       "backup_root":  "G:\\ServicesBackup",
+                                       "application_root_name":  "MPCMAssistantAPI",
+                                       "component_name":  "Assistant_API",
+                                       "iis_site_name":  "Assistant.API",
+                                       "iis_website_name": "mpcmuapp",
+                                       "iis_app_pool":  "Assistant.API",
+                                       "iis_service_user":  "ldsgssupport\\MPCM_UAT_platform",
+                                       "target_server_role":  "api",
+                                       "target_server":  "mpcm-us-usql1.ldsgssupport.com",
+                                       "winrm_username":  "ldsgssupport\\MPCM_UAT_platform",
+                                       "github_runner":  [
+                                                             "self-hosted",
+                                                             "UAT-Deployment"
+                                                         ]
+                                   },
+                 "DataProcessor_API":  {
+                                           "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                           "deploy_root":  "G:\\Services",
+                                           "backup_root":  "G:\\ServicesBackup",
+                                           "application_root_name":  "MPCMDataProcessorAPI",
+                                           "component_name":  "DataProcessor_API",
+                                           "iis_site_name":  "DataProcessor.API",
+                                           "iis_website_name": "mpcmuapp",
+                                           "iis_app_pool":  "DataProcessor.API",
+                                           "iis_service_user":  "ldsgssupport\\MPCM_UAT_platform",
+                                           "target_server_role":  "api",
+                                           "target_server":  "mpcm-us-usql1.ldsgssupport.com",
+                                           "winrm_username":  "ldsgssupport\\MPCM_UAT_platform",
+                                           "github_runner":  [
+                                                                 "self-hosted",
+                                                                 "UAT-Deployment"
+                                                             ]
+                                       },
+                 "DocumentManagement_API":  {
+                                                "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                                "deploy_root":  "G:\\Services",
+                                                "backup_root":  "G:\\ServicesBackup",
+                                                "application_root_name":  "MPCMDocumentManagementAPI",
+                                                "component_name":  "DocumentManagement_API",
+                                                "iis_site_name":  "DocumentManagement.API",
+                                                "iis_website_name": "mpcmuapp",
+                                                "iis_app_pool":  "DocumentManagement.API",
+                                                "iis_service_user":  "ldsgssupport\\MPCM_UAT_platform",
+                                                "target_server_role":  "api",
+                                                "target_server":  "mpcm-us-usql1.ldsgssupport.com",
+                                                "winrm_username":  "ldsgssupport\\MPCM_UAT_platform",
+                                                "github_runner":  [
+                                                                      "self-hosted",
+                                                                      "UAT-Deployment"
+                                                                  ]
+                                            },
+                 "Dashboard_API":  {
+                                       "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                       "deploy_root":  "G:\\Services",
+                                       "backup_root":  "G:\\ServicesBackup",
+                                       "application_root_name":  "MPCMDashboardAPI",
+                                       "component_name":  "Dashboard_API",
+                                       "iis_site_name":  "Dashboard.API",
+                                       "iis_website_name": "mpcmuapp",
+                                       "iis_app_pool":  "Dashboard.API",
+                                       "iis_service_user":  "ldsgssupport\\MPCM_UAT_platform",
+                                       "target_server_role":  "api",
+                                       "target_server":  "mpcm-us-usql1.ldsgssupport.com",
+                                       "winrm_username":  "ldsgssupport\\MPCM_UAT_platform",
+                                       "github_runner":  [
+                                                             "self-hosted",
+                                                             "UAT-Deployment"
+                                                         ]
+                                   },
+                 "Lgh_API":  {
+                                 "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                 "deploy_root":  "G:\\Services",
+                                 "backup_root":  "G:\\ServicesBackup",
+                                 "application_root_name":  "MPCMLghAPI",
+                                 "component_name":  "Lgh_API",
+                                 "iis_site_name":  "Lgh.API",
+                                 "iis_website_name": "mpcmuapp",
+                                 "iis_app_pool":  "Lgh.API",
+                                 "iis_service_user":  "ldsgssupport\\MPCM_UAT_platform",
+                                 "target_server_role":  "api",
+                                 "target_server":  "mpcm-us-usql1.ldsgssupport.com",
+                                 "winrm_username":  "ldsgssupport\\MPCM_UAT_platform",
+                                 "github_runner":  [
+                                                       "self-hosted",
+                                                       "UAT-Deployment"
+                                                   ]
+                             },
+                 "ServiceRequest_API":  {
+                                            "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                            "deploy_root":  "G:\\Services",
+                                            "backup_root":  "G:\\ServicesBackup",
+                                            "application_root_name":  "MPCMServiceRequestAPI",
+                                            "component_name":  "ServiceRequest_API",
+                                            "iis_site_name":  "ServiceRequest.API",
+                                            "iis_website_name": "mpcmuapp",
+                                            "iis_app_pool":  "ServiceRequest.API",
+                                            "iis_service_user":  "ldsgssupport\\MPCM_UAT_platform",
+                                            "target_server_role":  "api",
+                                            "target_server":  "mpcm-us-usql1.ldsgssupport.com",
+                                            "winrm_username":  "ldsgssupport\\MPCM_UAT_platform",
+                                            "github_runner":  [
+                                                                  "self-hosted",
+                                                                  "UAT-Deployment"
+                                                              ]
+                                        },
+                 "RDM_API":  {
+                                 "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                 "deploy_root":  "G:\\Services",
+                                 "backup_root":  "G:\\ServicesBackup",
+                                 "application_root_name":  "MPCMRDMAPI",
+                                 "component_name":  "RDM_API",
+                                 "iis_site_name":  "RDM.API",
+                                 "iis_website_name": "mpcmuapp",
+                                 "iis_app_pool":  "RDM.API",
+                                 "iis_service_user":  "ldsgssupport\\MPCM_UAT_platform",
+                                 "target_server_role":  "api",
+                                 "target_server":  "mpcm-us-usql1.ldsgssupport.com",
+                                 "winrm_username":  "ldsgssupport\\MPCM_UAT_platform",
+                                 "github_runner":  [
+                                                       "self-hosted",
+                                                       "UAT-Deployment"
+                                                   ]
+                             },
+                 "FileTransfer_API":  {
+                                          "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                          "deploy_root":  "G:\\Services",
+                                          "backup_root":  "G:\\ServicesBackup",
+                                          "application_root_name":  "MPCMFileTransferAPI",
+                                          "component_name":  "FileTransfer_API",
+                                          "iis_site_name":  "FileTransfer.API",
+                                           "iis_website_name": "mpcmuapp",
+                                          "iis_app_pool":  "FileTransfer.API",
+                                          "iis_service_user":  "ldsgssupport\\MPCM_UAT_platform",
+                                          "target_server_role":  "api",
+                                          "target_server":  "mpcm-us-usql1.ldsgssupport.com",
+                                          "winrm_username":  "ldsgssupport\\MPCM_UAT_platform",
+                                          "github_runner":  [
+                                                                "self-hosted",
+                                                                "UAT-Deployment"
+                                                            ]
+                                      },
+                 "ServicesPortal_API":  {
+                                            "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                            "deploy_root":  "G:\\Services",
+                                            "backup_root":  "G:\\ServicesBackup",
+                                            "application_root_name":  "MPCMServicesPortalAPI",
+                                            "component_name":  "ServicesPortal_API",
+                                            "iis_site_name":  "ServicesPortal.Api",
+                                            "iis_website_name": "mpcmuapp",
+                                            "iis_app_pool":  "ServicesPortal.Api",
+                                            "iis_service_user":  "ldsgssupport\\MPCM_UAT_platform",
+                                            "target_server_role":  "api",
+                                            "target_server":  "mpcm-us-usql1.ldsgssupport.com",
+                                            "winrm_username":  "ldsgssupport\\MPCM_UAT_platform",
+                                            "github_runner":  [
+                                                                  "self-hosted",
+                                                                  "UAT-Deployment"
+                                                              ]
+                                        },
+                "Dashboard_configuration":  {
+                                            "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                            "deploy_root":  "G:\\Services\\MPCMDashboardAPI\\Dashboard_API\\config\\Clients\\UAT\\MPCM\\Dashboard",
+                                            "backup_root":  "G:\\ServicesBackup\\MPCMDashboardAPI\\Dashboard_API\\config\\Clients\\UAT\\MPCM\\Dashboard",
+                                            "component_name":  "Dashboard_configuration",
+                                            "target_server_role":  "api",
+                                            "target_server":  "mpcm-us-usql1.ldsgssupport.com",
+                                            "winrm_username":  "ldsgssupport\\MPCM_UAT_platform",
+                                            "github_runner":  [
+                                                                  "self-hosted",
+                                                                  "UAT-Deployment"
+                                                              ]
+                                        },
+                "Base_Dashboard_configuration":{
+                                            "package_source_root":  "G:\\publish\\SFTPDownload\\CIDM",
+                                            "deploy_root":  "G:\\Services\\DashboardAPI\\Dashboard_API\\config\\defaultprofile\\Dashboard",
+                                            "backup_root":  "G:\\ServicesBackup\\DashboardAPI\\Dashboard_API\\config\\defaultprofile\\Dashboard",
+                                            "component_name":  "Dashboard_configuration",
+                                            "target_server_role":  "api",
+                                            "target_server":  "mpcm-us-usql1.ldsgssupport.com",
+                                            "winrm_username":  "ldsgssupport\\MPCM_UAT_platform",
+                                            "github_runner":  [
+                                                                  "self-hosted",
+                                                                  "UAT-Deployment"
+                                                              ]
+                                        },                    
+                 "ServicesPortal_UI":  {
+                                           "package_source_root":  "E:\\publish\\SFTPDownload\\CIDM",
+                                           "deploy_root":  "E:\\Services",
+                                           "backup_root":  "E:\\ServicesBackup",
+                                           "application_root_name":  "MPCMServicesPortalUI",
+                                           "component_name":  "ServicesPortal_UI",
+                                           "iis_site_name":  "ServicesPortal.UI",
+                                           "iis_website_name": "mtusuat.gravitasplatform.com",
+                                           "iis_app_pool":  "ServicesPortal.UI",
+                                           "iis_service_user":  "MPCM_UAT_Web",
+                                           "target_server_role":  "web",
+                                           "target_server":  "MPCM-US-UWEB1",
+                                           "winrm_username":  "MPCM_UAT_Web",
+                                           "github_runner":  [
+                                                                 "self-hosted",
+                                                                 "UAT-Deployment"
+                                                             ]
+                                       }
+             }
+}
+

@@ -1,0 +1,134 @@
+﻿{
+    "Tools":  {
+                  "SSO_API":  {
+                                  "package_source_root":  "G:\\publish\\SFTPDownload\\Tools",
+                                  "deploy_root":  "G:\\Services",
+                                  "backup_root":  "G:\\ServicesBackup",
+                                  "application_root_name":  "SSO",
+                                  "component_name":  "SSO.Api",
+                                  "iis_site_name":  "SSO.Api",
+                                  "iis_app_pool":  "SSO.Api",
+                                  "iis_app_pool_clr_version":  "No Managed Code",
+                                  "iis_service_user":  "ldsgssupport\\mash_UAT_Platform",
+                                  "target_server":  "MASH-US-USQL1.ldsgssupport.com",
+                                  "winrm_username":  "ldsgssupport\\mash_UAT_Platform",
+                                  "target_server_role":  "api",
+                                  "github_runner":  [
+                                                        "self-hosted",
+                                                        "QA-Deployment"
+                                                    ]
+                              },
+                  "PermissionStore_DATABASE":  {
+                                                   "package_source_root":  "G:\\publish\\SFTPDownload\\Tools",
+                                                   "extracted_package_root":  "G:\\publish\\DBScriptsTemp",
+                                                   "deployment_script_path":  "G:\\PowershellScripts\\DatabaseScriptsDeploymentScript.ps1",
+                                                   "db_server":  "MASH-US-USQL1.ldsgssupport.com",
+                                                   "db_name":  "PermissionStore",
+                                                   "db_authentication":  "SqlAuthentication",
+                                                   "sql_scripts_pattern":  [
+                                                                               "01.%20Database%20Schema\\*.sql",
+                                                                               "02.%20Tables\\*.sql",
+                                                                               "04.%20Functions\\*.sql",
+                                                                               "05.%20Stored%20Procedures\\*.sql",
+                                                                               "06.%20DML\\*.sql"
+                                                                           ],
+                                                   "display_sql_output":  "True",
+                                                   "trust_server_certificate":  "False",
+                                                   "github_runner":  [
+                                                                         "self-hosted",
+                                                                         "QA-Deployment"
+                                                                     ],
+                                                   "target_server":  "MASH-US-USQL1.ldsgssupport.com",
+                                                   "winrm_username":  "ldsgssupport\\mash_UAT_Platform",
+                                                   "target_server_role":  "db"
+                                               },
+                  "PermissionStore_API":  {
+                                              "package_source_root":  "G:\\publish\\SFTPDownload\\Tools",
+                                              "deploy_root":  "G:\\Services",
+                                              "backup_root":  "G:\\ServicesBackup",
+                                              "application_root_name":  "PermissionStore",
+                                              "component_name":  "PermissionStore.Web.Core",
+                                              "iis_site_name":  "PermissionStoreWebApi",
+                                              "iis_app_pool":  "PermissionStoreWebApi",
+                                              "iis_service_user":  "ldsgssupport\\mash_UAT_Platform",
+                                              "target_server":  "MASH-US-USQL1.ldsgssupport.com",
+                                              "winrm_username":  "ldsgssupport\\mash_UAT_Platform",
+                                              "target_server_role":  "api",
+                                              "github_runner":  [
+                                                                    "self-hosted",
+                                                                    "QA-Deployment"
+                                                                ]
+                                          },
+                  "PermissionStore_UI":  {
+                                             "package_source_root":  "G:\\publish\\SFTPDownload\\Tools",
+                                             "deploy_root":  "G:\\Services",
+                                             "backup_root":  "G:\\ServicesBackup",
+                                             "application_root_name":  "PermissionStore",
+                                             "component_name":  "PermissionStoreWebUI",
+                                             "iis_site_name":  "PermissionStoreWebUI",
+                                             "iis_app_pool":  "PermissionStoreWebUI",
+                                             "iis_service_user":  "ldsgssupport\\mash_UAT_Platform",
+                                             "target_server":  "MASH-US-UWEB1",
+                                             "winrm_username":  "MASH_UAT_Web",
+                                             "target_server_role":  "web",
+                                             "github_runner":  [
+                                                                   "self-hosted",
+                                                                   "QA-Deployment"
+                                                               ]
+                                         },
+                  "PermissionStore_RUI":  {
+                                              "package_source_root":  "G:\\publish\\SFTPDownload\\Tools",
+                                              "deploy_root":  "G:\\Services",
+                                              "backup_root":  "G:\\ServicesBackup",
+                                              "application_root_name":  "PermissionStore",
+                                              "component_name":  "PermissionStoreRUI",
+                                              "iis_site_name":  "PermissionStoreRUI",
+                                              "iis_app_pool":  "PermissionStoreRUI",
+                                              "iis_service_user":  "ldsgssupport\\mash_UAT_Platform",
+                                              "target_server":  "MASH-US-USQL1.ldsgssupport.com",
+                                              "winrm_username":  "ldsgssupport\\mash_UAT_Platform",
+                                              "target_server_role":  "api",
+                                              "github_runner":  [
+                                                                    "self-hosted",
+                                                                    "QA-Deployment"
+                                                                ]
+                                          },
+                  "Clientmaster_API":  {
+                                           "package_source_root":  "G:\\publish\\SFTPDownload\\Tools",
+                                           "deploy_root":  "G:\\Services",
+                                           "backup_root":  "G:\\ServicesBackup",
+                                           "application_root_name":  "Clientmaster",
+                                           "component_name":  "Clientmaster_API",
+                                           "iis_site_name":  "Clientmaster.API",
+                                           "iis_app_pool":  "Clientmaster.API",
+                                           "iis_service_user":  "ldsgssupport\\mash_UAT_Platform",
+                                           "target_server":  "MASH-US-USQL1.ldsgssupport.com",
+                                           "winrm_username":  "ldsgssupport\\mash_UAT_Platform",
+                                           "target_server_role":  "api",
+                                           "github_runner":  [
+                                                                 "self-hosted",
+                                                                 "QA-Deployment"
+                                                             ]
+                                       },
+                  "Clientmaster_DATABASE":  {
+                                                "package_source_root":  "G:\\publish\\SFTPDownload\\Tools",
+                                                "extracted_package_root":  "G:\\publish\\DBScriptsTemp",
+                                                "deployment_script_path":  "G:\\PowershellScripts\\DatabaseScriptsDeploymentScript.ps1",
+                                                "db_server":  "MASH-US-USQL1.ldsgssupport.com",
+                                                "db_name":  "Clientmaster_MT",
+                                                "db_authentication":  "SqlAuthentication",
+                                                "sql_scripts_pattern":  [
+                                                                            "09.%20DML\\*.sql"
+                                                                        ],
+                                                "display_sql_output":  "True",
+                                                "trust_server_certificate":  "False",
+                                                "github_runner":  [
+                                                                      "self-hosted",
+                                                                      "QA-Deployment"
+                                                                  ],
+                                                "target_server":  "MASH-US-USQL1.ldsgssupport.com",
+                                                "winrm_username":  "ldsgssupport\\mash_UAT_Platform",
+                                                "target_server_role":  "db"
+                                            }
+              }
+}

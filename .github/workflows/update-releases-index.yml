@@ -1,9 +1,6 @@
 name: Update Releases Index
 
 on:
-  push:
-    paths:
-      - 'App/**'
   workflow_dispatch:
 
 permissions:
@@ -20,7 +17,6 @@ jobs:
         with:
           fetch-depth: 0
 
-
       - name: Generate index.json with nested paths
         shell: pwsh
         run: |
@@ -28,12 +24,21 @@ jobs:
 
           $index = @{}
 
-          $files = Get-ChildItem "App" -Recurse -Filter "*.yml" |
-                   Sort-Object FullName
+          if (Test-Path "App/index.json") {
+             $oldIndex = Get-Content "App/index.json" | ConvertFrom-Json
+
+             foreach ($property in $oldIndex.PSObject.Properties) {
+             $index[$property.Name] = @($property.Value)
+            }
+          }
+
+          $files = git diff --name-only HEAD~1 HEAD |
+                   Where-Object { $_ -match "^App/.+\.yml$" } |
+                   Sort-Object 
 
           foreach ($file in $files) {
 
-              $relativePath = $file.FullName.Replace((Get-Location).Path + [System.IO.Path]::DirectorySeparatorChar, "").Replace('\','/')
+              $relativePath = $file.Replace('\','/')
 
               if ($relativePath -match "App/([^/]+)/(.+)$") {
 
@@ -48,75 +53,14 @@ jobs:
               }
           }
 
-          $index | ConvertTo-Json -Depth 10 -Compress | Set-Content "App/index.json"
+          $index | ConvertTo-Json -Depth 10 | Set-Content "App/index.json"
 
           Write-Host "Generated App/index.json"
           Get-Content "App/index.json"
 
 
-      - name: Generate releases CSV
-        shell: pwsh
-        run: |
-
-          $files = Get-ChildItem "App" -Recurse -Filter "*.yml" |
-                   Sort-Object FullName |
-                   ForEach-Object { $_.FullName.Replace((Get-Location).Path + [System.IO.Path]::DirectorySeparatorChar, "").Replace('\','/') }
-
-
-          $csvPath = "DeploymentLogs/DeploymentLogs.csv"
-
-          New-Item -ItemType Directory -Force -Path "DeploymentLogs" | Out-Null
-
-
-          $header = "Client,Application,Version,Environment,DeploymentStatus,DeploymentDateTime,TriggeredBy,ActionRunUrl"
-
-
-          if (!(Test-Path $csvPath)) {
-            $header | Set-Content $csvPath
-          }
-
-
-          $existing = @()
-
-          if (Test-Path $csvPath) {
-            $existing = Get-Content $csvPath | Select-Object -Skip 1
-          }
-
-
-          foreach ($f in $files) {
-
-            if ($f -match "App\/(.+?)\/(.+)\.yml$") {
-
-              $app = $matches[1]
-              $file = $matches[2]
-
-
-              if ($file -match "^[A-Za-z]+_(.+)$") {
-                $version = $matches[1]
-              }
-              else {
-                $version = $file
-              }
-
-
-              $env = "QA"
-              $client = "QA"
-              $status = "Succeeded"
-              $time = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss UTC")
-              $triggeredBy = $env:GITHUB_ACTOR
-              $url = ""
-
-
-              $row = "$client,$app,$version,$env,$status,$time,$triggeredBy,$url"
-
-
-              if ($existing -notcontains $row) {
-                Add-Content -Path $csvPath -Value $row
-                $existing += $row
-              }
-            }
-          }
-
+      
+          
 
       - name: Commit and push changes
         shell: pwsh
@@ -126,7 +70,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
 
-          git add App/index.json DeploymentLogs/DeploymentLogs.csv
+          git add App/index.json 
 
 
           git diff --cached --quiet
@@ -138,10 +82,10 @@ jobs:
           }
           else {
 
-              git commit -m "chore: update index.json and DeploymentLogs.csv [skip ci]"
+              git commit -m "chore: update index.json [skip ci]"
 
               git push
 
-              Write-Host "Updated index.json and CSV pushed"
+              Write-Host "Updated index.json"
 
           }

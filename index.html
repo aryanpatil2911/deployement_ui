@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-[#020617]">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linedata | Fleet Controller</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 9px; }
+        input:focus, select:focus { box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.4); }
+    </style>
+</head>
+<body class="text-slate-300 bg-[#020617] p-6 md:p-10 min-h-screen relative tracking-normal text-xs">
+    <div class="max-w-7xl mx-auto">
+
+    <div class="flex items-center justify-between border-b border-slate-800 pb-5 mb-8">
+
+        <h1 class="text-xl font-black text-white tracking-tight uppercase">
+            Linedata Dashboard
+        </h1>
+
+        <div class="flex gap-3 items-center">
+
+            <!-- RELEASES -->
+            <a href="releases.html" class="px-5 py-2 bg-orange-500 hover:bg-orange-600 rounded-lg text-xs font-semibold text-white shadow-sm">
+                RELEASES
+            </a>
+
+            <!-- RESET TOKEN -->
+            <button onclick="resetDeploymentToken()" class="text-[10px] text-slate-500 hover:text-slate-300 border border-slate-800 hover:border-slate-600 rounded px-2.5 py-1 transition">
+                <i class="fa-solid fa-key mr-1"></i>Reset Token
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="mb-6 flex gap-4 items-center">
+
+    <!-- SMALL APP DROPDOWN -->
+    <select id="appFilter" onchange="renderTable()" 
+            class="w-52 bg-slate-900 border border-slate-800 rounded-lg px-3 py-3 text-xs font-medium outline-none cursor-pointer text-slate-200">
+        <option value="">All Applications</option>
+    </select>
+
+    <!-- BIG SEARCH BOX -->
+    <div class="relative flex-1">
+        <input 
+        id="search"
+        type="text"
+        placeholder="Search..."
+        onkeyup="renderTable()"
+        class="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-3 text-slate-200 outline-none">
+    </div>
+
+    <!-- RESET -->
+    <button onclick="clearFilters()" 
+        class="px-4 py-3 bg-slate-800 border border-slate-700 hover:bg-slate-700 rounded-lg transition-all text-slate-400 font-medium flex items-center gap-2">
+        <i class="fa-solid fa-rotate-right text-[10px]"></i>
+        Reset
+    </button>
+
+</div>
+
+        <div id="actionStatus" class="mb-6 hidden rounded-xl border px-4 py-3 text-sm font-medium shadow-lg"></div>
+
+        <div class="bg-slate-900/50 border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
+            <table class="w-full text-left table-fixed text-xs border-collapse">
+                <thead>
+                    <tr class="border-b border-slate-800 bg-slate-950 font-bold uppercase tracking-wider text-slate-400 text-[10px]">
+                        <th class="p-4 pl-8 w-[20%] border-r border-slate-800/60">Client</th>
+                        <th class="p-4 w-[25%] border-r border-slate-800/60">App Module</th>
+                        <th class="p-4 text-center w-[27%] border-r border-slate-800/60 bg-slate-950/40">UAT</th>
+                        <th class="p-4 text-center w-[28%] bg-slate-950/20">PROD</th>
+                    </tr>
+                </thead>
+                <tbody id="matrix-body" class="divide-y divide-slate-800">
+                    <tr>
+                        <td colspan="4" class="p-12 text-center text-slate-500 font-medium font-mono text-xs">
+                            <i class="fa-solid fa-circle-notch fa-spin mr-2 text-red-500"></i>Loading tracking paths...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="upgradeModal" class="fixed inset-0 bg-black/75 hidden flex items-center justify-center z-50 p-4 transition-all">
+        <div class="bg-slate-900 border border-slate-800 rounded-xl w-full max-w-md flex flex-col overflow-hidden shadow-2xl">
+            <div class="flex items-center justify-between border-b border-slate-800 p-4 bg-slate-950/20">
+                <div>
+                    <h2 class="text-sm font-bold text-white uppercase tracking-wider">Select Target Upgrade Version</h2>
+                    <p id="upgradeTargetSubtitle" class="text-[11px] font-mono text-slate-500 mt-0.5"></p>
+                </div>
+                <button onclick="closeUpgradeModal()" class="text-slate-400 hover:text-white text-lg leading-none">&times;</button>
+            </div>
+            <div class="p-5 space-y-4">
+                <div>
+                    <label id="upgradeSelectLabel" class="block text-slate-400 font-mono text-[10px] mb-1.5 tracking-wider">AVAILABLE QA ENV. VERSIONS (ASCENDING ORDER)</label>
+                    <select id="upgradeVersionSelect" class="w-full bg-slate-950 border border-slate-800 rounded p-2.5 outline-none text-slate-200 font-mono cursor-pointer"></select>
+                </div>
+                <div id="upgradeNoVersionsWarning" class="hidden p-3 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded text-[11px] leading-relaxed">
+                    <i class="fa-solid fa-circle-info mr-1"></i> No QA versions are available.
+                </div>
+            </div>
+            <div class="border-t border-slate-800 p-3 flex gap-2 justify-end bg-slate-950/10">
+                <button onclick="closeUpgradeModal()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded text-xs font-semibold transition text-slate-300">Cancel</button>
+                <button id="upgradeConfirmBtn" onclick="submitUpgradeAction()" class="px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded text-xs font-semibold transition">Trigger Upgrade</button>
+            </div>
+        </div>
+    </div>
+
+     <!-- PAT input modal -->
+    <div id="patModal" class="fixed inset-0 bg-black/80 hidden flex items-center justify-center z-50 p-4">
+        <div class="bg-slate-900 border border-slate-700 rounded-xl w-full max-w-sm shadow-2xl">
+            <div class="flex items-center justify-between border-b border-slate-800 p-4">
+                <div>
+                    <h2 class="text-sm font-bold text-white uppercase tracking-wider">Deployment Token Required</h2>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Enter your GitHub fine-grained PAT</p>
+                </div>
+            </div>
+            <div class="p-5 space-y-3">
+                <input id="patInput" type="password" placeholder="github_pat_..."
+                    class="w-full bg-slate-950 border border-slate-700 rounded p-2.5 outline-none text-slate-200 font-mono text-xs"
+                    onkeydown="if(event.key==='Enter') saveDeploymentToken()" />
+                <p class="text-[10px] text-slate-500">
+                    <i class="fa-solid fa-lock mr-1"></i>Stored in your browser only — never sent to any server or committed to git.
+                </p>
+                <p class="text-[10px] text-slate-500">
+                    Needs: <strong class="text-slate-400">Actions → Read &amp; Write</strong> on LD-Global-Services/Deployment only.
+                </p>
+            </div>
+            <div class="border-t border-slate-800 p-3 flex gap-2 justify-end">
+                <button onclick="cancelPatModal()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded text-xs font-semibold text-slate-300">Cancel</button>
+                <button onclick="saveDeploymentToken()" class="px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded text-xs font-semibold">Save &amp; Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      window.GITHUB_REPO_OWNER = "LD-Global-Services";
+      window.GITHUB_REPO_NAME = "Deployment";
+      window.GITHUB_ACTIONS_WORKFLOW_FILE = "create-deployment-issue.yml";
+      window.GITHUB_ACTIONS_WORKFLOW_REF = "Deployment-staging";
+    </script>
+
+    <!-- <script src="DeploymentLogs/DeploymentLogs.js"></script> -->
+    <script src="app.js"></script>
+</body>
+</html>

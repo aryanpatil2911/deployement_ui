@@ -1,0 +1,243 @@
+﻿{
+  "RECON": {
+   "shared_tokens": {
+      "AppServerTransportModeName": "Transport",
+      "AppServerTransportProtocol": "https",
+      "ApplicationServer": "psdev-qa02.servicesdev.com",
+      "ClientConfigWebApiApplicationName": "ClientConfigurations.Api",
+      "ClientDomain": "BASE_USER_DOMAIN",
+      "ClientMasterWebApiApplicationName": "ClientMaster.Api",
+      "DBServer": "psdev-qa02.servicesdev.com",
+      "EnableNodeSSO": "true",
+      "EntitlementServiceApplicationName": "",
+      "RECONApiApplicationName": "RECON.Api",
+      "RECON_DBName": "RECON_MT",
+      "ReconServiceApplicationName": "RECON.Api",
+      "GSMServiceApplicationName": "GSMUpgrade.Service.WasHost",
+      "IsPermissionStore": "true",
+      "LogsPath": "G:\\Logs",
+      "PermissionCacheExpirationInMinutes": "1",
+      "PermissionStorePassword": "BASE_APPLICATION_USERPASSWORD",
+      "PermissionStoreUrl": "",
+      "PermissionStoreWebApiApplicationName": "PermissionStoreWebApi",
+      "PermissionStoreUserName": "BASE_APPLICATION_USERNAME",
+      "PortalEnvironment": "UAT",
+      "ReconWebCoreApplicationName": "Recon.Web.Core",
+      "ReconWebApiApplicationName" : "Recon.Web.Api",
+      "RequiredHttps": "true",
+      "UsePermissionCache": "false",
+      "UsePermissionStoreAuthentication": "true",
+      "UsePermissionStoreAuthorization": "true",
+      "WebAppProtocol": "https",
+      "WebServer": "psdev-qa02.servicesdev.com",
+      "ClientMaster_DBName": "ClientMaster_MT",
+      "ClientConfigUrl":"https://psdev-qa02.servicesdev.com/ClientConfigurations.Api",
+      "EnableStatusChangeBySameUserValidation":"true",
+      "EnableRuleRiskLevel":"false",
+      "CalBreaksAsPositions":"false",
+      "DisableStatusChangeBySameUserValidationForUsers":"true",
+      "ReportServerURL":"https://psdev-qa02.servicesdev.com/ReportServer/",
+      "ReportGenerationServerUrl":"https://psdev-qa02.servicesdev.com/ReportViewer/Report/",
+      "UpdateSummaryRowOnMatchTab":"false",
+      "AppServerTransportProtocolName":"http",
+      "DomainServer":" 172.19.142.132",
+      "FeedApiApplicationName": "Feed.Api",
+      "EnableWorkflowRules" : "false",
+      "EnableSourceDestFeedConfigUpdate" :"true",
+      "EnableRestrictedView":"false",
+      "EnableReconEnginNewApiCalling":"true",
+      "EnableNewFeedExport":"true",
+      "EnableNewApiCalling":"true",
+      "EnableNewApi":"true",
+      "EXEPathForPackage" : "\\PSDev-QA02\\BatchFiles\\Binn\\DTEXEC.exe",
+      "ExpireTimeSpan" :"60",
+      "DashboardApiApplicationName": "Dashboard.Api",
+      "FileTransferApiSiteName": "FileTransfer.Api",
+      "FileUploaderApiSiteName":"FileUploader.Api",
+      "ServicesPlatformApiApplicationName":"ServicesPlatform.Api",
+      "SSOApiArchiveDir": "G:\\Logs\\SSO.Api\\Archive",
+      "SSOApiLogDir": "G:\\Logs\\SSO.Api",
+      "SSOApiMaxLogSize": "10",
+      "SSOConnectEndpointName": "/oidc/connect",
+      "SSOEndpointName": "/oidc",
+      "SSOWebCoreApplicationName": "SSO.Api",
+      "SSOSEARCH_BASE":"BASE_LDAP_SEARCH_BASE",
+      "SSOLDAP_URL":"BASE_LDAP_URL",
+      "SSOBIND_DN" : "BASE_LDAP_BIND_DN",
+      "SSOBIND_CREDENTIALS" : "BASE_SSO_USERPASSWORD",
+      "ServicesPlatformApplicationName":"Recon.Web.Core",
+      "FeedConfigurationWebApplicationName": "FeedConfiguration.Web",
+      "GRMWebCoreApplicationName": "GRM.Web.Core",
+      "ReconReverseProxyApplicationName": "Recon.Web.Api",
+      "ReconWebReportApplicationName": "ServicesPlatform.Web.Report",
+      "AutoRefreshInterval" : "600000",
+      "DashboardSpecificpages" : ["Feed Load","View FeedFiles","Today's FeedFiles"],
+      "ToShowHistoricalCashBalanceDiff" : "false",
+      "ToShowKnowledgeDate" : "false",
+      "ToShowHistoricalTrialBalanceDiff": "false",
+      "FullViewOperation" : "",
+      "ExportToExcelFolderPath" : "",
+      "ToasterAutoCloseTimeOut" : "{\"success\":3000,\"warning\":0,\"default\":5000}",
+      "GridProfilePath" : "",
+      "WijmolicenseKey" : "",
+      "GRMApiApplicationName": "GRM.Api",
+      "ReportBuilderApplicationName" : "ReportconfigurationBuilder",
+      "ReportServiceURL" : "https://psdev-qa02.servicesdev.com/ReportServer/ReportService2010.asmx",
+      "GRMServiceApplicationName": "GRM.Api",
+      "GRM_DBName": "GRM_MT"
+    },
+    "Recon_WEB": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "*.html",
+        "*.js",
+        "appsettings.json",
+        "web.config"
+      ]
+    },
+    "Recon_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+    },
+    "Reconciliation_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+    },
+    "Recon_Database": {
+      "enabled": true,
+      "file_patterns": [
+        "*.sql"
+      ]
+    },
+    "Feed_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+     },
+     "GRM_WEB": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+    },
+    "GRM_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+    },
+    "GRM_Database": {
+      "enabled": true,
+      "file_patterns": [
+        "*.sql"
+      ]
+    },"FeedConfig_Web": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+    },
+    "FeedConfig_Api": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+    },
+    "FeedConfig_Database": {
+      "enabled": true,
+      "file_patterns": [
+        "*.sql"
+      ]
+    },
+    "AuthAPI_Web": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+  },
+    "Dashboard_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+  },
+    "FileTransfer_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+  },
+    "RDM_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+}, "ServicesPortal_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+}, "ServicesPortal_UI": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+}, "ReportViewerApi_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+},
+"ReportViewer": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+},
+"ReportConfiguration_API": {
+      "enabled": true,
+      "file_patterns": [
+        "*.json",
+        "appsettings.json",
+        "web.config"
+      ]
+}
+}
+}
+

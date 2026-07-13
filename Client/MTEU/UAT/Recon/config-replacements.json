@@ -1,0 +1,217 @@
+{
+    "RECON":  {
+                  "shared_tokens":  {
+                                        "ApplicationServer":  "mteuusql1.ldsgssupport.com",
+                                        "appCode":  "Recon.Web.Core",
+                                        "AppServerAllowedBackupRoot": "G:\\",
+                                        "AppServerApplicationPoolUserName": "LDSSupport\\MTEU_UAT_Platform",
+                                        "ClientConfigWebApiApplicationName":  "ClientConfigurations.Api",
+                                        "ClientMaster_DBName": "ClientMaster_MT",
+                                        "ClientMasterSqlReleaseFolderPath" : "C:\\Octopus\\Applications\\MTEU UAT\\Base.ClientMaster.Database.Scripts",
+                                        "DashboardConfigsRootPath":  "./Config",
+                                        "DBServerconfigIP": "10.65.150.68",
+                                        "DefaultClientFilePassword": "Default@1234",
+                                        "DomainServer": "10.135.130.70",
+                                        "DateFormat": "MM/dd/yyyy",
+                                        "EnableNodeSSO": "false",
+                                        "ExportReportFilePath": "G:\\Reports",
+                                        "FeedConfigSqlReleaseFolderPath": "C:\\Octopus\\Applications\\MTEU UAT\\MT-EU.FeedConfiguration.Database.Scripts",
+                                        "FeedConfigurationDBName": "FeedConfig_MT",
+                                        "FileTransferApiBackupFolderPath": "G:\\ServicesBackup\\FileTransfer.Api",
+                                        "GridProfilePath":  "",
+                                        "GRM_DBName":  "GRM_MT",
+                                        "GRMApiApplicationBackupFolderPath": "G:\\ServicesBackup\\GRM.Api",
+                                        "GRMApiApplicationName":  "GRM.Api",
+                                        "GRMApiApplicationPhysicalPath": "G:\\Services\\GRM.Api",
+                                        "GRMApiApplicationPoolName": "GRM.Api",
+                                        "GRMSqlReleaseFolderPath": "C:\\Octopus\\Applications\\MTEU UAT\\MT-EU.GRM.Database.Scripts",
+                                        "IsSslEnabled": "true",
+                                        "PermissionStoreDBName": "PermissionStore",
+                                        "PermissionStoreSqlReleasePath" : "C:\\Octopus\\Applications\\MTEU UAT\\Base.PermissionStore.Database.Scripts",
+                                        "Recon_DBName": "RECON_MT",
+                                        "ReconSqlReleaseFolderPath": "C:\\Octopus\\Applications\\MTEU New UAT\\MT-EU.Recon.Database.Scripts",
+                                        "ReportExecutionURL": "https://mteuusql1.ldsgssupport.com/ReportServer/ReportExecution2005.asmx",
+                                        "ReportServerPassword": "",
+                                        "ReportServerURL": "https://mteu-uk-usql1.ldsgssupport.com/ReportServer/",
+                                        "ReportServerUserName": "LDSGSSupport\\MTEU_UAT_SSRS",
+                                        "ReportServiceURL": "https://mteu-uk-usql1.ldsgssupport.com/ReportServer/ReportService2010.asmx",
+                                        "ServicePlatformReportApplicationName": "ServicesPlatform.Web.Report",
+                                        "ServicesPortalBackupFolderPath": "E:\\ServicesBackup\\ServicesPortal",
+                                        "SFTPDirectoryPath": "/",
+                                        "SFTPPassword": "MTEU_SFTPPASSWORD",
+                                        "SFTPPort": "22",
+                                        "SFTPServer": "sftp.gravitasplatform.com",
+                                        "SFTPUserName": "MTEU_SFTPUSERNAME",
+                                        "SmtpClient": "smtp.azurecomm.net",
+                                        "SmtpPassword": "",
+                                        "SmtpPort": "587",
+                                        "SmtpUsername": "donotreply@gravitasplatform.com",
+                                        "SQLBackupPath": "G:\\Backup\\SQLBackup",
+                                        "SQLServer": "10.165.150.197",
+                                        "SSOApplicationPhysicalPath": "G:\\Services\\SSO.Api",
+                                        "SSOApplicationPoolName": "SSO.Api",
+                                        "SSOServicesBackupFolderPath": "G:\\Backup\\SSO.Api",
+                                        "SSRSBackupPath": "G:\\SSRSBackup",
+                                        "UpdateSummaryRowOnMatchTab": "false"
+                                    },
+
+
+                                    
+                  "Recon_WEB":  {
+                                    "enabled":  true,
+                                    "file_patterns":  [
+                                                          "*.json",
+                                                          "*.html",
+                                                          "*.js",
+                                                          "appsettings.json",
+                                                          "web.config"
+                                                      ]
+                                },
+                  "Recon_API":  {
+                                    "enabled":  true,
+                                    "file_patterns":  [
+                                                          "*.json",
+                                                          "appsettings.json",
+                                                          "web.config"
+                                                      ]
+                                },
+                  "Reconciliation_API":  {
+                                             "enabled":  true,
+                                             "file_patterns":  [
+                                                                   "*.json",
+                                                                   "appsettings.json",
+                                                                   "web.config"
+                                                               ]
+                                         },
+                  "Recon_Database":  {
+                                         "enabled":  true,
+                                         "file_patterns":  [
+                                                               "*.sql"
+                                                           ]
+                                     },
+                  "Feed_API":  {
+                                   "enabled":  true,
+                                   "file_patterns":  [
+                                                         "*.json",
+                                                         "appsettings.json",
+                                                         "web.config"
+                                                     ]
+                               },
+                  "GRM_WEB":  {
+                                  "enabled":  true,
+                                  "file_patterns":  [
+                                                        "*.json",
+                                                        "appsettings.json",
+                                                        "web.config"
+                                                    ]
+                              },
+                  "GRM_API":  {
+                                  "enabled":  true,
+                                  "file_patterns":  [
+                                                        "*.json",
+                                                        "appsettings.json",
+                                                        "web.config"
+                                                    ]
+                              },
+                  "GRM_Database":  {
+                                       "enabled":  true,
+                                       "file_patterns":  [
+                                                             "*.sql"
+                                                         ]
+                                   },
+                  "FeedConfig_Web":  {
+                                         "enabled":  true,
+                                         "file_patterns":  [
+                                                               "*.json",
+                                                               "appsettings.json",
+                                                               "web.config"
+                                                           ]
+                                     },
+                  "FeedConfig_Api":  {
+                                         "enabled":  true,
+                                         "file_patterns":  [
+                                                               "*.json",
+                                                               "appsettings.json",
+                                                               "web.config"
+                                                           ]
+                                     },
+                  "FeedConfig_Database":  {
+                                              "enabled":  true,
+                                              "file_patterns":  [
+                                                                    "*.sql"
+                                                                ]
+                                          },
+                  "AuthAPI_Web":  {
+                                      "enabled":  true,
+                                      "file_patterns":  [
+                                                            "*.json",
+                                                            "appsettings.json",
+                                                            "web.config"
+                                                        ]
+                                  },
+                  "Dashboard_API":  {
+                                        "enabled":  true,
+                                        "file_patterns":  [
+                                                              "*.json",
+                                                              "appsettings.json",
+                                                              "web.config"
+                                                          ]
+                                    },
+                  "FileTransfer_API":  {
+                                           "enabled":  true,
+                                           "file_patterns":  [
+                                                                 "*.json",
+                                                                 "appsettings.json",
+                                                                 "web.config"
+                                                             ]
+                                       },
+                  "RDM_API":  {
+                                  "enabled":  true,
+                                  "file_patterns":  [
+                                                        "*.json",
+                                                        "appsettings.json",
+                                                        "web.config"
+                                                    ]
+                              },
+                  "ServicesPortal_API":  {
+                                             "enabled":  true,
+                                             "file_patterns":  [
+                                                                   "*.json",
+                                                                   "appsettings.json",
+                                                                   "web.config"
+                                                               ]
+                                         },
+                  "ServicesPortal_UI":  {
+                                            "enabled":  true,
+                                            "file_patterns":  [
+                                                                  "*.json",
+                                                                  "appsettings.json",
+                                                                  "web.config"
+                                                              ]
+                                        },
+                  "ReportViewer_API":  {
+                                           "enabled":  true,
+                                           "file_patterns":  [
+                                                                 "*.json",
+                                                                 "appsettings.json",
+                                                                 "web.config"
+                                                             ]
+                                       },
+                  "ReportViewer":  {
+                                       "enabled":  true,
+                                       "file_patterns":  [
+                                                             "*.json",
+                                                             "appsettings.json",
+                                                             "web.config"
+                                                         ]
+                                   },
+                  "ReportConfiguration_API":  {
+                                                  "enabled":  true,
+                                                  "file_patterns":  [
+                                                                        "*.json",
+                                                                        "appsettings.json",
+                                                                        "web.config"
+                                                                    ]
+                                              }
+              }
+}

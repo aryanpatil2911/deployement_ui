@@ -1,0 +1,267 @@
+﻿name: "Create Deployment Issue"
+run-name: "[${{ inputs.action }}] ${{ inputs.client }} / ${{ inputs.module }} v${{ inputs.version }} to ${{ inputs.stage }}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      client:
+        description: "Client name"
+        required: true
+        type: string
+      module:
+        description: "Module name (app)"
+        required: true
+        type: string
+      version:
+        description: "Version to deploy"
+        required: true
+        type: string
+      stage:
+        description: "Target stage (UAT/PROD)"
+        required: true
+        type: string
+      action:
+        description: "Action type (PROMOTION/UPGRADE/ROLLBACK/REDEPLOY/DEPLOY)"
+        required: true
+        type: string
+      fromenv:
+        description: "Source environment"
+        required: false
+        type: string
+
+permissions:
+  issues: write
+  actions: write
+  contents: write
+
+jobs:
+  create-issue:
+    name: "Create Deployment Issue"
+    runs-on: ubuntu-latest
+    outputs:
+      issue_number: ${{ steps.create-issue.outputs.issue_number }}
+      issue_url: ${{ steps.create-issue.outputs.issue_url }}
+
+    steps:
+      - name: "Create Deployment Issue"
+        id: create-issue
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fromenv = '${{ inputs.fromenv }}' || 'N/A';
+            const title = '[${{ inputs.action }}] ${{ inputs.client }} - ${{ inputs.module }} v${{ inputs.version }}';
+            const body = [
+              '### Run Parameters',
+              '- **client**: ${{ inputs.client }}',
+              '- **module**: ${{ inputs.module }}',
+              '- **version**: ${{ inputs.version }}',
+              '- **stage**: ${{ inputs.stage }}',
+              '- **action**: ${{ inputs.action }}',
+              '- **fromenv**: ' + fromenv,
+              '',
+              '**Triggered by**: PAT-based deployment dashboard',
+              '**Time**: ' + new Date().toISOString()
+            ].join('\n');
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: title,
+              body: body,
+              labels: ['deployment', 'automated']
+            });
+            console.log('Issue created: #' + issue.data.number);
+            core.setOutput('issue_number', issue.data.number);
+            core.setOutput('issue_url', issue.data.html_url);
+
+      - name: Create GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: "Record Approval Pending in DeploymentLogs"
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ steps.app-token.outputs.token }}
+          script: |
+            const path = 'DeploymentLogs/DeploymentLogs.csv';
+            const timestamp = new Date().toISOString().replace('T', ' ').replace(/\.\d+Z$/, ' UTC');
+            const runUrl = 'https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}';
+            const newRow = '"${{ inputs.client }}","${{ inputs.module }}","${{ inputs.version }}","${{ inputs.stage }}","Approval Pending","' + timestamp + '","","${{ github.actor }}","' + runUrl + '"';
+            const file = await github.rest.repos.getContent({ owner: context.repo.owner, repo: context.repo.repo, path, ref: 'main' });
+            const current = Buffer.from(file.data.content, 'base64').toString('utf-8');
+            const updated = current.trimEnd() + '\n' + newRow + '\n';
+            await github.rest.repos.createOrUpdateFileContents({
+              owner: context.repo.owner, repo: context.repo.repo, path,
+              message: 'Record Approval Pending: ${{ inputs.client }} ${{ inputs.module }} ${{ inputs.version }} (${{ inputs.stage }})',
+              content: Buffer.from(updated).toString('base64'),
+              sha: file.data.sha, branch: 'main'
+            });
+
+      - name: "Write Reviewer Summary"
+        run: |
+          echo "## :rocket: Deployment Request Awaiting Approval" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Parameter | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| **Action** | \`${{ inputs.action }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Client** | ${{ inputs.client }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Module** | ${{ inputs.module }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Version** | \`${{ inputs.version }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Target Stage** | ${{ inputs.stage }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| **From Env** | ${{ inputs.fromenv || 'N/A' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Requested By** | ${{ github.actor }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "> :memo: **Issue**: ${{ steps.create-issue.outputs.issue_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "> :warning: A reviewer must **approve** before deployment proceeds." >> $GITHUB_STEP_SUMMARY
+
+  review-and-deploy:
+    name: "[${{ inputs.action }}] ${{ inputs.client }} / ${{ inputs.module }} to ${{ inputs.stage }}"
+    needs: create-issue
+    runs-on: ubuntu-latest
+    environment: deployment-approval
+
+    steps:
+      - name: "Trigger Deployment"
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.DEPLOYMENT_PAT || secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'module-deploy.yml',
+              ref: 'main',
+              inputs: {
+                client: '${{ inputs.client }}',
+                module: '${{ inputs.module }}',
+                version: '${{ inputs.version }}',
+                stage: '${{ inputs.stage }}',
+                triggered_by: '${{ github.actor }}',
+                issue_number: '${{ needs.create-issue.outputs.issue_number }}'
+              }
+            });
+            console.log('Deployment triggered: ${{ inputs.client }} ${{ inputs.module }} ${{ inputs.version }} -> ${{ inputs.stage }}');
+
+      - name: Create GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: "Record Approved in DeploymentLogs"
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ steps.app-token.outputs.token }}
+          script: |
+            const path = 'DeploymentLogs/DeploymentLogs.csv';
+            const timestamp = new Date().toISOString().replace('T', ' ').replace(/\.\d+Z$/, ' UTC');
+            const runUrl = 'https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}';
+            const newRow = '"${{ inputs.client }}","${{ inputs.module }}","${{ inputs.version }}","${{ inputs.stage }}","Approved","' + timestamp + '","","${{ github.actor }}","' + runUrl + '"';
+            const file = await github.rest.repos.getContent({ owner: context.repo.owner, repo: context.repo.repo, path, ref: 'main' });
+            const current = Buffer.from(file.data.content, 'base64').toString('utf-8');
+            const updated = current.trimEnd() + '\n' + newRow + '\n';
+            await github.rest.repos.createOrUpdateFileContents({
+              owner: context.repo.owner, repo: context.repo.repo, path,
+              message: 'Record Approved: ${{ inputs.client }} ${{ inputs.module }} ${{ inputs.version }} (${{ inputs.stage }})',
+              content: Buffer.from(updated).toString('base64'),
+              sha: file.data.sha, branch: 'main'
+            });
+
+  handle-rejection:
+    name: "Handle Approval Rejection"
+    needs: [create-issue, review-and-deploy]
+    runs-on: ubuntu-latest
+    if: always() && needs.create-issue.result == 'success' && (needs.review-and-deploy.result == 'failure' || needs.review-and-deploy.result == 'cancelled')
+
+    steps:
+      - name: Create GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: "Remove Approval Pending from DeploymentLogs"
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ steps.app-token.outputs.token }}
+          script: |
+            const csvPath = 'DeploymentLogs/DeploymentLogs.csv';
+            const client = '${{ inputs.client }}';
+            const module = '${{ inputs.module }}';
+            const version = '${{ inputs.version }}';
+            const stage = '${{ inputs.stage }}';
+            const file = await github.rest.repos.getContent({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              path: csvPath,
+              ref: 'main'
+            });
+            const current = Buffer.from(file.data.content, 'base64').toString('utf-8');
+            const lines = current.split('\n');
+            const parseCsvLine = (line) => {
+              const matches = line.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g);
+              return matches ? matches.map((value) => value.replace(/^"|"$/g, '').trim()) : [];
+            };
+            const filtered = lines.filter((line, index) => {
+              if (index === 0 || !line.trim()) {
+                return true;
+              }
+
+              const row = parseCsvLine(line);
+              const isMatch = row[0] === client &&
+                              row[1] === module &&
+                              row[2] === version &&
+                              row[3] === stage &&
+                              row[4] === 'Approval Pending';
+              return !isMatch;
+            });
+            const updated = filtered.join('\n').replace(/\n+$/, '\n');
+            if (updated !== current) {
+              await github.rest.repos.createOrUpdateFileContents({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                path: csvPath,
+                message: 'Remove Approval Pending (Rejected): ' + client + ' ' + module + ' ' + version + ' (' + stage + ')',
+                content: Buffer.from(updated).toString('base64'),
+                sha: file.data.sha,
+                branch: 'main'
+              });
+            }
+
+      - name: "Close Issue as Approval Rejected"
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issueNumber = Number('${{ needs.create-issue.outputs.issue_number }}');
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              body: [
+                '## ❌ Deployment Rejected',
+                '',
+                'This deployment request was rejected during the approval process.',
+                '',
+                '| Parameter | Value |',
+                '|-----------|-------|',
+                '| **Client** | ${{ inputs.client }} |',
+                '| **Module** | ${{ inputs.module }} |',
+                '| **Version** | `${{ inputs.version }}` |',
+                '| **Stage** | ${{ inputs.stage }} |',
+                '| **Action** | ${{ inputs.action }} |',
+              ].join('\n')
+            });
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              state: 'closed',
+              state_reason: 'not_planned'
+            });
