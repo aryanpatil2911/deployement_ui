@@ -263,7 +263,7 @@ document.getElementById("configInfo").innerHTML =
 /* function 1 */
 async function viewJson(fileName) {
 
-    const path = `../Client/${client}/${env}/${app}/${fileName}`;
+    const path = `Client/${client}/${env}/${app}/${fileName}`;
 
     try {
         const res = await fetch(path);
@@ -289,7 +289,7 @@ async function editJson(fileName) {
 
     currentFileName = fileName;
 
-    const path = `../Client/${client}/${env}/${app}/${fileName}`;
+    const path = `Client/${client}/${env}/${app}/${fileName}`;
 
     try {
         const res = await fetch(path);
