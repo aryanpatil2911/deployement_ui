@@ -159,33 +159,209 @@
 
 
     <div id="createModal" class="fixed inset-0 bg-black/75 hidden flex items-center justify-center z-50 p-4">
-        <div class="bg-slate-900 border border-slate-800 rounded-xl w-full max-w-lg flex flex-col max-h-[85vh] shadow-2xl">
-            <div class="flex items-center justify-between border-b border-slate-800 p-4 bg-slate-950/20">
-                <h2 id="createModalTitle" class="font-bold text-white uppercase tracking-wider text-sm">Create New Release</h2>
-                <button onclick="closeCreateModal()" class="text-slate-400 hover:text-white text-xl leading-none">&times;</button>
-            </div>
-            <div class="p-4 overflow-auto flex-1 space-y-4 text-xs">
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-slate-400 font-mono mb-1 text-[10px] tracking-wide">APPLICATION</label>
-                        <select id="newApp" class="w-full bg-slate-950 border border-slate-800 rounded px-3 py-2 outline-none cursor-pointer text-slate-200">
-                            <option value="" selected hidden>Select Application</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-slate-400 font-mono mb-1 text-[10px] tracking-wide">VERSION</label>
-                        <input id="newVersion" type="text" placeholder="Enter version" class="w-full bg-slate-950 border border-slate-800 rounded px-3 py-2 outline-none font-mono text-slate-200">
-                    </div>
-                </div>
+
+    <div class="bg-slate-900 border border-slate-800 rounded-xl w-full max-w-lg flex flex-col max-h-[85vh] shadow-2xl">
+
+        <div class="flex items-center justify-between border-b border-slate-800 p-4 bg-slate-950/20">
+            <h2 id="createModalTitle" class="font-bold text-white uppercase tracking-wider text-sm">
+                Create New Release
+            </h2>
+
+            <button onclick="closeCreateModal()" 
+                class="text-slate-400 hover:text-white text-xl leading-none">
+                &times;
+            </button>
+        </div>
+
+
+        <div class="p-4 overflow-auto flex-1 space-y-4 text-xs">
+
+
+            <!-- APPLICATION -->
+            <div class="grid grid-cols-1 gap-3">
+
                 <div>
-                    <label class="block text-slate-400 font-mono mb-1 text-[10px] tracking-wide">TARGET ENVIRONMENT</label>
-                    <select id="newEnv" class="w-full bg-slate-950 border border-slate-800 rounded px-3 py-2 outline-none cursor-pointer text-slate-200">
-                        <option value="" selected hidden>Select Environment</option> 
-                        <option value="UAT">UAT </option>
-                        <option value="PROD">PROD </option>
+                    <label class="block text-slate-400 font-mono mb-1 text-[10px] tracking-wide">
+                        APPLICATION
+                    </label>
+
+                    <select 
+                        id="newApp"
+                        onchange="appChanged()"
+                        class="w-full bg-slate-950 border border-slate-800 rounded px-3 py-2 outline-none cursor-pointer text-slate-200">
+
+                        <option value="" selected hidden>
+                            Select Application
+                        </option>
+
                     </select>
+
                 </div>
-                <div>
+
+            </div>
+
+
+    <div class="bg-slate-950 border border-slate-800 rounded-lg p-3 text-[11px] text-slate-400 font-mono leading-5">
+
+    <div class="text-orange-400 font-bold mb-2">
+        Versioning Rules
+    </div>
+    
+    <span class="text-white">• There are two types of releases: Major Release  and Patch Release.<br>
+    • Every Patch Release must belong to an existing Major Release.<br>
+   <!-- • Patch Releases must use the same Release Name as their Major Release.</span><br><br> -->
+
+    <span class="text-white">• Major Release</span><br>
+    Recon → 1.MMYY.000<br>
+    CIDM → 2.MMYY.000<br>
+    Tools → 3.MMYY.000<br><br>
+
+    <span class="text-white">• Patch Release</span><br>
+    Recon → 1.MMYY.001, .002, .003...<br>
+    CIDM → 2.MMYY.001, .002, .003...<br>
+    Tools → 3.MMYY.001, .002, .003...<br><br>
+
+    <span class="text-white">• Example</span><br>
+       <!-- Release Name: June 2026 Release<br> -->
+        Major → 1.0626.000<br>
+        Patch → 1.0626.001<br>
+        Patch → 1.0626.002
+    
+
+</div>
+
+
+
+<div class="mt-4">
+    <label class="block text-slate-400 font-mono mb-1 text-[10px] tracking-wide">
+        RELEASE TYPE
+    </label>
+
+    <select
+        id="releaseType"
+        onchange="releaseTypeChanged()"
+        class="w-full bg-slate-950 border border-slate-800 rounded px-3 py-2 outline-none cursor-pointer text-slate-200">
+
+        <option value="" selected hidden>Select Release Type</option>
+        <option value="major">Major Release</option>
+        <option value="patch">Patch Release</option>
+
+    </select>
+</div>
+
+
+<div id="parentReleaseDiv" class="hidden">
+    <label class="block text-slate-400 font-mono mb-1 text-[10px] tracking-wide">
+        MAJOR RELEASE
+    </label>
+
+    <select
+    id="parentRelease"
+    onchange="document.getElementById('newVersion').value=this.value"
+    class="w-full bg-slate-950 border border-slate-800 rounded px-3 py-2 outline-none text-slate-200">
+
+        <option value="">Select Major Release</option>
+    </select>
+
+    <p class="text-[10px] text-slate-500 mt-1">
+        Select the Major Release this Patch belongs to.
+    </p>
+</div>
+
+<!--
+<div class="mt-4">
+    <label class="block text-slate-400 font-mono mb-1 text-[10px] tracking-wide">
+        RELEASE NAME
+    </label>
+
+    <input
+        id="releaseName"
+        type="text"
+        placeholder="Example: June 2026 Release"
+        class="w-full bg-slate-950 border border-slate-800 rounded px-3 py-2 outline-none text-slate-200"
+    >
+
+    <p class="text-[10px] text-slate-500 mt-1">
+        Used to identify the Major Release. <br>
+        Patch Releases should use the same Release Name.
+    </p>
+</div>
+-->
+
+<div class="mt-4">
+
+    <label class="block text-slate-400 font-mono mb-1 text-[10px] tracking-wide">
+        VERSION NUMBER
+    </label>
+
+    <div class="mb-3"> 
+
+        <!---
+        <select id="versionPrefix" onchange="updateVersionNumber()"
+            class="w-full bg-slate-950 border border-slate-800 rounded px-3 py-2 text-slate-200">
+
+            <option value="">Select the value</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+
+        </select>
+        
+        
+        <select id="versionMonth" onchange="updateVersionNumber()"
+            class="w-full bg-slate-950 border border-slate-800 rounded px-3 py-2 text-slate-200">
+
+            <option value="">Month</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+
+        </select>
+        
+
+        <select id="versionYear" onchange="updateVersionNumber()"
+            class="w-full bg-slate-950 border border-slate-800 rounded px-3 py-2 text-slate-200">
+
+            <option value="">Year</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+
+        </select>
+        -->
+
+    </div>
+
+</div>
+
+
+<div class="mt-4">
+
+    <input
+        id="newVersion"
+        type="text"
+        placeholder="Example: 1.0626.000"
+        class="w-full bg-slate-950 border border-slate-800 rounded px-3 py-2 outline-none text-slate-200"
+    >
+    
+    <!--
+    <p class="text-[10px] text-slate-500 mt-1">
+        Enter the release version manually following the Versioning Rules above.
+    </p>
+    -->
+</div>
+
+
+               <div class="mt-4">
                     <label class="block text-slate-400 font-mono mb-1 text-[10px] tracking-wide">New Release</label>
                     <textarea id="newChanges" rows="5" placeholder = "Enter new version YAML content" class="w-full bg-slate-950 border border-slate-800 rounded px-3 py-2 outline-none resize-none font-mono text-emerald-400 leading-normal"></textarea>
                 </div>
@@ -245,6 +421,420 @@
         let currentEditPath = null;
         let currentPromotePath = null;
         let pendingAction = null;
+
+        const reconTemplate = `
+ service:
+    main: RECON
+    name: RECON
+    components:
+    - type: api
+      component: Recon_API
+      name: Base.Recon.API
+      version: 2.26.0428.494
+      client_code: Base
+      package: Base.Recon.Web.Api.2.26.0428.494.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: C#
+    - type: api
+      component: Reconciliation_API
+      name: Base.Reconciliation.API
+      version: 2.26.0423.30
+      client_code: Base
+      package: Base.Reconciliation.API.2.26.0423.30.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: Python
+    - type: database
+      component: Recon_database
+      name: Base.Recon.Database.Scripts
+      version: 2.26.0428.494
+      client_code: Base
+      package: Base.Recon.Database.Scripts.2.26.0428.494.nupkg
+      storage_type: sftp-cache
+      path: G:\publish\SFTPDownload\Recon
+      report_package: Base.Recon.Reports.2.26.0514.506.nupkg
+      report_path: G:\publish\SFTPDownload\Recon
+      technology: SQL
+    - type: database
+      component: Recon_database
+      name: Base.Recon.Database.Scripts
+      version: 2.26.0428.494
+      client_code: MASH
+      package: MKSL.Recon.Database.Scripts.2.26.0428.494.nupkg
+      storage_type: sftp-cache
+      path: G:\publish\SFTPDownload\Recon
+      report_package: MKSL.Recon.Reports.2.26.0514.506.nupkg
+      report_path: G:\publish\SFTPDownload\Recon
+      technology: SQL
+    - type: database
+      component: Recon_database
+      name: Base.Recon.Database.Scripts
+      version: 2.26.0428.494
+      client_code: BAIN
+      package: BAIN.Recon.Database.Scripts.2.26.0428.494.nupkg
+      storage_type: sftp-cache
+      path: G:\publish\SFTPDownload\Recon
+      report_package: BAIN.Recon.Reports.2.26.0514.506.nupkg
+      report_path: G:\publish\SFTPDownload\Recon
+      technology: SQL
+    - type: database
+      component: Recon_database
+      name: Base.Recon.Database.Scripts
+      version: 2.26.0428.494
+      client_code: Base
+      package: Base.Recon.Database.Scripts.2.26.0428.494.nupkg
+      storage_type: sftp-cache
+      path: G:\publish\SFTPDownload\Recon
+      report_package: Base.Recon.Reports.2.26.0514.506.nupkg
+      report_path: G:\publish\SFTPDownload\Recon
+      technology: SQL
+    - type: web
+      component: Recon_WEB
+      name: Base.ServicePlatform
+      version: 2.26.0428.494
+      client_code: Base
+      package: Base.ServicePlatform.2.26.0428.494.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: C#
+    - type: api
+      component: Feed_API
+      name: Base.Feed.API
+      version: 2.26.0428.494
+      client_code: Base
+      package: Base.FeedApi.2.26.0428.494.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: api
+      component: GRM_API
+      name: Base.GRM.API
+      version: 2.26.0428.92
+      client_code: Base
+      package: Base.GRM.Api.2.26.0428.92.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: C#
+    - type: database
+      component: GRM_DATABASE
+      name: Base.GRM.Database.Scripts
+      version: 2.26.0428.92
+      client_code: Base
+      package: Base.GRM.Database.Scripts.2.26.0428.92.nupkg
+      storage_type: sftp-cache
+      path: G:\publish\SFTPDownload\Recon
+      technology: SQL
+    - type: database
+      component: GRM_DATABASE
+      name: Base.GRM.Database.Scripts
+      version: 2.26.0428.92
+      client_code: BAIN
+      package: MT-US.GRM.Database.Scripts.2.26.0428.92.nupkg
+      storage_type: sftp-cache
+      path: G:\publish\SFTPDownload\Recon
+      technology: SQL
+    - type: database
+      component: GRM_DATABASE
+      name: Base.GRM.Database.Scripts
+      version: 2.26.0428.92
+      client_code: MASH
+      package: MKSL.GRM.Database.Scripts.2.26.0428.92.nupkg
+      storage_type: sftp-cache
+      path: G:\publish\SFTPDownload\Recon
+      technology: SQL
+    - type: web
+      component: GRM_WEB
+      name: Base.GRM.Web.Core
+      version: 2.26.0428.92
+      client_code: Base
+      package: Base.GRM.Web.Core.2.26.0428.92.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: C#
+    - type: Web
+      component: FeedConfig_Web
+      name: Base.FeedConfiguration.Web
+      version: 2.26.0321.67
+      client_code: Base
+      package: Base.FeedConfiguration.Web.2.26.0321.67.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: Api
+      component: FeedConfig_Api
+      name: Base.FeedConfigurationService.WasHost
+      version: 2.26.0321.67
+      client_code: Base
+      package: Base.FeedConfigurationService.WasHost.2.26.0321.67.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: C#
+    - type: database
+      component: FeedConfig_Database
+      name: Base.FeedConfiguration.Database.Scripts
+      version: 2.26.0321.67
+      client_code: Base
+      package: Base.FeedConfiguration.Database.Scripts.2.26.0321.67.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: C#
+    - type: Web
+      component: AuthAPi_Web
+      name: Base.Auth.API
+      version: 2.26.0506.73
+      client_code: Base
+      package: Base.Auth.API.2.26.0506.73.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: api
+      component: FileTransfer_API
+      name: Base.FileTransfer.API
+      version: 2.26.0509.30
+      client_code: Base
+      package: Base.FileTransfer.API.2.26.0509.30.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: api
+      component: Dashboard_API
+      name: Base.Dashboard.API
+      version: 2.26.0511.335
+      client_code: Base
+      package: Base.Dashboard.API.2.26.0511.335.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: api
+      component: RDM_API
+      name: Base.RDM.API
+      version: 2.26.0506.97
+      client_code: Base
+      package: Base.ReferenceDataMaster.API.2.26.0506.97.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: api
+      component: ServicesPortal_API
+      name: Base.ServicesPortal.API
+      version: 2.26.0512.219
+      client_code: Base
+      package: Base.Portal.API.2.26.0512.219.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: web
+      component: ServicesPortal_UI
+      name: Base.Portal.UI
+      version: 2.26.0512.219
+      client_code: Base
+      package: Base.Portal.UI.2.26.0512.219.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: api
+      component: ReportViewerApi_API
+      name: Base.ReportViewerApi
+      version: 2.26.0515.116
+      client_code: Base
+      package: Base.ReportViewerApi.2.26.0515.116.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: api
+      component: ReportConfiguration_API
+      name: Base.ReportConfiguration
+      version: 2.26.0515.116
+      client_code: Base
+      package: Base.ReportConfiguration.2.26.0515.116.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: web
+      component: ReportViewer
+      name: Base.ReportViewer
+      version: 2.26.0515.116
+      client_code: Base
+      package: Base.ReportViewer.2.26.0515.116.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: Node.js
+      `;
+
+    const cidmTemplate = `
+service:
+  main: CIDM
+  name: CIDM
+  components:
+    - type: api
+      component: CIDM_API
+      name: Base.CIDM.API
+      version: 2.26.0515.196
+      client_code: Base
+      package: Base.CIDM.API.2.26.0515.196.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: node.js
+    - type: api
+      component: Assistant_API
+      name: Base.Assistant.API
+      version: 2.26.0505.52
+      client_code: Base
+      package: Base.Assistant.API.2.26.0505.52.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: node.js
+    - type: api
+      component: DataProcessor_API
+      name: Base.DataProcessor.API
+      version: 2.26.0505.52
+      client_code: Base
+      package: Base.DataProcessorDataProcessor.API.2.26.0506.12.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: Python
+    - type: api
+      component: Lgh_API
+      name: Base.LGH.API
+      version: 2.26.0506.42
+      client_code: Base
+      package: Base.LGH.API.2.26.0506.42.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: node.js
+    - type: api
+      component: DocumentManagement_API
+      name: DocumentManagement.API
+      version: 2.26.0506.16
+      client_code: Base
+      package: Base.DocumentManagement.API.2.26.0506.16.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: node.js
+    - type: web
+      component: AuthAPi_Web
+      name: Base.Auth.API
+      version: 2.26.0506.73
+      client_code: Base
+      package: Base.Auth.API.2.26.0402.72.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: api
+      component: FileTransfer_API
+      name: Base.FileTransfer.API
+      version: 2.26.0509.30
+      client_code: Base
+      package: Base.FileTransfer.API.2.26.0509.30.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: api
+      component: Dashboard_API
+      name: Base.Dashboard.API
+      version: 2.26.0511.335
+      client_code: Base
+      package: Base.Dashboard.API.2.26.0512.336.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: api
+      component: RDM_API
+      name: Base.RDM.API
+      version: 2.26.0506.97
+      client_code: Base
+      package: Base.ReferenceDataMaster.API.2.26.0506.97.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: api
+      component: ServicesPortal_API
+      name: Base.ServicesPortal.API
+      version: 2.26.0512.219
+      client_code: Base
+      package: Base.Portal.API.2.26.0512.219.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: api
+      component: ServiceRequest_API
+      name: Base.ServiceRequest.API
+      version: 2.26.0512.219
+      client_code: Base
+      package: Base.Portal.API.2.26.0512.219.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: web
+      component: ServicesPortal_UI
+      name: Base.Portal.UI
+      version: 2.26.0512.219
+      client_code: Base
+      package: Base.Portal.UI.2.26.0512.219.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: Node.js
+      `;
+    
+    const toolsTemplate = `
+service:
+  main: Tools
+  name: Tools
+  components:
+    - type: api
+      component: PermissionStore_API
+      name: Base.PermissionStore.API
+      version: 2.26.0424.69
+      package: Base.PermissionStoreWebApi.2.26.0424.69.nupkg
+      path: G:\publish\SFTPDownload\Tools
+      storage_type: sftp-cache
+      technology: C#
+    - type: api
+      component: PermissionStore_RUI
+      name: Base.PermissionStore.RUI
+      version: 2.26.0424.69
+      package: Base.PermissionStoreRUI.2.26.0424.69.nupkg
+      path: G:\publish\SFTPDownload\Tools
+      storage_type: sftp-cache
+      technology: C#
+    - type: database
+      component: PermissionStore_database
+      name: Base.PermissionStore.Database.Scripts
+      version: 2.26.0424.69
+      package: Base.PermissionStore.Database.Scripts.2.26.0424.69.nupkg
+      storage_type: sftp-cache
+      path: G:\publish\SFTPDownload\Tools
+      technology: SQL
+    - type: api
+      component: SSO_API
+      name: Base.SSO.API
+      version: 2.26.0402.42
+      package: Base.SSO.Api.2.26.0402.42.nupkg
+      path: G:\publish\SFTPDownload\Tools
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: api
+      component: Clientmaster_API
+      name: Base.Clientmaster.API
+      version: 2.26.0429.33
+      package: Base.Clientmaster.Api.2.26.0429.33.nupkg
+      path: G:\publish\SFTPDownload\Tools
+      storage_type: sftp-cache
+      technology: Node.js
+    - type: database
+      component: Clientmaster_Database
+      name: Base.Clientmaster.Database.Scripts
+      version: 2.25.0818.10
+      package: Base.ClientmasterApi.Database.Scripts.2.25.0818.10.nupkg
+      path: G:\publish\SFTPDownload\Tools
+      storage_type: sftp-cache
+      technology: SQL
+    `;
+
+     
+
+        const defaultReleaseContent = ''
 
         const getAppFolder = f => { const p = f.split('/'); if (p[0] === 'App') p.shift(); return p[0] || ''; };
         
@@ -574,32 +1164,6 @@ function loadMajorReleases(){
 }
 
 
-function appChanged(){
-
-    const app = document.getElementById("newApp").value;
-    const textarea = document.getElementById("newChanges");
-
-    if(app.toUpperCase() === "RECON"){
-
-        let version = document.getElementById("newVersion").value.trim();
-
-        let content = reconTemplate;
-
-        if(version){
-            content = content.replaceAll(
-                /version:\s*[0-9.]+/g,
-                `version: ${version}`
-            );
-        }
-
-        textarea.value = content;
-    }
-    else{
-        textarea.value = "";
-    }
-
-}
-
 function savePAT() {
 
     const pat = document.getElementById("patInput").value.trim();
@@ -720,12 +1284,126 @@ function getPAT() {
     }
 }
 
+async function triggerDeploymentWorkflow(inputs) {
 
-        window.generateAndShowYAML = async function() {
-         const app = document.getElementById('newApp').value;
-         const version = document.getElementById('newVersion').value.trim() || '1.0.0';
-         const env = document.getElementById('newEnv').value;
-         const text = document.getElementById('newChanges').value.trim();
+    const pat = getPAT();
+
+    const res = await fetch(
+        `https://api.github.com/repos/${githubRepoOwner}/${githubRepoName}/actions/workflows/${githubDeployWorkflowFile}/dispatches`,
+        {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${pat}`,
+                Accept: "application/vnd.github+json"
+            },
+            body: JSON.stringify({
+                ref: githubWorkflowRef,
+                inputs: inputs
+            })
+        }
+    );
+
+    if (!res.ok) {
+    console.log(await res.text());   // <-- add this
+    setActionStatus("Failed to start deployment.", "error");
+    return;
+}
+
+    setActionStatus("Deployment request submitted.", "success");
+}
+
+
+function updateVersionHelp() {
+    const type = document.getElementById("releaseType").value;
+    const help = document.getElementById("versionHelp");
+
+    if (type === "major") {
+        help.innerHTML = `
+<b>Major Release</b><br>
+Recon → 1.MMYY.000<br>
+CIDM → 2.MMYY.000<br>
+Tools → 3.MMYY.000<br><br>
+Example: <b>1.0626.000</b>
+`;
+    } else if (type === "patch") {
+        help.innerHTML = `
+<b>Patch Release</b><br>
+Recon → 1.MMYY.001+<br>
+CIDM → 2.MMYY.001+<br>
+Tools → 3.MMYY.001+<br><br>
+Example: <b>1.0626.001</b>
+`;
+    } else {
+        help.textContent = "Select a Release Type to see the version format.";
+    }
+}
+
+/*
+function updateVersionNumber(){
+
+    const prefix=document.getElementById("versionPrefix").value;
+    const month=document.getElementById("versionMonth").value;
+    const year=document.getElementById("versionYear").value;
+
+    if(prefix && month && year){
+
+        document.getElementById("newVersion").value =
+            `${prefix}.${month}${year}.`;
+
+    }
+
+}
+*/ 
+
+/*=*
+function updateVersionNumber() {
+
+    const prefix = document.getElementById("versionPrefix").value;
+
+    if (!prefix) return;
+
+    const now = new Date();
+
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const year = String(now.getFullYear()).slice(-2);
+
+    document.getElementById("newVersion").value =
+        `${prefix}.${month}${year}.`;
+}
+
+
+document.getElementById("newVersion").addEventListener("input", function(){
+    appChanged();
+
+});
+*/
+
+function releaseTypeChanged() {
+
+    const type = document.getElementById("releaseType").value;
+    const parentDiv = document.getElementById("parentReleaseDiv");
+
+    if(type === "patch"){
+    parentDiv.classList.remove("hidden");
+    loadMajorReleases();
+}
+else{
+    parentDiv.classList.add("hidden");
+    appChanged();
+}
+} 
+
+
+    window.generateAndShowYAML = async function () {
+
+    const app = document.getElementById('newApp').value;
+    const version = document.getElementById('newVersion').value.trim();
+
+    const releaseType = document.getElementById('releaseType').value;
+    /*const releaseName = document.getElementById("releaseName").value.trim();*/
+    const parentRelease = document.getElementById("parentRelease").value;
+
+    const text = document.getElementById('newChanges').value.trim();
 
 
     // Validation
@@ -769,12 +1447,28 @@ release:
   version: "${version}"
   date: "${new Date().toISOString().split('T')[0]}"
 
-          application:
-          name: ${app}
-          client: CLIENT_${app.slice(-1)}
+application:
+  name: "${app}"
+  release_name: "${releaseName || app}"
+`;
+*/ 
 
-         changes:
-         ${changes}`;
+
+/*
+    // Add parent only for Patch release
+ if (releaseType === "patch") {
+    yaml += `
+parent_release:
+  name: "${parentRelease}"
+`;
+}
+
+yaml += `
+${changes}
+`;
+*/
+let yaml = text
+  
 
 
     document.getElementById('yamlContent').textContent = yaml;
