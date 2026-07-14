@@ -1,0 +1,36 @@
+service:
+  main: RECON
+  name: RECON
+  components:
+    - type: api
+      component: Recon_API
+      name: Base.Recon.API
+      version: 2.26.0522.522
+      package: Base.Recon.Web.Api.2.26.0522.522.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: C#
+    - type: web
+      component: Recon_WEB
+      name: Base.ServicePlatform
+      version: 2.26.0522.522
+      package: Base.ServicePlatform.2.26.0522.522.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: C#
+    - type: web
+      component: GRM_WEB
+      name: Base.GRM.Web.Core
+      version: 2.26.0406.91
+      package: Base.GRM.Web.Core.2.26.0406.91.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: C#
+    - type: Web
+      component: FeedConfig_Web
+      name: Base.FeedConfiguration.Web
+      version: 2.26.0321.67
+      package: Base.FeedConfiguration.Web.2.26.0321.67.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: Node.js

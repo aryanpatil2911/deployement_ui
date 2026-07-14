@@ -1,0 +1,38 @@
+service:
+  main: RECON
+  name: RECON
+  components:
+    - type: database
+      component: Recon_database
+      name: Base.Recon.Database.Scripts
+      version: 2.26.0602.540
+      package: QRMO.Recon.Database.Scripts.2.26.0602.540.nupkg
+      storage_type: sftp-cache
+      path: G:\publish\SFTPDownload\Recon
+      report_package: QRMO.Recon.Reports.2.26.0602.540.nupkg
+      report_path: G:\publish\SFTPDownload\Recon
+      technology: SQL
+    - type: database
+      component: GRM_DATABASE
+      name: Base.GRM.Database.Scripts
+      version: 2.26.0406.91
+      package: QRMO.GRM.Database.Scripts.2.26.0406.91.nupkg
+      storage_type: sftp-cache
+      path: G:\publish\SFTPDownload\Recon
+      technology: SQL
+    - type: database
+      component: FeedConfig_Database
+      name: Base.FeedConfiguration.Database.Scripts
+      version: 2.26.0321.67
+      package: QRMO.FeedConfiguration.Database.Scripts.2.26.0321.67.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: SQL
+    - type: web
+      component: ReportViewer
+      name: Base.ReportViewer
+      version: 2.26.0526.117
+      package: Base.ReportViewer.2.26.0526.117.nupkg
+      path: G:\publish\SFTPDownload\Recon
+      storage_type: sftp-cache
+      technology: Node.js

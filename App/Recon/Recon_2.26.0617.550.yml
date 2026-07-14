@@ -1,0 +1,14 @@
+﻿service:
+  main: RECON
+  name: RECON
+  components:
+    - type: database
+      component: Recon_database
+      name: Base.Recon.Database.Scripts
+      version: 2.26.0618.557
+      package: Base.Recon.Database.Scripts.2.26.0618.557.nupkg
+      storage_type: sftp-cache
+      path: G:\publish\SFTPDownload\Recon
+      report_package: Base.Recon.Reports.2.26.0617.557.nupkg
+      report_path: G:\publish\SFTPDownload\Recon
+      technology: SQL
