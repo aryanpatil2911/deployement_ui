@@ -1,4 +1,4 @@
-﻿﻿﻿name: "Create Deployment Issue"
+﻿name: "Create Deployment Issue"
 run-name: "[${{ inputs.action }}] ${{ inputs.client }} / ${{ inputs.module }} v${{ inputs.version }} to ${{ inputs.stage }}"
 
 on:
