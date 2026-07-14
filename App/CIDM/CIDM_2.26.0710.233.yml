@@ -1,0 +1,13 @@
+service:
+  main: CIDM
+  name: CIDM
+  components:
+    - type: api
+      component: CIDM_API
+      name: Base.CIDM.API
+      version: 2.26.0710.233
+      client_code: Base
+      package: Base.CIDM.API.2.26.0710.233.nupkg
+      path: G:\publish\SFTPDownload\CIDM
+      storage_type: sftp-cache
+      technology: node.js
