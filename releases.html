@@ -855,7 +855,7 @@ service:
             const container = document.getElementById('releasesContainer');
             try {
                 
-                const res = await fetch('../App/index.json');
+                const res = await fetch('./App/index.json');
                 if (!res.ok) throw new Error();
 
                 const data = await res.json();
@@ -965,7 +965,7 @@ service:
             const modal = document.getElementById('releaseModal'); const content = document.getElementById('modalContent');
             document.getElementById('modalTitle').textContent = fullPath.split('/').pop(); modal.classList.remove('hidden');
             try {
-                const clean = fullPath.startsWith('App/') ? fullPath.substring(4) : fullPath; const res = await fetch(`../App/${clean}`); if (!res.ok) throw new Error();
+                const clean = fullPath.startsWith('App/') ? fullPath.substring(4) : fullPath; const res = await fetch(`./App/${clean}`); if (!res.ok) throw new Error();
                 content.innerHTML = (await res.text()).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
             } catch (e) { content.innerHTML = `<span class="text-red-400">Failed to stream downstream file components.</span>`; }
         };
@@ -991,7 +991,7 @@ service:
 
         try {
         const clean = fullPath.startsWith('App/') ? fullPath.substring(4) : fullPath;
-        const res = await fetch(`../App/${clean}`);
+        const res = await fetch(`./App/${clean}`);
         if (!res.ok) throw new Error();
 
         document.getElementById('editModalSubtitle').textContent =
